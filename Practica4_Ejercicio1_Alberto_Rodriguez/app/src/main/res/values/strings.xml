@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Practica4_Ejercicio1_Alberto_Rodriguez</string>
+    <string name="no_se_ha_pulsado_bot_n">No se ha pulsado botón</string>
+    <string name="boton_morado">Boton morado</string>
+    <string name="boton_verde">Boton verde</string>
+</resources>
