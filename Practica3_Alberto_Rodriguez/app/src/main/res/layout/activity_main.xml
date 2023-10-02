@@ -74,13 +74,17 @@
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/minecraft"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:text="@string/argumento"
-            />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/minecraft"
+                android:text="@string/argumento"
+                />
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
