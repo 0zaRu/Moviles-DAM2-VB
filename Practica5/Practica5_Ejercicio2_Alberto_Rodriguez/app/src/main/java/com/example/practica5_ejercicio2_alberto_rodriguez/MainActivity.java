@@ -7,9 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.KeyListener;
-import android.view.KeyEvent;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -46,14 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if(texto.length() == 0) return;
 
-                if(texto.length() != 9 || (int)(Integer.parseInt(texto.substring(0, texto.length()-1))%23) != letraDNI.indexOf(texto.indexOf(texto.length()-1)))
-                    tMostrado.setText("El DNI introducido no es válido "+texto.indexOf(texto.length()-1));
+                if(texto.length() != 9 || Integer.parseInt(texto.substring(0, texto.length()-1))%23 != letraDNI.indexOf(texto.charAt(texto.length()-1)))
+                    tMostrado.setText("El DNI introducido no es válido");
 
                 else
                     tMostrado.setText(" ");
             }
         });
-
     }
-
 }

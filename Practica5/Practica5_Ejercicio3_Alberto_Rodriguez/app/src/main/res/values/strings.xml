@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Practica5_Ejercicio3_Alberto_Rodriguez</string>
+    <string name="rojo">Rojo</string>
+    <string name="Verde">Verde</string>
+    <string name="Azul">Azul</string>
+    <string name="limpiar">Limpiar</string>
+</resources>

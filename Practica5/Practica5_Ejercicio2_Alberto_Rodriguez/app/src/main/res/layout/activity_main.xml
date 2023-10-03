@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/tView"
-        android:layout_width="231dp"
-        android:layout_height="29dp"
+        android:layout_width="232dp"
+        android:layout_height="41dp"
         android:layout_marginStart="88dp"
         android:layout_marginTop="104dp"
         android:foregroundTint="#970E0E"
@@ -18,8 +18,8 @@
 
     <EditText
         android:id="@+id/tEdit"
-        android:layout_width="231dp"
-        android:layout_height="38dp"
+        android:layout_width="232dp"
+        android:layout_height="65dp"
         android:layout_marginStart="88dp"
         android:layout_marginTop="60dp"
         android:hint="@string/introduce_tu_dni"
