@@ -26,7 +26,8 @@
         android:checked="false"
         android:text="@string/bot_n"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/check" />
+        app:layout_constraintTop_toBottomOf="@+id/check"
+        android:enabled="false"/>
 
     <TextView
         android:id="@+id/texto"

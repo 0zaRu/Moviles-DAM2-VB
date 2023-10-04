@@ -24,6 +24,7 @@
         android:layout_marginTop="60dp"
         android:hint="@string/introduce_tu_dni"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLength="9"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

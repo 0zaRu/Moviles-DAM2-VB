@@ -2,6 +2,7 @@ package com.example.practica5_ejercicio3_alberto_rodriguez;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         grupo.clearCheck();
-        fondo.setBackgroundColor(Color.WHITE);
+        fondo.setBackgroundColor(ContextCompat.getColor(this, com.google.android.material.R.color.design_default_color_background));
     }
 
     @Override

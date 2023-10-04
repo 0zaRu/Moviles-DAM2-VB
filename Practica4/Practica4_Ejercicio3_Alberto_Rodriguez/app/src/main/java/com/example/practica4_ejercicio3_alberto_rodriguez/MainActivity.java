@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     ToggleButton bBoton;
     TextView tTexto;

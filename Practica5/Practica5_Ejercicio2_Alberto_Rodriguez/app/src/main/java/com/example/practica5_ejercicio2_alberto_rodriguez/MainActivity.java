@@ -38,16 +38,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String texto = String.valueOf(tEditado.getText());
+                String texto = String.valueOf(tEditado.getText()).toUpperCase();
                 String letraDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
 
-                if(texto.length() == 0) return;
+                try {
+                    if (texto.length() != 9 || Integer.parseInt(texto.substring(0, texto.length() - 1)) % 23 != letraDNI.indexOf(texto.charAt(texto.length() - 1)))
+                        tMostrado.setText("El DNI introducido no es válido");
 
-                if(texto.length() != 9 || Integer.parseInt(texto.substring(0, texto.length()-1))%23 != letraDNI.indexOf(texto.charAt(texto.length()-1)))
-                    tMostrado.setText("El DNI introducido no es válido");
+                    else
+                        tMostrado.setText(" ");
 
-                else
-                    tMostrado.setText(" ");
+                }catch (Exception e){
+                    //
+                }
             }
         });
     }
