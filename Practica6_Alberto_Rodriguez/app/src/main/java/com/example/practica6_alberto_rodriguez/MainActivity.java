@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import java.time.format.DateTimeFormatter;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText nombre, apellidos, nacimiento, direccion, telefono;
@@ -38,12 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        nombre.setText();
-
         if(nombre.getText().length() != 0 && apellidos.getText().length() != 0 && nacimiento.getText().length() != 0
            && direccion.getText().length() != 0 && telefono.getText().length() != 0){
-
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern(String.valueOf(nacimiento.getText()));
 
         }
     }
