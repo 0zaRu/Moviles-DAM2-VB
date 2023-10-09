@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Practica6_Alberto_Rodriguez</string>
+    <string name="introduce_tu_nombre">Introduce tu nombre ...</string>
+    <string name="introduce_tus_apellidos">Introduce tus apellidos ...</string>
+    <string name="introduce_tu_fecha_de_nacimiento">Introduce tu fecha de nacimiento</string>
+    <string name="introduce_tu_direcci_n">Introduce tu dirección</string>
+    <string name="introduce_tu_telefono">Introduce tu telefono</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="limpiar">Limpiar</string>
+</resources>
