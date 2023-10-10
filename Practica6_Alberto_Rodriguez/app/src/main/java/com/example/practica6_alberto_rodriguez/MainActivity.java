@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,15 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.bAceptar).setOnClickListener(this);
 
-        findViewById(R.id.bLimpiar).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nombre.setText("");
-                apellidos.setText("");
-                nacimiento.setText("");
-                direccion.setText("");
-                telefono.setText("");
-            }
+        findViewById(R.id.bLimpiar).setOnClickListener(v -> {
+            nombre.setText("");
+            apellidos.setText("");
+            nacimiento.setText("");
+            direccion.setText("");
+            telefono.setText("");
         });
     }
 
