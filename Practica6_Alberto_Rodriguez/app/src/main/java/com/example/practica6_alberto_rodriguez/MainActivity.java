@@ -65,7 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             error.append("Dirección, ");
             valido = false;
         }
-        if(String.valueOf(telefono.getText()).length() != 9 && (telefono.getText().charAt(0) == 6 || telefono.getText().charAt(0) == 7)){
+        try {
+            if (String.valueOf(telefono.getText()).length() != 9 && (telefono.getText().charAt(0) == 6 || telefono.getText().charAt(0) == 7)) {
+                Toast.makeText(this, "Campo telefono vacío", Toast.LENGTH_SHORT).show();
+                error.append("Telefono, ");
+                valido = false;
+            }
+        }catch (Exception e){
             Toast.makeText(this, "Campo telefono vacío", Toast.LENGTH_SHORT).show();
             error.append("Telefono, ");
             valido = false;
