@@ -7,4 +7,6 @@
     <string name="introduce_tu_telefono">Introduce tu telefono</string>
     <string name="aceptar">Aceptar</string>
     <string name="limpiar">Limpiar</string>
+    <string name="introduce_tus_datos">Introduce tus datos:</string>
+    <string name="volver">Volver</string>
 </resources>

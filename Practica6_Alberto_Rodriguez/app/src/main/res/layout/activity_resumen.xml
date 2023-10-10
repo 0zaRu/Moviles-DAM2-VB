@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EAC467"
     tools:context=".ResumenActivity">
 
+    <TextView
+        android:id="@+id/tMuestra"
+        android:layout_width="284dp"
+        android:layout_height="398dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="140dp"
+        android:background="#E948DDB8"
+
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tMuestra" />
 </androidx.constraintlayout.widget.ConstraintLayout>
