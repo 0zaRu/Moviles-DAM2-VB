@@ -13,7 +13,7 @@
         android:layout_height="347dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="92dp"
-        android:background="#D8009688"
+        android:background="#D8009E8F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,6 +25,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:hint="@string/introduce_tu_nombre"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="#000000"
+            android:textColorHint="#3E2723"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,17 +39,24 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="144dp"
             android:hint="@string/introduce_tu_fecha_de_nacimiento"
+            android:importantForAutofill="no"
             android:inputType="date"
+            android:textColor="#000000"
+            android:textColorHint="#3E2723"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/tApellidos"
-            android:layout_width="288dp"
-            android:layout_height="55dp"
+            android:layout_width="253dp"
+            android:layout_height="56dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="80dp"
             android:hint="@string/introduce_tus_apellidos"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="#000000"
+            android:textColorHint="#3E2723"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +68,10 @@
             android:layout_marginTop="212dp"
             android:ems="10"
             android:hint="@string/introduce_tu_direcci_n"
+            android:importantForAutofill="no"
             android:inputType="textPostalAddress"
+            android:textColor="#000000"
+            android:textColorHint="#3E2723"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +83,10 @@
             android:layout_marginTop="276dp"
             android:ems="10"
             android:hint="@string/introduce_tu_telefono"
+            android:importantForAutofill="no"
             android:inputType="phone"
+            android:textColor="#000000"
+            android:textColorHint="#3E2723"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,6 +133,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:textColor="#CC0000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 

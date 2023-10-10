@@ -2,11 +2,13 @@ package com.example.practica6_alberto_rodriguez;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,45 +43,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
         boolean valido = true;
         error.setText("");
 
         if(String.valueOf(nombre.getText()).length() == 0){
-            error.append("Nombre -");
+            Toast.makeText(this, "Campo nombre vacío", Toast.LENGTH_SHORT).show();
+            error.append("Nombre, ");
             valido = false;
         }
         if(String.valueOf(apellidos.getText()).length() == 0){
-            error.append("Apellidos -");
+            Toast.makeText(this, "Campo apellidos vacío", Toast.LENGTH_SHORT).show();
+            error.append("Apellidos, ");
             valido = false;
         }
         if(String.valueOf(nacimiento.getText()).length() == 0){
-            error.append("Fecha -");
+            Toast.makeText(this, "Campo fecha vacío", Toast.LENGTH_SHORT).show();
+            error.append("Fecha, ");
             valido = false;
         }
         if(String.valueOf(direccion.getText()).length() == 0){
-            error.append("Dirección -");
+            Toast.makeText(this, "Campo dirección vacío", Toast.LENGTH_SHORT).show();
+            error.append("Dirección, ");
             valido = false;
         }
-        if(String.valueOf(telefono.getText()).length() != 9){
-            error.append("Telefono -");
+        if(String.valueOf(telefono.getText()).length() != 9 && (telefono.getText().charAt(0) == 6 || telefono.getText().charAt(0) == 7)){
+            Toast.makeText(this, "Campo telefono vacío", Toast.LENGTH_SHORT).show();
+            error.append("Telefono, ");
             valido = false;
         }
 
         if(!valido){
-            error.append(" || Campo/s vacío/s o no válidos, revise los datos.");
+            error.append("\n|| Campo/s vacío/s o no válidos, revise los datos.");
         }
         else {
             error.setText("");
 
+            @SuppressLint("SimpleDateFormat")
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-            formatoFecha.setLenient(false);
 
             try {
                 formatoFecha.parse(String.valueOf(nacimiento.getText()));
 
             } catch (Exception e) {
+                Toast.makeText(this, "Campo fecha. Formato erroneo", Toast.LENGTH_SHORT).show();
                 error.setText("La fecha introducida no es válida.");
             }
         }
