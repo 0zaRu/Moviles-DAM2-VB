@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Practica7_Ejercicio2_Alberto_Rodriguez</string>
+    <string name="introduce_el_destinatario">Introduce el destinatario:</string>
+    <string name="introduce_el_asunto">Introduce el asunto:</string>
+    <string name="cuerpo_del_correo">Cuerpo del correo:</string>
+    <string name="enviar">Enviar</string>
+</resources>
