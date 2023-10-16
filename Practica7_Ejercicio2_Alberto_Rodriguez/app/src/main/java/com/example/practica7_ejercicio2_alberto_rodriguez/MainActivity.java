@@ -14,18 +14,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String correos[] = new String[1];
+
         destinatario = findViewById(R.id.Destinatario);
         asunto = findViewById(R.id.Asunto);
         cuerpo = findViewById(R.id.Cuerpo);
 
         findViewById(R.id.button).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
 
-            intent.putExtra(Intent.EXTRA_EMAIL, destinatario.getText().toString());
-            intent.putExtra(Intent.EXTRA_EMAIL, asunto.getText().toString());
-            intent.putExtra(Intent.EXTRA_EMAIL, cuerpo.getText().toString());
+            correos[0] = destinatario.getText().toString();
+            intent.putExtra(Intent.EXTRA_EMAIL, correos);
+            intent.putExtra(Intent.EXTRA_SUBJECT, asunto.getText().toString());
+            intent.putExtra(Intent.EXTRA_TEXT, cuerpo.getText().toString());
 
-            startActivity(intent);
+            Intent compartido = Intent.createChooser(intent, "Nuevo correo");
+            startActivity(compartido);
         });
     }
 }
