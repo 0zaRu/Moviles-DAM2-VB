@@ -3,6 +3,7 @@ package com.example.practica7_ejercicio2_alberto_rodriguez;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setData(Uri.parse("mailto:"));
             intent.setType("text/plain");
 
             correos[0] = destinatario.getText().toString();
