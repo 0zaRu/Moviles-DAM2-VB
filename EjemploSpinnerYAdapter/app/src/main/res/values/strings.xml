@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EjemploSpinnerYAdapter</string>
+
+    <string-array name="provincias">
+        <item>Soria</item>
+        <item>Valencia</item>
+        <item>Zaragoza</item>
+    </string-array>
+
+</resources>
