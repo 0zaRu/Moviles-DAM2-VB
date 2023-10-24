@@ -1,5 +1,10 @@
 package com.example.practicaevaluable_alberto_rodriguez;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (iEdad >= 18) {
                     Intent intent = new Intent(this, ActivityMayor18.class);
-                    startActivityForResult(intent, CODE);
+                    intentResult.launch(intent);
 
                 } else {
                     String color = "";
@@ -92,12 +97,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    ActivityResultLauncher<Intent> intentResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
 
-        if(requestCode == CODE && resultCode == RESULT_OK)
-            Toast.makeText(this, "Se ha puntuado con " + data.getStringExtra("nota") + " estrellas.", Toast.LENGTH_SHORT).show();
+                        Intent dato = result.getData();
+                        String estrellas = dato.getStringExtra("nota");
 
-    }
+                        Toast.makeText(getApplicationContext(), "Se ha puntuado con " + estrellas + " estrellas.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+    );
 }
