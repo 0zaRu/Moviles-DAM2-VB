@@ -1,25 +1,30 @@
 <resources>
     <string name="app_name">Practica9_Alberto_Rodriguez</string>
+    <string name="enviar_informaci_n">Enviar información</string>
 
     <string-array name="marcas">
+        <item></item>
         <item>Audi</item>
         <item>Peugeot</item>
         <item>Seat</item>
     </string-array>
 
     <string-array name="tiposAudi">
+        <item></item>
         <item>A1</item>
         <item>A3</item>
         <item>A4</item>
     </string-array>
 
     <string-array name="tiposPeugeot">
+        <item></item>
         <item>208</item>
         <item>308</item>
         <item>3008</item>
     </string-array>
 
     <string-array name="tiposSeat">
+        <item></item>
         <item>Ibiza</item>
         <item>León</item>
     </string-array>

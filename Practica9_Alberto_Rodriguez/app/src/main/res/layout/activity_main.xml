@@ -23,12 +23,22 @@
         app:layout_constraintTop_toBottomOf="@+id/selMarca" />
 
     <ListView
-        tools:listitem="@layout/item"
         android:id="@+id/listColores"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_height="315dp"
+        android:layout_marginTop="116dp"
         app:layout_constraintTop_toBottomOf="@+id/selTipo"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/listview_item" />
+
+    <Button
+        android:id="@+id/bMostrar"
+        android:enabled="false"
+        android:text="@string/enviar_informaci_n"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listColores"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
