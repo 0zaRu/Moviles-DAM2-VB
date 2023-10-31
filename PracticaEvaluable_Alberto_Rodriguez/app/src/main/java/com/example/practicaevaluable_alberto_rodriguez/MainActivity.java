@@ -98,18 +98,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     ActivityResultLauncher<Intent> intentResult = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
+        new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == RESULT_OK) {
 
-                        Intent dato = result.getData();
-                        String estrellas = dato.getStringExtra("nota");
+                    Intent dato = result.getData();
+                    String estrellas = dato.getStringExtra("nota");
 
-                        Toast.makeText(getApplicationContext(), "Se ha puntuado con " + estrellas + " estrellas.", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getApplicationContext(), "Se ha puntuado con " + estrellas + " estrellas.", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
     );
 }
