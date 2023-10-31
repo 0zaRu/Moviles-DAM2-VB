@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Zapateria_Alberto_RodriguezPerez</string>
+    <string name="registrar">Registrar</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="n_mero">Número</string>
+    <string name="codigo">Codigo</string>
+    <string name="aceptar">Aceptar</string>
+</resources>
