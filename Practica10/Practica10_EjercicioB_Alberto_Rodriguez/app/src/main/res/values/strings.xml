@@ -8,6 +8,14 @@
     <string name="aceptar">Aceptar</string>
     <string name="a_adir_usuario">Añadir usuario</string>
     <string name="ver_usuarios">Ver usuarios</string>
+    <string name="ajustes">ajustes</string>
+    <string name="configuraci_n">configuración</string>
+    <string name="a_adir">Añadir</string>
+    <string name="restablecer">Restablecer</string>
+    <string name="detalles">Detalles</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="modifcar">Modifcar</string>
+    <string name="volver">Volver</string>
 
     <array name="Provincias">
         <item>León</item>
