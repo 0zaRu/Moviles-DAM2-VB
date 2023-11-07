@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.practica10_ejercicioa_alberto_rodriguez"
+    namespace = "com.example.practica10_ejerciciob_alberto_rodriguez"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.practica10_ejercicioa_alberto_rodriguez"
-        minSdk = 28
+        applicationId = "com.example.practica10_ejerciciob_alberto_rodriguez"
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
