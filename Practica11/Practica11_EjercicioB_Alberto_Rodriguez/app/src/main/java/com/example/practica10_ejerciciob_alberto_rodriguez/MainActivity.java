@@ -25,24 +25,26 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView muestraInfo;
-    ArrayList<Persona> personas = new ArrayList<>();
+    static ArrayList<Persona> personas = new ArrayList<>();
     MiAdapter miAdaptador;
     Context context;
+    int posicionModificada = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+        instaciaPersonasIniciales();
+
         muestraInfo = findViewById(R.id.muestraInfo);
-        muestraInfo.setVisibility(View.INVISIBLE);
 
         miAdaptador =new MiAdapter(this, personas);
         muestraInfo.setAdapter(miAdaptador);
 
         findViewById(R.id.addUser).setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity2.class);
-
             intentResult.launch(intent);
         });
 
@@ -61,18 +63,35 @@ public class MainActivity extends AppCompatActivity {
         new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK){
+                if(result.getResultCode() == RESULT_OK && posicionModificada == -1){
                     assert result.getData() != null;
                     personas.add((Persona) result.getData().getSerializableExtra("persona"));
 
                     miAdaptador =new MiAdapter(context, personas);
                     muestraInfo.setAdapter(miAdaptador);
                     muestraInfo.setVisibility(View.VISIBLE);
+
+                }else if(result.getResultCode() == RESULT_OK && posicionModificada != -1){
+                    assert result.getData() != null;
+                    personas.set(posicionModificada, (Persona) result.getData().getSerializableExtra("persona"));
+
+                    miAdaptador =new MiAdapter(context, personas);
+                    muestraInfo.setAdapter(miAdaptador);
+                    muestraInfo.setVisibility(View.VISIBLE);
+
+                    posicionModificada = -1;
                 }
             }
         }
     );
 
+    public static void instaciaPersonasIniciales(){
+        personas = new ArrayList<>();
+        personas.add(new Persona("Alberto", "Rodríguez", "722633290", "70906234V", "Salamanca", "20"));
+        personas.add(new Persona("Victoria", "Rodríguez", "876543210", "70906432V", "Salamanca", "18"));
+        personas.add(new Persona("David", "Carro", "123456789", "70832956F", "Cáceres", "30"));
+        personas.add(new Persona("Maria", "De la Luz Divina", "654987312", "65478932N", "Zamora", "25"));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,11 +103,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.ajustes){
-            Toast.makeText(this, "Seleccionado: Ajustes", Toast.LENGTH_SHORT).show();
+        if(item.getItemId() == R.id.add){
+            Intent intent = new Intent(this, MainActivity2.class);
+            intentResult.launch(intent);
 
-        }else if(item.getItemId() == R.id.configuracion){
-            Toast.makeText(this, "Seleccionado: Configuración", Toast.LENGTH_SHORT).show();
+        }else if(item.getItemId() == R.id.restablecer){
+            personas = new ArrayList<>();
+            instaciaPersonasIniciales();
+
+            miAdaptador =new MiAdapter(this, personas);
+            muestraInfo.setAdapter(miAdaptador);
+
+            Toast.makeText(this, "Lista restablecida", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -97,23 +123,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_opciones, menu);
+        inflater.inflate(R.menu.menu_contextual, menu);
 
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.ajustes){
-            //Toast.makeText(this, "Seleccionado: Ajustes", Toast.LENGTH_SHORT).show();
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Toast.makeText(this, muestraInfo.getAdapter().getItem(info.position).toString(), Toast.LENGTH_SHORT).show();
+        if(item.getItemId() == R.id.Detalles){
+            Intent intent = new Intent(this, MainActivity3.class);
+            intent.putExtra("persona", personas.get(info.position));
 
-        }else if(item.getItemId() == R.id.configuracion){
-            Toast.makeText(this, "Seleccionado: Configuración", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
 
+        }else if(item.getItemId() == R.id.Eliminar){
+            personas.remove(personas.get(info.position));
+
+            miAdaptador =new MiAdapter(this, personas);
+            muestraInfo.setAdapter(miAdaptador);
+
+        }else if(item.getItemId() == R.id.Modificar) {
+            Intent intent = new Intent(this, MainActivity2.class);
+            intent.putExtra("persona", personas.get(info.position));
+            posicionModificada = info.position;
+
+            intentResult.launch(intent);
         }
+
         return super.onContextItemSelected(item);
     }
 }

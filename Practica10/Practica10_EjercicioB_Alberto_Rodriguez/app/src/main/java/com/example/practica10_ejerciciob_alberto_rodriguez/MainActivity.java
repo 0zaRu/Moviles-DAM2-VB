@@ -84,11 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.add){
-            Intent intent = new Intent(this, MainActivity2.class);
-            intentResult.launch(intent);
+        if(item.getItemId() == R.id.ajustes){
+            Toast.makeText(this, "Seleccionado: Ajustes", Toast.LENGTH_SHORT).show();
 
-        }else if(item.getItemId() == R.id.restablecer){
+        }else if(item.getItemId() == R.id.configuracion){
             Toast.makeText(this, "Seleccionado: Configuración", Toast.LENGTH_SHORT).show();
         }
 
@@ -98,28 +97,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_contextual, menu);
+        inflater.inflate(R.menu.menu_opciones, menu);
 
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        if(item.getItemId() == R.id.ajustes){
+            //Toast.makeText(this, "Seleccionado: Ajustes", Toast.LENGTH_SHORT).show();
 
-        if(item.getItemId() == R.id.Detalles){
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            Toast.makeText(this, muestraInfo.getAdapter().getItem(info.position).toString(), Toast.LENGTH_SHORT).show();
 
-        }else if(item.getItemId() == R.id.Eliminar){
-            personas.remove(personas.get(info.position));
-
-            miAdaptador =new MiAdapter(this, personas);
-            muestraInfo.setAdapter(miAdaptador);
-
-        }else if(item.getItemId() == R.id.Modificar) {
-
+        }else if(item.getItemId() == R.id.configuracion){
+            Toast.makeText(this, "Seleccionado: Configuración", Toast.LENGTH_SHORT).show();
 
         }
-
         return super.onContextItemSelected(item);
     }
 }

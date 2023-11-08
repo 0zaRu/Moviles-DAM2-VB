@@ -7,38 +7,25 @@
     tools:context=".MainActivity3"
     android:background="#401A47">
 
+    <ImageView
+        android:id="@+id/imagenArriba"
+        android:layout_width="256px"
+        android:layout_height="256px"
+        android:layout_marginStart="156dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/mnombre"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/mnombre"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="156dp"
         android:background="#3E3E3E"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mapellidos"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="168dp"
-        android:background="#3E3E3E"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mdni"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="380dp"
-        android:background="#3E3E3E"
-        android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,9 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="452dp"
+        android:layout_marginTop="508dp"
         android:background="#3E3E3E"
+        android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,9 +49,11 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="364dp"
         android:background="#3E3E3E"
+        android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,9 +63,39 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="296dp"
         android:background="#3E3E3E"
+        android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mapellidos"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="224dp"
+        android:background="#3E3E3E"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mdni"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="436dp"
+        android:background="#3E3E3E"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,10 +105,10 @@
         android:layout_width="171dp"
         android:layout_height="57dp"
         android:layout_marginStart="120dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="@color/white"
-        android:textColor="#5E3265"
         android:text="@string/volver"
+        android:textColor="#5E3265"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

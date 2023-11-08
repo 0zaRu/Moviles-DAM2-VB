@@ -6,12 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -38,11 +36,17 @@ public class MiAdapter extends ArrayAdapter {
             vista = inflater.inflate(R.layout.item2, null);
 
         TextView nombreApellidos = vista.findViewById(R.id.nombre);
-        ImageView muestraImagen = vista.findViewById(R.id.imagen);
+        TextView dni = vista.findViewById(R.id.dni);
+        TextView edad = vista.findViewById(R.id.edad);
+        TextView telefono = vista.findViewById(R.id.telefono);
+        TextView provincia = vista.findViewById(R.id.provincia);
 
-        muestraImagen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.persona));
-        nombreApellidos.setText(this.personas.get(position).getNombre() +"\n"+ this.personas.get(position).getApellidos());
 
+        nombreApellidos.setText(this.personas.get(position).getNombre() +" "+ this.personas.get(position).getApellidos());
+        dni.setText(this.personas.get(position).getDni());
+        edad.setText(this.personas.get(position).getEdad());
+        telefono.setText(this.personas.get(position).getTelefono());
+        provincia.setText(this.personas.get(position).getProvincia());
 
         return vista;
     }
