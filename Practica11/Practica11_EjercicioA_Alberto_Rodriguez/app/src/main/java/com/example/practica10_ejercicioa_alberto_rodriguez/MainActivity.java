@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             listView.setAdapter(miAdaptador);
 
         }else if(item.getItemId() == R.id.Detalles){
-            Toast.makeText(this, coches.get(info.position).toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, listView.getAdapter().getItem(info.position).toString(), Toast.LENGTH_SHORT).show();
         }
         return super.onContextItemSelected(item);
     }

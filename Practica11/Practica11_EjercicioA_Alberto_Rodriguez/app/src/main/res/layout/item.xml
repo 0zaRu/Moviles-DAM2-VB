@@ -10,14 +10,14 @@
         android:id="@+id/marca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#D500F9"
+        android:textColor="@color/Morado"
         android:textSize="28sp"/>
 
     <TextView
         android:id="@+id/modelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#1DE9B6"
+        android:textColor="@color/cian"
         android:textSize="15sp" />
 
 </LinearLayout>
