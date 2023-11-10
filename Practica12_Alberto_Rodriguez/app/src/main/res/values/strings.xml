@@ -3,4 +3,9 @@
     <string name="evc">EVC</string>
     <string name="_0">0</string>
     <string name="comprar">Comprar</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="ver_detaller_del_producto">Ver detaller del producto</string>
+    <string name="a_adir_al_carrito">Añadir al carrito</string>
+    <string name="volver">Volver</string>
+    <string name="unidades_1">Unidades: 1</string>
 </resources>

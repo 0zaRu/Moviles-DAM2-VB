@@ -1,5 +1,7 @@
 package com.example.practica12_alberto_rodriguez;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 
 public class Producto implements Serializable {
