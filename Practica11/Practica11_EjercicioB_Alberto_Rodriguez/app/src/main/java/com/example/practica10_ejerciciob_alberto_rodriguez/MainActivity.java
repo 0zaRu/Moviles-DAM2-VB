@@ -63,24 +63,18 @@ public class MainActivity extends AppCompatActivity {
         new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK && posicionModificada == -1){
-                    assert result.getData() != null;
+                assert result.getData() != null;
+                if(result.getResultCode() == RESULT_OK && posicionModificada == -1)
                     personas.add((Persona) result.getData().getSerializableExtra("persona"));
 
-                    miAdaptador =new MiAdapter(context, personas);
-                    muestraInfo.setAdapter(miAdaptador);
-                    muestraInfo.setVisibility(View.VISIBLE);
-
-                }else if(result.getResultCode() == RESULT_OK && posicionModificada != -1){
-                    assert result.getData() != null;
+                else if(result.getResultCode() == RESULT_OK && posicionModificada != -1)
                     personas.set(posicionModificada, (Persona) result.getData().getSerializableExtra("persona"));
 
-                    miAdaptador =new MiAdapter(context, personas);
-                    muestraInfo.setAdapter(miAdaptador);
-                    muestraInfo.setVisibility(View.VISIBLE);
+                miAdaptador =new MiAdapter(context, personas);
+                muestraInfo.setAdapter(miAdaptador);
+                muestraInfo.setVisibility(View.VISIBLE);
+                posicionModificada = -1;
 
-                    posicionModificada = -1;
-                }
             }
         }
     );
