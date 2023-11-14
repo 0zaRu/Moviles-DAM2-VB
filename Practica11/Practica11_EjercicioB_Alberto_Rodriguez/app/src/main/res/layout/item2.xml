@@ -1,7 +1,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#682A73"
+    android:background="@color/Morado_Clarito"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginVertical="5sp"
     android:padding="4sp">

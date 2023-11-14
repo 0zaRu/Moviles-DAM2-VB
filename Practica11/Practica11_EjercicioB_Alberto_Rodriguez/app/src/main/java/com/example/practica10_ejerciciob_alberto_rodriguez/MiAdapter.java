@@ -26,16 +26,16 @@ public class MiAdapter extends ArrayAdapter {
         this.context = context;
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ViewHolder", "InflateParams"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View vista = null;
+        View vista = inflater.inflate(R.layout.item1, null);
         if(position % 2 == 0)
-            vista = inflater.inflate(R.layout.item1, null);
+            vista.setBackgroundColor(ContextCompat.getColor(context, R.color.Morado_Oscuro));
         else
-            vista = inflater.inflate(R.layout.item2, null);
+            vista.setBackgroundColor(ContextCompat.getColor(context, R.color.Morado_Clarito));
 
         TextView nombreApellidos = vista.findViewById(R.id.nombre);
         ImageView muestraImagen = vista.findViewById(R.id.imagen);
