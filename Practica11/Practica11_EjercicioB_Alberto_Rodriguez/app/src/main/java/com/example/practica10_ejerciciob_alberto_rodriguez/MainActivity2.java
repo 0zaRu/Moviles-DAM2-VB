@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 public class MainActivity2 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,11 +41,14 @@ public class MainActivity2 extends AppCompatActivity implements AdapterView.OnIt
             dni.setText(p.getDni());
             edad.setText(p.getEdad());
 
+            spProvincia.setSelection(provinciasAdapter.getPosition(p.getProvincia()));
+            /*
             for(int i = 0; i < spProvincia.getCount(); i++)
                 if(spProvincia.getItemAtPosition(i).toString().equals(p.getProvincia())) {
                     spProvincia.setSelection(i);
                     break;
                 }
+             */
         }
 
 
