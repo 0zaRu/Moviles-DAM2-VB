@@ -12,7 +12,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 
 
     public SQLHelper(@Nullable Context context) {
-        super(context, "Alumnos.db", null, 1);
+        super(context, "Alumnos.db", null, 2);
     }
 
     @Override
@@ -26,7 +26,17 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-
+        if(oldVersion == 1 && newVersion == 2){
+            //ALTER TABLE `nombreTabla` ADD `nuevaColumna` tipoDato [CONSTRAINT]
+            //db.execSQL("ALTER TABLE "+AlumnosContract.TABLE_NAME+ " SET "+ AlumnosContract.TELEFONO);
+        }else{
+            db.execSQL("CREATE TABLE " + AlumnosContract.TABLE_NAME + " ("
+                    + AlumnosContract.DNI + " text primary key,"
+                    + AlumnosContract.NOMBRE + " text not null,"
+                    + AlumnosContract.APELLIDOS + " text not null,"
+                    + AlumnosContract.EDAD + " integer not null,"
+                    + AlumnosContract.TELEFONO + " text)");
+        }
     }
 
     public long insertAlumno(Alumno a){

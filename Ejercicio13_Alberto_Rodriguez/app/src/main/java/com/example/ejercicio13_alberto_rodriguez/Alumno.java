@@ -1,6 +1,8 @@
 package com.example.ejercicio13_alberto_rodriguez;
 
-public class Alumno {
+import java.io.Serializable;
+
+public class Alumno implements Serializable {
 
     private String dni;
     private String nombre;
