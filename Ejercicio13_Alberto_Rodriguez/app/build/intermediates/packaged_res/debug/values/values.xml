@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="apellidos_del_alumno">Apellidos del alumno</string>
+    <string name="app_name">Ejercicio13_Alberto_Rodriguez</string>
+    <string name="dni">DNI</string>
+    <string name="edad">Edad</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="enviar">Enviar</string>
+    <string name="insertar">Insertar</string>
+    <string name="modifica">Modificar</string>
+    <string name="modificar">Modificar</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="nombre_del_alumno">Nombre del alumno</string>
+    <string name="volver">Volver</string>
+    <style name="Base.Theme.Ejercicio13_Alberto_Rodriguez" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Ejercicio13_Alberto_Rodriguez" parent="Base.Theme.Ejercicio13_Alberto_Rodriguez"/>
+</resources>
