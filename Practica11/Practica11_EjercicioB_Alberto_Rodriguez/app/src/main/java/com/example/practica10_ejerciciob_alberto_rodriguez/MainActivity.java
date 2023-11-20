@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("persona", personas.get(info.position));
 
             startActivity(intent);
+            onPause();
 
         }else if(item.getItemId() == R.id.Eliminar){
             personas.remove(personas.get(info.position));

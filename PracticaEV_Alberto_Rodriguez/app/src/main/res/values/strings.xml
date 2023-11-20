@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PracticaEV_Alberto_Rodriguez</string>
+    <string name="a_adir">Añadir</string>
+    <string name="actualizar_stock">Actualizar Stock</string>
+    <string name="detalles">Detalles</string>
+    <string name="prestar">Prestar</string>
+    <string name="p_ginas">Páginas</string>
+    <string name="guardar">Guardar</string>
+    <string name="categor_a">Categoría:</string>
+    <string name="autor">Autor</string>
+
+    <array name="categorias">
+        <item>Todos</item>
+        <item>Thriller</item>
+        <item>Romántica</item>
+        <item>Fantasía</item>
+        <item>Histórica</item>
+        <item>Ciencia Ficción</item>
+        <item>Aventura</item>
+        <item>Terror</item>
+
+    </array>
+</resources>
