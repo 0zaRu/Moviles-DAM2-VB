@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Practica13_Alberto_Rodriguez</string>
+    <string name="insertar">Insertar</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="nombre_del_alumno">Nombre del alumno</string>
+    <string name="apellidos_del_alumno">Apellidos del alumno</string>
+    <string name="dni">DNI</string>
+    <string name="edad">Edad</string>
+    <string name="enviar">Enviar</string>
+    <string name="volver">Volver</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="modificar">Modificar</string>
+    <string name="modifica">Modificar</string>
+</resources>
