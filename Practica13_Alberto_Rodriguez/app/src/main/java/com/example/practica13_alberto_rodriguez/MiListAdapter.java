@@ -30,11 +30,11 @@ public class MiListAdapter extends ArrayAdapter {
         View vista = inflater.inflate(R.layout.item, null);
 
         TextView nombre = vista.findViewById(R.id.itemNombre);
-        TextView dni = vista.findViewById(R.id.itemDni);
+        TextView dni = vista.findViewById(R.id.itemTelefono);
 
 
         nombre.setText(alumnos.get(position).getNombre());
-        dni.setText(alumnos.get(position).getDni());
+        dni.setText(alumnos.get(position).getTelefono());
 
         return vista;
     }

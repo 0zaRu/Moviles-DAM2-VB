@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class InsertActivity extends AppCompatActivity {
 
-    EditText nombre, apellidos, dni, edad;
+    EditText nombre, apellidos, dni, edad, telefono;
     SQLHelper db = new SQLHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +19,20 @@ public class InsertActivity extends AppCompatActivity {
         apellidos = findViewById(R.id.tApellidos);
         dni = findViewById(R.id.tDni);
         edad = findViewById(R.id.tEdad);
+        telefono = findViewById(R.id.tTelefono);
 
 
         findViewById(R.id.bFormulario).setOnClickListener(v -> {
             if(nombre.getText().toString().isEmpty() ||
                 apellidos.getText().toString().isEmpty() ||
                 dni.getText().toString().isEmpty() ||
+                telefono.getText().toString().isEmpty() ||
                 edad.getText().toString().isEmpty()){
                 Toast.makeText(this, "Alguno de los campos está en blanco", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            Alumno alumno = new Alumno(dni.getText().toString(), nombre.getText().toString(), apellidos.getText().toString(), edad.getText().toString());
+            Alumno alumno = new Alumno(dni.getText().toString(), nombre.getText().toString(), apellidos.getText().toString(), edad.getText().toString(), telefono.getText().toString());
             db.insertAlumno(alumno);
             finish();
         });

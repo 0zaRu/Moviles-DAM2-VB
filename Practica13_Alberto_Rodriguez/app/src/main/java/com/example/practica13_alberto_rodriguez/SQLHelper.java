@@ -12,7 +12,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 
 
     public SQLHelper(@Nullable Context context) {
-        super(context, "Alumnos.db", null, 2);
+        super(context, "Alumnos.db", null, 3);
     }
 
     @Override
@@ -26,9 +26,11 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        if(oldVersion == 1 && newVersion == 2){
+        if(oldVersion == 2 && newVersion == 3){
             //ALTER TABLE `nombreTabla` ADD `nuevaColumna` tipoDato [CONSTRAINT]
-            //db.execSQL("ALTER TABLE "+AlumnosContract.TABLE_NAME+ " SET "+ AlumnosContract.TELEFONO);
+            db.execSQL("ALTER TABLE "+AlumnosContract.TABLE_NAME +
+                        " ADD COLUMN "+ AlumnosContract.TELEFONO +" text");
+
         }else{
             db.execSQL("CREATE TABLE " + AlumnosContract.TABLE_NAME + " ("
                     + AlumnosContract.DNI + " text primary key,"
@@ -45,6 +47,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         values.put(AlumnosContract.NOMBRE, a.getNombre());
         values.put(AlumnosContract.APELLIDOS, a.getApellidos());
         values.put(AlumnosContract.EDAD, a.getEdad());
+        values.put(AlumnosContract.TELEFONO, a.getTelefono());
 
         SQLiteDatabase db = getWritableDatabase();
         return db.insert(AlumnosContract.TABLE_NAME, null, values);
@@ -55,6 +58,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         values.put(AlumnosContract.NOMBRE, a.getNombre());
         values.put(AlumnosContract.APELLIDOS, a.getApellidos());
         values.put(AlumnosContract.EDAD, a.getEdad());
+        values.put(AlumnosContract.TELEFONO, a.getTelefono());
 
         SQLiteDatabase db = getWritableDatabase();
         return db.update(AlumnosContract.TABLE_NAME, values, AlumnosContract.DNI + " = ?", new String[]{a.getDni()});

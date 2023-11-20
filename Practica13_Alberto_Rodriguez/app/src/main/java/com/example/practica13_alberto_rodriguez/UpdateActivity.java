@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText nombre, apellidos, dni, edad;
+    EditText nombre, apellidos, dni, edad, telefono;
     SQLHelper db = new SQLHelper(this);
     Button formulario;
     @SuppressLint("SetTextI18n")
@@ -26,12 +26,14 @@ public class UpdateActivity extends AppCompatActivity {
         dni = findViewById(R.id.tDni);
         dni.setEnabled(false);
         edad = findViewById(R.id.tEdad);
+        telefono = findViewById(R.id.tTelefono);
 
         assert recibido != null;
         nombre.setText(recibido.getNombre());
         apellidos.setText(recibido.getApellidos());
         dni.setText(recibido.getDni());
         edad.setText(recibido.getEdad());
+        telefono.setText(recibido.getTelefono());
 
         formulario = findViewById(R.id.bFormulario);
         formulario.setText(R.string.modifica);
@@ -39,6 +41,7 @@ public class UpdateActivity extends AppCompatActivity {
         formulario.setOnClickListener(v -> {
             if(nombre.getText().toString().isEmpty() ||
                 apellidos.getText().toString().isEmpty() ||
+                telefono.getText().toString().isEmpty() ||
                 edad.getText().toString().isEmpty()){
                 Toast.makeText(this, "Alguno de los campos está en blanco", Toast.LENGTH_SHORT).show();
                 return;
@@ -47,6 +50,7 @@ public class UpdateActivity extends AppCompatActivity {
             recibido.setNombre(nombre.getText().toString());
             recibido.setApellidos(apellidos.getText().toString());
             recibido.setEdad(edad.getText().toString());
+            recibido.setTelefono(telefono.getText().toString());
 
             db.updateAlumno(recibido);
             finish();

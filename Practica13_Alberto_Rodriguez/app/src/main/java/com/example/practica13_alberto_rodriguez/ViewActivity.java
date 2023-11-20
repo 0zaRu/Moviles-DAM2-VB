@@ -46,7 +46,8 @@ public class ViewActivity extends AppCompatActivity {
                     alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.DNI)),
                     alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.NOMBRE)),
                     alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.APELLIDOS)),
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.EDAD))
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.EDAD)),
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.TELEFONO))
             ));
         }
 

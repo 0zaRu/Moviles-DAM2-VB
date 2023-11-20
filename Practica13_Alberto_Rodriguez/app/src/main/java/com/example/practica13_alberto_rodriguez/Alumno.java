@@ -8,12 +8,14 @@ public class Alumno implements Serializable {
     private String nombre;
     private String apellidos;
     private String edad;
+    private String telefono;
 
-    public Alumno(String dni, String nombre, String apellidos, String edad) {
+    public Alumno(String dni, String nombre, String apellidos, String edad, String telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
+        this.telefono = telefono;
     }
 
     public String getDni() {
@@ -46,6 +48,14 @@ public class Alumno implements Serializable {
 
     public void setEdad(String edad) {
         this.edad = edad;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     @Override
