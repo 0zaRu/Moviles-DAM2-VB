@@ -12,4 +12,13 @@
     <string name="modificar">Modificar</string>
     <string name="modifica">Modificar</string>
     <string name="tel_fono">Teléfono</string>
+    <string name="buscar">Buscar</string>
+    <string name="empieza_por">Empieza por</string>
+    <string name="contiene">Contiene</string>
+    <string name="filtro_de_nombre">Filtro de nombre:</string>
+    <string name="busca">Buscar</string>
+    <string name="introduce_texto_para_buscar_por_el_nombre">Introduce texto para buscar por el nombre ...</string>
+    <string name="busc">Buscar</string>
+    <string name="edad_minima_10">Edad minima: 10</string>
+    <string name="edad_maxima_30">Edad maxima: 30</string>
 </resources>

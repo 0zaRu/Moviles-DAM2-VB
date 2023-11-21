@@ -15,13 +15,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bInsertar).setOnClickListener(v -> {
             Intent intent = new Intent(this, InsertActivity.class);
             startActivity(intent);
-            onPause();
         });
 
         findViewById(R.id.bMostrar).setOnClickListener(v -> {
             Intent intent = new Intent(this, ViewActivity.class);
             startActivity(intent);
-            onPause();
+        });
+
+        findViewById(R.id.bBuscar).setOnClickListener(v -> {
+            Intent intent = new Intent(this, FindActivity.class);
+            startActivity(intent);
         });
     }
 }

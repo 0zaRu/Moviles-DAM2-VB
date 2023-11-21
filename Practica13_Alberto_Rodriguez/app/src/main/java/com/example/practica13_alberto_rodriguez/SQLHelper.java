@@ -10,9 +10,8 @@ import androidx.annotation.Nullable;
 
 public class SQLHelper extends SQLiteOpenHelper {
 
-
     public SQLHelper(@Nullable Context context) {
-        super(context, "Alumnos.db", null, 3);
+        super(context, "Alumnos.db", null, 4);
     }
 
     @Override
@@ -26,7 +25,7 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        if(oldVersion == 2 && newVersion == 3){
+        if((oldVersion == 2 || oldVersion == 3 || oldVersion == 1) && newVersion == 4){
             //ALTER TABLE `nombreTabla` ADD `nuevaColumna` tipoDato [CONSTRAINT]
             db.execSQL("ALTER TABLE "+AlumnosContract.TABLE_NAME +
                         " ADD COLUMN "+ AlumnosContract.TELEFONO +" text");
