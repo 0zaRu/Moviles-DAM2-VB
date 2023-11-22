@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RecuAndroid</string>
+    <string name="insertar">INSERTAR</string>
+    <string name="mostrar">MOSTRAR</string>
+    <string name="buscar">BUSCAR</string>
+    <string name="codigo">CODIGO</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="peso">PESO</string>
+    <string name="gato">GATO</string>
+    <string name="perro">PERRO</string>
+    <string name="pajaro">PAJARO</string>
+    <string name="detalles">Detalles</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="tipo">TIPO</string>
+    <string name="detalle">Detalles</string>
+    <string name="elimina">Eliminar</string>
+</resources>

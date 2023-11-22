@@ -12,9 +12,10 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class SQLHelper extends SQLiteOpenHelper {
-
+    static final String DDBB_NAME = "Alumnos.db";
+    static final int DDBB_VERSION = 4;
     public SQLHelper(@Nullable Context context) {
-        super(context, "Alumnos.db", null, 4);
+        super(context, DDBB_NAME, null, DDBB_VERSION);
     }
 
     @Override
@@ -64,7 +65,11 @@ public class SQLHelper extends SQLiteOpenHelper {
         values.put(AlumnosContract.TELEFONO, a.getTelefono());
 
         SQLiteDatabase db = getWritableDatabase();
-        return db.update(AlumnosContract.TABLE_NAME, values, AlumnosContract.DNI + " = ?", new String[]{a.getDni()});
+
+        return db.update(AlumnosContract.TABLE_NAME,
+                values,
+                AlumnosContract.DNI + " = ?",
+                new String[]{a.getDni()});
     }
 
     public int deleteAlumno(Alumno a){

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InsertarActivity">
+
+    <EditText
+        android:id="@+id/codigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="4"
+        android:hint="@string/codigo"/>
+
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/nombre"/>
+
+    <EditText
+        android:id="@+id/peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/peso"/>
+
+    <RadioGroup
+        android:id="@+id/tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/gato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gato"/>
+
+        <RadioButton
+            android:id="@+id/perro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/perro"/>
+
+        <RadioButton
+            android:id="@+id/pajaro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pajaro"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/insertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insertar"/>
+
+</LinearLayout>
