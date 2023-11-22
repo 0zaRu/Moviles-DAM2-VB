@@ -19,6 +19,6 @@
     <string name="busca">Buscar</string>
     <string name="introduce_texto_para_buscar_por_el_nombre">Introduce texto para buscar por el nombre ...</string>
     <string name="busc">Buscar</string>
-    <string name="edad_minima_10">Edad minima: 10</string>
-    <string name="edad_maxima_30">Edad maxima: 30</string>
+    <string name="edad_minima_10">Edad minima: 1</string>
+    <string name="edad_maxima_30">Edad maxima: 100</string>
 </resources>

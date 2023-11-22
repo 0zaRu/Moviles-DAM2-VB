@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class SQLHelper extends SQLiteOpenHelper {
 
@@ -20,7 +23,8 @@ public class SQLHelper extends SQLiteOpenHelper {
                 + AlumnosContract.DNI + " text primary key,"
                 + AlumnosContract.NOMBRE + " text not null,"
                 + AlumnosContract.APELLIDOS + " text not null,"
-                + AlumnosContract.EDAD + " integer not null)");
+                + AlumnosContract.EDAD + " integer not null,"
+                + AlumnosContract.TELEFONO + " text)");
     }
 
     @Override
@@ -68,8 +72,24 @@ public class SQLHelper extends SQLiteOpenHelper {
         return db.delete(AlumnosContract.TABLE_NAME,AlumnosContract.DNI + " = ?", new String[]{a.getDni()});
     }
 
-    public Cursor select(){
+    public Cursor select(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy){
         SQLiteDatabase db = getReadableDatabase();
-        return db.query(AlumnosContract.TABLE_NAME, null, null, null, null, null, null);
+        return db.query(AlumnosContract.TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
+    }
+
+    public ArrayList<Alumno> extraerDB(String columns[], String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        Cursor alumnos = select(columns, selection, selectionArgs, groupBy, having, orderBy);
+        ArrayList<Alumno> recogidos = new ArrayList<>();
+
+        while(alumnos.moveToNext()){
+            recogidos.add(new Alumno(
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.DNI)),
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.NOMBRE)),
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.APELLIDOS)),
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.EDAD)),
+                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.TELEFONO))
+            ));
+        }
+        return recogidos;
     }
 }

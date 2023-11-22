@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,32 +31,22 @@ public class ViewActivity extends AppCompatActivity {
         listadoAlumnos = new ArrayList<>();
 
         findViewById(R.id.bVonverMostrar).setOnClickListener(v -> {finish();});
-        listadoAlumnos = extraerDB();
+
+        if(getIntent().getExtras() == null) {
+            listadoAlumnos = db.extraerDB(null, null, null, null, null, null);
+
+        }else if(((ArrayList<Alumno>) getIntent().getSerializableExtra("recibido")).isEmpty()) {
+            listadoAlumnos = db.extraerDB(null, null, null, null, null, null);
+            Toast.makeText(this, "Se ha cargado toda la base de datos porque no se encotraron coincidencias", Toast.LENGTH_SHORT).show();
+
+        }else
+            listadoAlumnos = (ArrayList<Alumno>) getIntent().getSerializableExtra("recibido");
+
 
         MiListAdapter adaptador = new MiListAdapter(this, listadoAlumnos);
         verAlumnos.setAdapter(adaptador);
         }
 
-
-    private ArrayList<Alumno> extraerDB() {
-        Cursor alumnos = db.select();
-        ArrayList<Alumno> recogidos = new ArrayList<>();
-
-        while(alumnos.moveToNext()){
-            recogidos.add(new Alumno(
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.DNI)),
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.NOMBRE)),
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.APELLIDOS)),
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.EDAD)),
-                    alumnos.getString(alumnos.getColumnIndexOrThrow(AlumnosContract.TELEFONO))
-            ));
-        }
-
-        MiListAdapter adaptador = new MiListAdapter(this, recogidos);
-        verAlumnos.setAdapter(adaptador);
-
-        return recogidos;
-    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -76,13 +67,8 @@ public class ViewActivity extends AppCompatActivity {
 
             startActivity(intent);
         }
-        listadoAlumnos = extraerDB();
-        return super.onContextItemSelected(item);
-    }
+        onResume();
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        listadoAlumnos = extraerDB();
+        return super.onContextItemSelected(item);
     }
 }
