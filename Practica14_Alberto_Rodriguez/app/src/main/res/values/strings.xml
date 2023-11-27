@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Practica14_Alberto_Rodriguez</string>
+    <string name="login">LOGIN</string>
+    <string name="introduce_tu_user">Introduce tu user</string>
+    <string name="introduce_tu_contrase_a">Introduce tu contraseña</string>
+</resources>
