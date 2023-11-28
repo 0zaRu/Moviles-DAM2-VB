@@ -1,13 +1,16 @@
 package com.example.practica14_alberto_rodriguez;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.practica14_alberto_rodriguez.Modelo.ArticuloContract;
 import com.example.practica14_alberto_rodriguez.Modelo.CarritoContract;
+import com.example.practica14_alberto_rodriguez.Modelo.Usuario;
 import com.example.practica14_alberto_rodriguez.Modelo.UsuarioContract;
 
 public class SQLHelper extends SQLiteOpenHelper {
@@ -94,5 +97,26 @@ public class SQLHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public String compruebaUser(Context context, String user, String pass){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor c = db.query(UsuarioContract.TABLE_NAME, new String[]{UsuarioContract.USER}, UsuarioContract.USER+" = ? and "+UsuarioContract.PASS+" = ?", new String[]{user, pass}, null, null, null);
+
+        if(c.getCount() == 0){
+            return "";
+        }
+
+        if(c.getCount() != 1){
+            Toast.makeText(context, "WTF como", Toast.LENGTH_SHORT).show();
+            return "null";
+        }
+
+        String usuarioLog = "";
+        usuarioLog = c.getString(c.getColumnIndexOrThrow(UsuarioContract.USER));
+
+        return usuarioLog;
     }
 }

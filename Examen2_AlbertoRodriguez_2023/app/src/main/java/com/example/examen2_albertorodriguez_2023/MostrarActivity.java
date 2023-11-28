@@ -51,6 +51,7 @@ public class MostrarActivity extends AppCompatActivity {
         ArrayList<Animal> leido = new ArrayList<>();
         if(filtro.isEmpty())
             leido = db.selecciona(null, null, null, null, null, null);
+
         else{
             SQLHelper db = new SQLHelper(this);
             leido = db.selecciona(null,
