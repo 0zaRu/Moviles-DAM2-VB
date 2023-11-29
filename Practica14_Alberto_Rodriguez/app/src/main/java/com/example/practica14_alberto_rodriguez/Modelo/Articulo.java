@@ -1,6 +1,8 @@
 package com.example.practica14_alberto_rodriguez.Modelo;
 
-public class Articulo {
+import java.io.Serializable;
+
+public class Articulo implements Serializable {
 
     private int codigo;
     private String nombre;
@@ -10,6 +12,13 @@ public class Articulo {
 
     public Articulo(int codigo, String nombre, String descripcion, String color, float precio) {
         this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.color = color;
+        this.precio = precio;
+    }
+
+    public Articulo(String nombre, String descripcion, String color, float precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.color = color;

@@ -1,6 +1,8 @@
 package com.example.practica14_alberto_rodriguez.Modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String user;
     private String pass;
     private String nombre;
