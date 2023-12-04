@@ -1,5 +1,6 @@
 package com.example.practica14_alberto_rodriguez;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MiListAdapter extends ArrayAdapter {
         this.context = context;
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -38,7 +40,7 @@ public class MiListAdapter extends ArrayAdapter {
         TextView color = vista.findViewById(R.id.itemColor);
         TextView precio = vista.findViewById(R.id.itemPrecio);
 
-        codigo.setText(articulos.get(position).getCodigo());
+        codigo.setText(""+articulos.get(position).getCodigo());
         nombre.setText(articulos.get(position).getNombre());
         descrip.setText(articulos.get(position).getDescripcion());
         color.setText(articulos.get(position).getColor());

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -15,7 +16,9 @@ import android.widget.TextView;
 
 import com.example.practica14_alberto_rodriguez.Modelo.Articulo;
 import com.example.practica14_alberto_rodriguez.Modelo.Carrito;
+import com.example.practica14_alberto_rodriguez.Modelo.CarritoContract;
 import com.example.practica14_alberto_rodriguez.Modelo.Usuario;
+import com.example.practica14_alberto_rodriguez.Modelo.UsuarioContract;
 
 import java.util.ArrayList;
 
@@ -34,21 +37,38 @@ public class CatalogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_catalog);
 
         muestraNombreUsr = findViewById(R.id.muestraUser);
-        usr = (Usuario) getIntent().getSerializableExtra("usr");
+        usr = (Usuario) getIntent().getSerializableExtra("user");
 
         contadorCarrito = findViewById(R.id.carritoCont);
         contadorCarrito.setText("0");
 
-        assert usr != null;
         muestraNombreUsr.setText("Bienvenido, "+usr.getNombre());
 
         articulos = db.listaArticulos(null, null, null, null, null, null);
 
+        cargaLista();
+        registerForContextMenu(muestraCatalog);
+
+
+        findViewById(R.id.imgCarro).setOnClickListener(v -> {
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("user", usr);
+            startActivity(intent);
+        });
+    }
+
+    public void cargaLista(){
         muestraCatalog = findViewById(R.id.ListadoProductos);
         MiListAdapter adapter = new MiListAdapter(this, articulos);
         muestraCatalog.setAdapter(adapter);
 
-        registerForContextMenu(muestraCatalog);
+        contadorCarrito.setText(db.contCarrito(new String[]{usr.getUser()}));
+    }
+
+    @Override
+    protected void onResume() {
+        cargaLista();
+        super.onResume();
     }
 
     @Override
@@ -63,10 +83,9 @@ public class CatalogActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        boolean existe = false;
-
         if(item.getItemId() == R.id.addCarrito){
-            contadorCarrito.setText(""+db.actualizaCarrito(usr.getUser(), ((Articulo)muestraCatalog.getAdapter().getItem(info.position)).getCodigo()));
+            db.actualizaCarrito(usr.getUser(), ((Articulo)muestraCatalog.getAdapter().getItem(info.position)).getCodigo());
+            contadorCarrito.setText(db.contCarrito(new String[]{usr.getUser()}));
 
         }
 

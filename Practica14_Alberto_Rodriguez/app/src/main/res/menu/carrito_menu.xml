@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/suma" android:title="@string/mas"/>
+    <item android:id="@+id/resta" android:title="@string/resta"/>
+    <item android:id="@+id/elimina" android:title="@string/eliminar"/>
+</menu>

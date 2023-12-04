@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Practica14_Alberto_Rodriguez"
         tools:targetApi="31">
         <activity
+            android:name=".CarritoActivity"
+            android:exported="false" />
+        <activity
             android:name=".CatalogActivity"
             android:exported="false" />
         <activity

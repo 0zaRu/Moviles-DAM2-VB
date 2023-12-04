@@ -2,31 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10sp">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/itemCodigo"
-        android:gravity="end"/>
+        android:id="@+id/carritoNombre"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/itemNombre"
-        android:textSize="20sp"/>
+        android:id="@+id/carritoPrecioUnidad"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/itemDescrip"/>
+        android:id="@+id/carritoCant"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/itemColor"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/itemPrecio"
-        android:textColor="@color/moradito"/>
-
+        android:id="@+id/carritoPrecioTotal"/>
 </LinearLayout>

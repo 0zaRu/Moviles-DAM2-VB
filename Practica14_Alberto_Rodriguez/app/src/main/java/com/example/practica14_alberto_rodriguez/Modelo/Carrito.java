@@ -5,29 +5,29 @@ import java.util.ArrayList;
 
 public class Carrito implements Serializable {
 
-    private Usuario usuario;
-    private Articulo articulo;
+    private String usuario;
+    private int articulo;
     private int numeroArticulos;
 
-    public Carrito(Usuario usuario, Articulo articulo, int numeroArticulos) {
+    public Carrito(String usuario, int articulo, int numeroArticulos) {
         this.usuario = usuario;
         this.articulo = articulo;
         this.numeroArticulos = numeroArticulos;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
-    public Articulo getArticulo() {
+    public int getArticulo() {
         return articulo;
     }
 
-    public void setArticulo(Articulo articulo) {
+    public void setArticulo(int articulo) {
         this.articulo = articulo;
     }
 
@@ -37,5 +37,14 @@ public class Carrito implements Serializable {
 
     public void setNumeroArticulos(int numeroArticulos) {
         this.numeroArticulos = numeroArticulos;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrito{" +
+                "usuario='" + usuario + '\'' +
+                ", articulo=" + articulo +
+                ", numeroArticulos=" + numeroArticulos +
+                '}';
     }
 }

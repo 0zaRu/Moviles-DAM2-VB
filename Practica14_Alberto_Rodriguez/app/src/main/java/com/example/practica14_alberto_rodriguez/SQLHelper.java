@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.practica14_alberto_rodriguez.Modelo.Articulo;
 import com.example.practica14_alberto_rodriguez.Modelo.ArticuloContract;
+import com.example.practica14_alberto_rodriguez.Modelo.Carrito;
 import com.example.practica14_alberto_rodriguez.Modelo.CarritoContract;
 import com.example.practica14_alberto_rodriguez.Modelo.Usuario;
 import com.example.practica14_alberto_rodriguez.Modelo.UsuarioContract;
@@ -28,19 +29,19 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+ UsuarioContract.TABLE_NAME +" ( "+
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+ UsuarioContract.TABLE_NAME +" ("+
                     UsuarioContract.USER + " text primary key, "+
                     UsuarioContract.PASS + " text not null, "+
                     UsuarioContract.NAME + " text not null)");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+ ArticuloContract.TABLE_NAME +" ( "+
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+ ArticuloContract.TABLE_NAME +" ("+
                 ArticuloContract.CODIGO +  " integer primary key autoincrement, "+
                 ArticuloContract.NOMBRE +  " text not null, "+
                 ArticuloContract.DESCRIP + " text not null, "+
                 ArticuloContract.COLOR +   " text not null, "+
                 ArticuloContract.PRECIO +  " real not null)");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+ CarritoContract.TABLE_NAME +" ( "+
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+ CarritoContract.TABLE_NAME +" ("+
                 CarritoContract.USUARIO +  " text not null, "+
                 CarritoContract.ARTICULO + " int not null, "+
                 CarritoContract.CANT +     " int not null, "+
@@ -48,25 +49,18 @@ public class SQLHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY ("+CarritoContract.ARTICULO+") REFERENCES "+ArticuloContract.TABLE_NAME+" ("+ArticuloContract.CODIGO+") ON UPDATE CASCADE"+
                 ")");
 
-        db.execSQL("INSERT INTO "+UsuarioContract.TABLE_NAME+" ("+
-                   UsuarioContract.USER+", "+UsuarioContract.PASS+", "+UsuarioContract.NAME+") " +
-                   "VALUES (user1, pass1, Alberto)");
-
-        db.execSQL("INSERT INTO "+UsuarioContract.TABLE_NAME+" ("+
-                UsuarioContract.USER+", "+UsuarioContract.PASS+", "+UsuarioContract.NAME+") " +
-                "VALUES (user2, pass2, Rodriguez)");
-
-        insertArticulo(new Articulo("Folio", "50 Folios A4", "Blanco", 2.3f);
-
-        insertArticulo(new Articulo("Cuaderno de Dibujo", "Cuaderno de dibujo de 50 hojas", "Blanco", 4.5f));
-        insertArticulo(new Articulo("Rotuladores", "Juego de 12 rotuladores de colores", "Multicolor", 8.0f));
-        insertArticulo(new Articulo("Goma de Borrar", "Goma de borrar suave y duradera", "Rosa", 1.2f));
-        insertArticulo(new Articulo("Regla", "Regla transparente de 30 cm", "Transparente", 1.0f));
-        insertArticulo(new Articulo("Cinta Adhesiva", "Rollo de cinta adhesiva de doble cara", "Transparente", 2.5f));
-        insertArticulo(new Articulo("Lápices de Colores", "Estuche de 24 lápices de colores", "Variados", 6.0f));
-        insertArticulo(new Articulo("Calculadora", "Calculadora de bolsillo", "Negro", 12.5f));
-        insertArticulo(new Articulo("Pegamento", "Tubo de pegamento líquido", "Transparente", 3.0f));
-        insertArticulo(new Articulo("Post-its", "Bloc de notas adhesivas", "Amarillo", 1.8f));
+        insertUser(new Usuario("user1", "pass1", "Alberto"), db);
+        insertUser(new Usuario("user2", "pass2", "Rodriguez"), db);
+        insertArticulo(new Articulo("Folio", "50 Folios A4", "Blanco", 2.3f), db);
+        insertArticulo(new Articulo("Cuaderno de Dibujo", "Cuaderno de dibujo de 50 hojas", "Blanco", 4.5f), db);
+        insertArticulo(new Articulo("Rotuladores", "Juego de 12 rotuladores de colores", "Multicolor", 8.0f), db);
+        insertArticulo(new Articulo("Goma de Borrar", "Goma de borrar suave y duradera", "Rosa", 1.2f), db);
+        insertArticulo(new Articulo("Regla", "Regla transparente de 30 cm", "Transparente", 1.0f), db);
+        insertArticulo(new Articulo("Cinta Adhesiva", "Rollo de cinta adhesiva de doble cara", "Transparente", 2.5f), db);
+        insertArticulo(new Articulo("Lápices de Colores", "Estuche de 24 lápices de colores", "Variados", 6.0f), db);
+        insertArticulo(new Articulo("Calculadora", "Calculadora de bolsillo", "Negro", 12.5f), db);
+        insertArticulo(new Articulo("Pegamento", "Tubo de pegamento líquido", "Transparente", 3.0f), db);
+        insertArticulo(new Articulo("Post-its", "Bloc de notas adhesivas", "Amarillo", 1.8f), db);
     }
 
     @Override
@@ -74,8 +68,17 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertArticulo(Articulo a){
-        SQLiteDatabase db = getWritableDatabase();
+    public void insertUser(Usuario a, SQLiteDatabase db){
+        ContentValues values = new ContentValues();
+        values.put(UsuarioContract.USER, a.getUser());
+        values.put(UsuarioContract.PASS, a.getPass());
+        values.put(UsuarioContract.NAME, a.getNombre());
+
+
+        db.insert(UsuarioContract.TABLE_NAME, UsuarioContract.USER + ", " + UsuarioContract.PASS + ", " + UsuarioContract.NAME, values);
+    }
+
+    public void insertArticulo(Articulo a, SQLiteDatabase db){
         ContentValues values = new ContentValues();
         values.put(ArticuloContract.NOMBRE, a.getNombre());
         values.put(ArticuloContract.DESCRIP, a.getDescripcion());
@@ -89,23 +92,24 @@ public class SQLHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor c = db.query(UsuarioContract.TABLE_NAME, new String[]{UsuarioContract.USER}, UsuarioContract.USER+" = ? and "+UsuarioContract.PASS+" = ?", new String[]{user, pass}, null, null, null);
+        Cursor c = db.query(UsuarioContract.TABLE_NAME, null, UsuarioContract.USER+" = ? and "+UsuarioContract.PASS+" = ?", new String[]{user, pass}, null, null, null);
 
-        if(c.getCount() == 0){
-            return null;
+        ArrayList<Usuario> usrValido = new ArrayList<>();
+
+        while(c.moveToNext()){
+            usrValido.add(new Usuario(
+                    c.getString(c.getColumnIndexOrThrow(UsuarioContract.USER)),
+                    c.getString(c.getColumnIndexOrThrow(UsuarioContract.PASS)),
+                    c.getString(c.getColumnIndexOrThrow(UsuarioContract.NAME))
+            ));
         }
 
-        if(c.getCount() != 1){
-            Toast.makeText(context, "WTF como", Toast.LENGTH_SHORT).show();
-            return null;
+        for(Usuario usr: usrValido){
+            if(usr.getUser().equals(user) && usr.getPass().equals(pass))
+                return usr;
         }
 
-        Usuario validado = new Usuario(
-        c.getString(c.getColumnIndexOrThrow(UsuarioContract.USER)),
-                c.getString(c.getColumnIndexOrThrow(UsuarioContract.PASS)),
-                c.getString(c.getColumnIndexOrThrow(UsuarioContract.NAME)));
-
-        return validado;
+        return null;
     }
 
     public ArrayList<Articulo> listaArticulos(String[] columnas, String selection, String[] selectionArgs, String groupBy, String having, String orderBy){
@@ -126,11 +130,26 @@ public class SQLHelper extends SQLiteOpenHelper {
         return leidos;
     }
 
-    public int updateCarrito(String usr, int codeArt){
+    public String contCarrito(String[] selectionArgs){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(CarritoContract.TABLE_NAME, null, CarritoContract.USUARIO+" LIKE ?", selectionArgs, null, null, null);
+
+        int cont = 0;
+        while(c.moveToNext())
+            cont += c.getInt(c.getColumnIndexOrThrow(CarritoContract.CANT));
+
+
+        return ""+cont;
+    }
+
+    public int updateCarrito(String usr, int codeArt, boolean sumar){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(CarritoContract.CANT, CarritoContract.CANT+"+1");
+        if(sumar)
+            values.put(CarritoContract.CANT, CarritoContract.CANT+" + 1");
+        else
+            values.put(CarritoContract.CANT, CarritoContract.CANT+" - 1");
 
         return db.update(CarritoContract.TABLE_NAME,
                   values,
@@ -139,8 +158,11 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     }
 
-    public String actualizaCarrito(String usr, int codeArt){
-        if(updateCarrito(usr, codeArt) == 0){
+    public void actualizaCarrito(String usr, int codeArt){
+
+        int devuelto = updateCarrito(usr, codeArt, true);
+
+        if(devuelto == 0){
             SQLiteDatabase db = getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(CarritoContract.USUARIO, usr);
@@ -149,7 +171,29 @@ public class SQLHelper extends SQLiteOpenHelper {
 
             db.insert(CarritoContract.TABLE_NAME, null, values);
         }
+    }
 
-        return "";
+    public void eliminaCarrito(int codeArt){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(CarritoContract.TABLE_NAME, CarritoContract.ARTICULO+" LIKE ?", new String[]{""+codeArt});
+    }
+
+
+    public ArrayList<Carrito> tablaCarrito(String user){
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor c = db.query(CarritoContract.TABLE_NAME, null, CarritoContract.USUARIO+" LIKE ?", new String[]{user}, null, null, null);
+
+        ArrayList<Carrito> crrValido = new ArrayList<>();
+
+        while(c.moveToNext()){
+            crrValido.add(new Carrito(
+                    c.getString(c.getColumnIndexOrThrow(CarritoContract.USUARIO)),
+                    c.getInt(c.getColumnIndexOrThrow(CarritoContract.ARTICULO)),
+                    c.getInt(c.getColumnIndexOrThrow(CarritoContract.CANT))
+            ));
+        }
+
+        return crrValido;
     }
 }
