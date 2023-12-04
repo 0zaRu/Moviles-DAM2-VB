@@ -49,14 +49,14 @@ public class CarritoActivity extends AppCompatActivity {
     }
 
     public void recargaLista(){
-        items = db.tablaCarrito(recibido.getUser());
+        items = db.selectCarrito(recibido.getUser());
 
         MiCarritoAdapter adapter = new MiCarritoAdapter(this, items);
         muestraCarrito.setAdapter(adapter);
 
         float precioTotal = 0;
         for(Carrito item: items){
-            ArrayList<Articulo> articulo = db.listaArticulos(null, ArticuloContract.CODIGO+" LIKE ?", new String[]{""+item.getArticulo()}, null, null, null);
+            ArrayList<Articulo> articulo = db.selectArticulos(null, ArticuloContract.CODIGO+" LIKE ?", new String[]{""+item.getArticulo()}, null, null, null);
             precioTotal += articulo.get(0).getPrecio()*item.getNumeroArticulos();
         }
 
@@ -77,14 +77,14 @@ public class CarritoActivity extends AppCompatActivity {
         int codeArt = ((Carrito)muestraCarrito.getAdapter().getItem(info.position)).getArticulo();
 
         if(item.getItemId() == R.id.suma)
-            db.updateCarrito(recibido.getUser(), codeArt, true);
+            db.updateCantCarrito(recibido.getUser(), codeArt, true);
 
         else if(item.getItemId() == R.id.resta)
-            db.updateCarrito(recibido.getUser(), codeArt, false);
+            db.updateCantCarrito(recibido.getUser(), codeArt, false);
             //Quedaría comprobar si está a 0 para que no se pueda -1 y si fuese así que se eliminase
 
         else if(item.getItemId() == R.id.elimina)
-            db.eliminaCarrito(codeArt);
+            db.deleteCarrito(codeArt);
 
 
         recargaLista();

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -52,6 +51,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         insertUser(new Usuario("user1", "pass1", "Alberto"), db);
         insertUser(new Usuario("user2", "pass2", "Rodriguez"), db);
         insertArticulo(new Articulo("Folio", "50 Folios A4", "Blanco", 2.3f), db);
+
         insertArticulo(new Articulo("Cuaderno de Dibujo", "Cuaderno de dibujo de 50 hojas", "Blanco", 4.5f), db);
         insertArticulo(new Articulo("Rotuladores", "Juego de 12 rotuladores de colores", "Multicolor", 8.0f), db);
         insertArticulo(new Articulo("Goma de Borrar", "Goma de borrar suave y duradera", "Rosa", 1.2f), db);
@@ -88,7 +88,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.insert(ArticuloContract.TABLE_NAME, ArticuloContract.NOMBRE + ", " + ArticuloContract.DESCRIP + ", " + ArticuloContract.COLOR + ", " + ArticuloContract.PRECIO, values);
     }
 
-    public Usuario compruebaUser(Context context, String user, String pass){
+    public Usuario findUser(Context context, String user, String pass){
 
         SQLiteDatabase db = getReadableDatabase();
 
@@ -112,7 +112,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    public ArrayList<Articulo> listaArticulos(String[] columnas, String selection, String[] selectionArgs, String groupBy, String having, String orderBy){
+    public ArrayList<Articulo> selectArticulos(String[] columnas, String selection, String[] selectionArgs, String groupBy, String having, String orderBy){
         ArrayList<Articulo> leidos = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
@@ -130,7 +130,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         return leidos;
     }
 
-    public String contCarrito(String[] selectionArgs){
+    public String getNumCarritos(String[] selectionArgs){
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.query(CarritoContract.TABLE_NAME, null, CarritoContract.USUARIO+" LIKE ?", selectionArgs, null, null, null);
 
@@ -142,27 +142,39 @@ public class SQLHelper extends SQLiteOpenHelper {
         return ""+cont;
     }
 
-    public int updateCarrito(String usr, int codeArt, boolean sumar){
+    public boolean updateCantCarrito(String usr, int codeArt, boolean sumar){
+        ArrayList<Carrito> totalCarro = selectCarrito(usr);
+        Carrito modificarlo = null;
+
+        for(Carrito carro: totalCarro)
+            if(carro.getArticulo() == codeArt && carro.getUsuario().equals(usr))
+                modificarlo = carro;
+
+        if(modificarlo == null){
+            return false;
+        }
+
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         if(sumar)
-            values.put(CarritoContract.CANT, CarritoContract.CANT+" + 1");
+            values.put(CarritoContract.CANT, modificarlo.getNumeroArticulos()+1);
         else
-            values.put(CarritoContract.CANT, CarritoContract.CANT+" - 1");
+            values.put(CarritoContract.CANT, modificarlo.getNumeroArticulos()-1);
 
-        return db.update(CarritoContract.TABLE_NAME,
-                  values,
-                  CarritoContract.USUARIO+" LIKE ? and "+CarritoContract.ARTICULO+" LIKE ?",
-                  new String[]{usr, ""+codeArt});
+        db.update(CarritoContract.TABLE_NAME,
+          values,
+          CarritoContract.USUARIO+" LIKE ? and "+CarritoContract.ARTICULO+" LIKE ?",
+          new String[]{usr, ""+codeArt});
 
+        return true;
     }
 
-    public void actualizaCarrito(String usr, int codeArt){
+    public void addUpdateCarrito(String usr, int codeArt){
 
-        int devuelto = updateCarrito(usr, codeArt, true);
+        boolean modificado = updateCantCarrito(usr, codeArt, true);
 
-        if(devuelto == 0){
+        if(!modificado){
             SQLiteDatabase db = getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(CarritoContract.USUARIO, usr);
@@ -173,13 +185,12 @@ public class SQLHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void eliminaCarrito(int codeArt){
+    public void deleteCarrito(int codeArt){
         SQLiteDatabase db = getWritableDatabase();
         db.delete(CarritoContract.TABLE_NAME, CarritoContract.ARTICULO+" LIKE ?", new String[]{""+codeArt});
     }
 
-
-    public ArrayList<Carrito> tablaCarrito(String user){
+    public ArrayList<Carrito> selectCarrito(String user){
         SQLiteDatabase db = getReadableDatabase();
 
         Cursor c = db.query(CarritoContract.TABLE_NAME, null, CarritoContract.USUARIO+" LIKE ?", new String[]{user}, null, null, null);

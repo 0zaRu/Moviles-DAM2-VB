@@ -45,7 +45,7 @@ public class MiCarritoAdapter extends ArrayAdapter {
 
         SQLHelper db = new SQLHelper(context);
 
-        ArrayList<Articulo> articulo = db.listaArticulos(null, ArticuloContract.CODIGO + " LIKE ? ", new String[]{""+articulos.get(position).getArticulo()}, null, null, null);
+        ArrayList<Articulo> articulo = db.selectArticulos(null, ArticuloContract.CODIGO + " LIKE ? ", new String[]{""+articulos.get(position).getArticulo()}, null, null, null);
 
         nombre.setText(articulo.get(0).getNombre());
         precioU.setText(""+articulo.get(0).getPrecio());

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         pass = findViewById(R.id.passIntroducida);
 
         findViewById(R.id.botonLogin).setOnClickListener(v -> {
-            Usuario usuarioLog = db.compruebaUser(this, user.getText().toString(), pass.getText().toString());
+            Usuario usuarioLog = db.findUser(this, user.getText().toString(), pass.getText().toString());
 
             if(usuarioLog == null){
                 Toast.makeText(this, "Usuario o contraseña no registrados", Toast.LENGTH_SHORT).show();

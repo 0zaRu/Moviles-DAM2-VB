@@ -16,9 +16,7 @@ import android.widget.TextView;
 
 import com.example.practica14_alberto_rodriguez.Modelo.Articulo;
 import com.example.practica14_alberto_rodriguez.Modelo.Carrito;
-import com.example.practica14_alberto_rodriguez.Modelo.CarritoContract;
 import com.example.practica14_alberto_rodriguez.Modelo.Usuario;
-import com.example.practica14_alberto_rodriguez.Modelo.UsuarioContract;
 
 import java.util.ArrayList;
 
@@ -44,7 +42,7 @@ public class CatalogActivity extends AppCompatActivity {
 
         muestraNombreUsr.setText("Bienvenido, "+usr.getNombre());
 
-        articulos = db.listaArticulos(null, null, null, null, null, null);
+        articulos = db.selectArticulos(null, null, null, null, null, null);
 
         cargaLista();
         registerForContextMenu(muestraCatalog);
@@ -62,7 +60,7 @@ public class CatalogActivity extends AppCompatActivity {
         MiListAdapter adapter = new MiListAdapter(this, articulos);
         muestraCatalog.setAdapter(adapter);
 
-        contadorCarrito.setText(db.contCarrito(new String[]{usr.getUser()}));
+        contadorCarrito.setText(db.getNumCarritos(new String[]{usr.getUser()}));
     }
 
     @Override
@@ -84,8 +82,8 @@ public class CatalogActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
         if(item.getItemId() == R.id.addCarrito){
-            db.actualizaCarrito(usr.getUser(), ((Articulo)muestraCatalog.getAdapter().getItem(info.position)).getCodigo());
-            contadorCarrito.setText(db.contCarrito(new String[]{usr.getUser()}));
+            db.addUpdateCarrito(usr.getUser(), ((Articulo)muestraCatalog.getAdapter().getItem(info.position)).getCodigo());
+            contadorCarrito.setText(db.getNumCarritos(new String[]{usr.getUser()}));
 
         }
 
