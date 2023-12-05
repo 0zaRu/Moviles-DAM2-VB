@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Practica14.5_Alberto_Rodriguez_FrafmentsExample</string>
+    <string name="actividad_1">Actividad 1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pulsa_aqu">Pulsa aquí</string>
+</resources>
