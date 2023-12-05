@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.practica145_alberto_rodriguez_frafmentsexample"
+    namespace = "com.example.practica15_alberto_rodriguez"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.practica145_alberto_rodriguez_frafmentsexample"
-        minSdk = 24
+        applicationId = "com.example.practica15_alberto_rodriguez"
+        minSdk = 28
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -31,7 +31,7 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

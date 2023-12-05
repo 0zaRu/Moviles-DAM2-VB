@@ -1,32 +1,61 @@
 package com.example.practica145_alberto_rodriguez_frafmentsexample;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ClipData;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements OnFragmentEventListener{
 
-    TextView muestraMensaje;
-    Button fragmento;
+    TextView saludo;
+    EditText nombre;
+    Button boton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        muestraMensaje = findViewById(R.id.muestraTexto);
+        saludo = findViewById(R.id.muestraTexto);
+        nombre = findViewById(R.id.nombre);
+        boton = findViewById(R.id.button1);
 
-        findViewById(R.id.button).setOnClickListener(v -> {
-            //CAMBIAR FRAFMENTO
+        boton.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+            MiFragment fragment = new MiFragment(nombre.getText().toString());
+            transaction.replace(R.id.frameFragment, fragment);
+
+            transaction.commit();
         });
 
+        findViewById(R.id.button2).setOnClickListener(v -> {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            Fragment2 fragment = new Fragment2();
 
+            Bundle args = new Bundle();
+            args.putString("nombre", nombre.getText().toString());
+
+            fragment.setArguments(args);
+            transaction.replace(R.id.frameFragment, fragment);
+            transaction.commit();
+        });
+
+        findViewById(R.id.cambiaLayout).setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
+        });
     }
 
-
+    @Override
+    public void fragmentSaludo() {
+        saludo.setText("EIII, main 1 bro");
+    }
 }
