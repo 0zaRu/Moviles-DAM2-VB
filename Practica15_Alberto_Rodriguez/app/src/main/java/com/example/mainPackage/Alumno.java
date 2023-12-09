@@ -1,4 +1,4 @@
-package com.example.practica15_alberto_rodriguez;
+package com.example.mainPackage;
 
 public class Alumno {
     private String nombre;
@@ -50,11 +50,6 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", dni='" + dni + '\'' +
-                ", foto=" + foto +
-                '}';
+        return nombre;
     }
 }

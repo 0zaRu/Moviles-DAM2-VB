@@ -31,10 +31,11 @@
             android:id="@+id/fDni"
             android:layout_gravity="center"/>
 
-        <ImageView
-            android:layout_width="80sp"
-            android:layout_height="80sp"
-            android:id="@+id/fImage"
+        <Button
+            android:text="@string/hacer_delegado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bSetDelegado"
             android:layout_gravity="center"/>
 
     </LinearLayout>

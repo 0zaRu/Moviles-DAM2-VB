@@ -1,4 +1,4 @@
-package com.example.practica15_alberto_rodriguez;
+package com.example.mainPackage;
 
 import android.content.Context;
 
