@@ -1,4 +1,4 @@
-package com.example.mainPackage;
+package com.example.practica15_alberto_rodriguez;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -12,14 +12,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.mainPackage.Fragments.MiFragment;
-import com.example.mainPackage.Fragments.OnFragmentEventListener;
-import com.example.practica15_alberto_rodriguez.R;
+import com.example.practica15_alberto_rodriguez.Fragments.MiFragment;
+import com.example.practica15_alberto_rodriguez.Fragments.OnFragmentEventListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnFragmentEventListener {
-
 
     Spinner spinerAl;
     TextView tDelegado;

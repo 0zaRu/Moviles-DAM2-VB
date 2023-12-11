@@ -1,4 +1,4 @@
-package com.example.mainPackage;
+package com.example.practica15_alberto_rodriguez;
 
 import org.junit.Test;
 

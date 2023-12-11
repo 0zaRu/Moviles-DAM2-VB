@@ -1,4 +1,4 @@
-package com.example.mainPackage.Fragments;
+package com.example.practica15_alberto_rodriguez.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mainPackage.Alumno;
+import com.example.practica15_alberto_rodriguez.Alumno;
 import com.example.practica15_alberto_rodriguez.R;
 
 public class MiFragment extends Fragment {
