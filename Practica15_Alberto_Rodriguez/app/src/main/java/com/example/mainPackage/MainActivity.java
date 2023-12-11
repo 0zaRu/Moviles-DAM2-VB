@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Spinner spinerAl;
     TextView tDelegado;
+    static int EJEMPLO = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ArrayAdapter spinner = new ArrayAdapter(this, android.R.layout.simple_spinner_item, alumnos);
         spinerAl.setAdapter(spinner);
-
+        
         bDatos.setOnClickListener(this);
         bFoto.setOnClickListener(this);
     }
