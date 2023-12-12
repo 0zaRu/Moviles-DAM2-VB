@@ -2,4 +2,5 @@
     <string name="app_name">Practica16_Alberto_Rodriguez</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bot_n_para_a_adir_coches">Botón para añadir coches</string>
 </resources>

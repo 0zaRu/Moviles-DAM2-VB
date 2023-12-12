@@ -8,8 +8,17 @@
 
     <FrameLayout
         android:id="@+id/frameList"
-        android:layout_width="match_parent"
+        android:layout_width="341dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameDetalles"
+        android:layout_width="341dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="372dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

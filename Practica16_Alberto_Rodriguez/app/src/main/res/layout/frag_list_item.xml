@@ -10,8 +10,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#00351B"
-        android:paddingVertical="5sp"
+        android:paddingVertical="12sp"
         android:paddingHorizontal="10sp"
+        android:layout_margin="5sp"
         android:background="#FFE5C3"/>
 
 </FrameLayout>
