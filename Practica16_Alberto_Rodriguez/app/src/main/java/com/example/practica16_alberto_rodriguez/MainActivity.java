@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.example.practica16_alberto_rodriguez.Dialogs.DialogAddOrModify;
 import com.example.practica16_alberto_rodriguez.Dialogs.OnDialogEvent;
+import com.example.practica16_alberto_rodriguez.Fragments.DetailFragment;
 import com.example.practica16_alberto_rodriguez.Fragments.ListFragment;
 import com.example.practica16_alberto_rodriguez.Fragments.OnFragmentEventListener;
 import com.example.practica16_alberto_rodriguez.Coche.Coche;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentEventLi
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        ListFragment lf = new ListFragment(db.selectCoches(null));
+        ListFragment lf = new ListFragment();
         transaction.replace(R.id.frameList, lf);
 
         transaction.commit();
@@ -42,23 +44,24 @@ public class MainActivity extends AppCompatActivity implements OnFragmentEventLi
 
     @Override
     public void estableceCoche(Coche c) {
-        /*if(getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
 
             DetailFragment df = new DetailFragment(db.selectCoches(c.getNumBastidor()).get(0));
-            transaction.replace(R.id.frameDetalles, df);
+            transaction.add(R.id.frameDetalles, df);
 
             transaction.commit();
         }
-         */
     }
 
     @Override
     public void addCoche(Coche coche) {
         db.insertaCoche(null, coche);
         estableceFrameList();
-        //Hacer que si está tumbado se llame a estableceCoche
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            estableceCoche(coche);
     }
 
     @Override

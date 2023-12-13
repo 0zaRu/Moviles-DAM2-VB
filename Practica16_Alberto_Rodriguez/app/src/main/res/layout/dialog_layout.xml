@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+        >
     <!--
     Coche(String numBastidor, String marca, String modelo,
     String combustible, String color, int kilometraje)
     -->
-    <EditText
-        android:id="@+id/dNBastidor"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_margin="10sp"
-        android:maxLength="17"
-        android:inputType="number"
-        android:hint="@string/numero_de_bastidor"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/dMarca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_margin="10sp"
-        android:hint="@string/marca_del_coche"/>
+        <EditText
+            android:id="@+id/dNBastidor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10sp"
+            android:maxLength="17"
+            android:inputType="number"
+            android:hint="@string/numero_de_bastidor"/>
 
-    <EditText
-        android:id="@+id/dModelo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_margin="10sp"
-        android:hint="@string/modelo_del_coche"/>
+        <EditText
+            android:id="@+id/dMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10sp"
+            android:hint="@string/marca_del_coche"/>
 
-    <Spinner
-        android:id="@+id/dCombustible"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="10sp"
-        android:entries="@array/combustibles"/>
+        <EditText
+            android:id="@+id/dModelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10sp"
+            android:hint="@string/modelo_del_coche"/>
 
-    <Spinner
-        android:id="@+id/dColores"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="10sp"
-        android:entries="@array/colores"/>
+        <Spinner
+            android:id="@+id/dCombustible"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10sp"
+            android:entries="@array/combustibles"/>
 
-    <EditText
-        android:id="@+id/dKilometraje"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_margin="10sp"
-        android:inputType="number"
-        android:hint="@string/kilometraje_del_coche"/>
+        <Spinner
+            android:id="@+id/dColores"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10sp"
+            android:entries="@array/colores"/>
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/dKilometraje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10sp"
+            android:inputType="number"
+            android:hint="@string/kilometraje_del_coche"/>
+    </LinearLayout>
+</ScrollView>

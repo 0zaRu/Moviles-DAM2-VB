@@ -19,6 +19,10 @@ public class DetailFragment extends Fragment {
         this.coche = coche;
     }
 
+    public  DetailFragment(){
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +40,14 @@ public class DetailFragment extends Fragment {
         TextView tcolor = vista.findViewById(R.id.detColor);
         TextView tkilometraje = vista.findViewById(R.id.detKilometraje);
 
-        tnumBastidor.setText(coche.getNumBastidor());
-        tmarca.setText(coche.getMarca());
-        tmodelo.setText(coche.getModelo());
-        tcombustible.setText(coche.getCombustible());
-        tcolor.setText(coche.getColor());
-        tkilometraje.setText(Integer.toString(coche.getKilometraje()));
-
+        if(coche != null) {
+            tnumBastidor.setText(coche.getNumBastidor());
+            tmarca.setText(coche.getMarca());
+            tmodelo.setText(coche.getModelo());
+            tcombustible.setText(coche.getCombustible());
+            tcolor.setText(coche.getColor());
+            tkilometraje.setText(Integer.toString(coche.getKilometraje()));
+        }
         return vista;
     }
 }

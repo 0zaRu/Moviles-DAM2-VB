@@ -32,6 +32,10 @@ public class DialogAddOrModify extends DialogFragment implements DialogInterface
 
     }
 
+    public DialogAddOrModify(){
+
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

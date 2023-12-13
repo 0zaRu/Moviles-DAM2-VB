@@ -1,6 +1,7 @@
 package com.example.practica16_alberto_rodriguez.Fragments;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,23 +21,28 @@ import com.example.practica16_alberto_rodriguez.Coche.Coche;
 import com.example.practica16_alberto_rodriguez.Dialogs.ConfirmDialog;
 import com.example.practica16_alberto_rodriguez.Dialogs.DialogAddOrModify;
 import com.example.practica16_alberto_rodriguez.R;
+import com.example.practica16_alberto_rodriguez.SQLHelper;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class ListFragment extends Fragment implements AdapterView.OnItemClickListener {
     ArrayList<Coche> coches;
     Context context;
     OnFragmentEventListener listener;
     ListView lista = null;
-
-    public ListFragment(ArrayList<Coche> coches) {
-        this.coches = coches;
+    SQLHelper db;
+    public ListFragment() {
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+
+        db = new SQLHelper(context);
+        this.coches = db.selectCoches(null);
+
         if(context instanceof OnFragmentEventListener)
             listener = (OnFragmentEventListener) context;
     }
@@ -59,15 +65,17 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         lista = vista.findViewById(R.id.fragmentListView);
         recargaLista();
 
-        //HACER SOLO SI EL MÓVIL NO ESTÁ TUMBADO
-        registerForContextMenu(lista);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            registerForContextMenu(lista);
 
         return vista;
     }
     private void recargaLista(){
         FragmentListAdapter adaptador = new FragmentListAdapter(context, coches);
         lista.setAdapter(adaptador);
-        lista.setOnItemClickListener(this);
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            lista.setOnItemClickListener(this);
     }
 
     @Override
@@ -77,7 +85,8 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
-        MenuInflater inflater = new MenuInflater(getContext());
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.list_contextual, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
