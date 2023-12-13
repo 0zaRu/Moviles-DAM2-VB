@@ -3,21 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <!--
+    Coche(String numBastidor, String marca, String modelo,
+    String combustible, String color, int kilometraje)
+    -->
     <EditText
-        android:id="@+id/edit1"
+        android:id="@+id/dNBastidor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_margin="10sp"
-        android:hint="Texto"/>
+        android:maxLength="17"
+        android:inputType="number"
+        android:hint="@string/numero_de_bastidor"/>
 
     <EditText
-        android:id="@+id/edit2"
+        android:id="@+id/dMarca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_margin="10sp"
-        android:hint="Texto"/>
+        android:hint="@string/marca_del_coche"/>
+
+    <EditText
+        android:id="@+id/dModelo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_margin="10sp"
+        android:hint="@string/modelo_del_coche"/>
+
+    <Spinner
+        android:id="@+id/dCombustible"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10sp"
+        android:entries="@array/combustibles"/>
+
+    <Spinner
+        android:id="@+id/dColores"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10sp"
+        android:entries="@array/colores"/>
+
+    <EditText
+        android:id="@+id/dKilometraje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_margin="10sp"
+        android:inputType="number"
+        android:hint="@string/kilometraje_del_coche"/>
 
 </LinearLayout>

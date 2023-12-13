@@ -3,4 +3,28 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="bot_n_para_a_adir_coches">Botón para añadir coches</string>
+    <string name="numero_de_bastidor">Numero de bastidor</string>
+    <string name="marca_del_coche">Marca del coche</string>
+    <string name="modelo_del_coche">Modelo del coche</string>
+    <string name="_0">0</string>
+    <string name="kilometraje_del_coche">Kilometraje del coche</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+
+    <array name="colores">
+        <item>blanco</item>
+        <item>negro</item>
+        <item>azul</item>
+        <item>rojo</item>
+        <item>gris</item>
+        <item>verde</item>
+        <item>amarillo</item>
+    </array>
+
+    <array name="combustibles">
+        <item>diésel</item>
+        <item>gasolina</item>
+        <item>híbrido</item>
+    </array>
+
 </resources>

@@ -4,14 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.example.practica16_alberto_rodriguez.Dialogs.DialogModify;
+import com.example.practica16_alberto_rodriguez.Dialogs.DialogAddOrModify;
 import com.example.practica16_alberto_rodriguez.Dialogs.OnDialogEvent;
-import com.example.practica16_alberto_rodriguez.Fragments.DetailFragment;
 import com.example.practica16_alberto_rodriguez.Fragments.ListFragment;
 import com.example.practica16_alberto_rodriguez.Fragments.OnFragmentEventListener;
 import com.example.practica16_alberto_rodriguez.Coche.Coche;
@@ -27,10 +23,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentEventLi
         estableceFrameList();
 
         findViewById(R.id.floatAddButton).setOnClickListener(v -> {
-            DialogModify dialog = new DialogModify();
-            dialog.show(getSupportFragmentManager(), "ejemplo");
+            DialogAddOrModify dialog = new DialogAddOrModify(null);
+            dialog.show(getSupportFragmentManager(), "llamadaMain");
         });
-
     }
 
     public void estableceFrameList(){
@@ -56,12 +51,25 @@ public class MainActivity extends AppCompatActivity implements OnFragmentEventLi
 
             transaction.commit();
         }
-
          */
     }
 
     @Override
-    public void modificar(String t1, String t2) {
-        Toast.makeText(this, "Se ha pulsado aceptar "+t1+" "+t2, Toast.LENGTH_SHORT).show();
+    public void addCoche(Coche coche) {
+        db.insertaCoche(null, coche);
+        estableceFrameList();
+        //Hacer que si está tumbado se llame a estableceCoche
+    }
+
+    @Override
+    public void modificarCoche(Coche coche) {
+        db.modificarCoche(coche);
+        estableceFrameList();
+    }
+
+    @Override
+    public void eliminaCoche(Coche coche) {
+        db.eliminaCoche(coche.getNumBastidor());
+        estableceFrameList();
     }
 }

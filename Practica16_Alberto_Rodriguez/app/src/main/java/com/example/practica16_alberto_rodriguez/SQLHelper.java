@@ -1,5 +1,6 @@
 package com.example.practica16_alberto_rodriguez;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -84,6 +85,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     }
 
     public void insertaCoche(SQLiteDatabase db, Coche c){
+
         ContentValues values = new ContentValues();
         values.put(CocheContract.NUM_BASTIDOR, c.getNumBastidor());
         values.put(CocheContract.MARCA, c.getMarca());
@@ -99,6 +101,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.insert(CocheContract.TABLE_NAME, null, values);
     }
 
+    @SuppressLint("Recycle")
     public ArrayList<Coche> selectCoches(@Nullable String numBastidor){
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = null;
@@ -123,5 +126,24 @@ public class SQLHelper extends SQLiteOpenHelper {
         }
 
         return coches;
+    }
+
+    public void modificarCoche(Coche c){
+
+        ContentValues values = new ContentValues();
+        values.put(CocheContract.MARCA, c.getMarca());
+        values.put(CocheContract.MODELO, c.getModelo());
+        values.put(CocheContract.COMBUSTIBLE, c.getCombustible());
+        values.put(CocheContract.COLOR, c.getColor());
+        values.put(CocheContract.KILOMETRAJE, c.getKilometraje());
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.update(CocheContract.TABLE_NAME, values, CocheContract.NUM_BASTIDOR+" LIKE ?", new String[]{c.getNumBastidor()});
+    }
+
+    public void eliminaCoche(String numBastidor){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(CocheContract.TABLE_NAME, CocheContract.NUM_BASTIDOR+" LIKE ?", new String[]{numBastidor});
     }
 }

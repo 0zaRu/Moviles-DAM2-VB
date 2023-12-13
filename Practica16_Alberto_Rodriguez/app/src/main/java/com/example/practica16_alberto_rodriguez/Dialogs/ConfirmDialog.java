@@ -5,28 +5,29 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.practica16_alberto_rodriguez.R;
+import com.example.practica16_alberto_rodriguez.Coche.Coche;
 
-public class DialogModify extends DialogFragment implements DialogInterface.OnClickListener {
+public class ConfirmDialog extends DialogFragment implements DialogInterface.OnClickListener {
 
     OnDialogEvent listener;
-    TextView t1, t2;
+    Coche c = null;
+
+    public ConfirmDialog(Coche c){
+        this.c = c;
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if(context instanceof OnDialogEvent)
+        if(context instanceof OnDialogEvent) {
             listener = (OnDialogEvent) context;
+        }
     }
 
     @Override
@@ -38,18 +39,12 @@ public class DialogModify extends DialogFragment implements DialogInterface.OnCl
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View vista = inflater.inflate(R.layout.dialog_layout, null);
-        builder.setView(vista);
-
-        t1 = vista.findViewById(R.id.edit1);
-        t2 = vista.findViewById(R.id.edit2);
-
-        builder.setTitle("Modificar coche");
-        builder.setMessage("Modifica los campos que consideres necesarios");
+        builder.setTitle("Confirmación");
+        builder.setMessage("¿Está seguro de que desea eliminar el coche seleccionado?");
         builder.setPositiveButton("Aceptar", this);
+        builder.setNegativeButton("Cancelar", this);
 
 
         return builder.create();
@@ -60,13 +55,14 @@ public class DialogModify extends DialogFragment implements DialogInterface.OnCl
         switch (which){
             case -1:
 
-                listener.modificar(t1.getText().toString(), t2.getText().toString());
+                listener.eliminaCoche(c);
+
                 break;
             case -2:
-                break;
-            case -3:
-            break;
 
+                dismiss();
+
+                break;
         }
     }
 }

@@ -9,9 +9,6 @@ public class Coche {
     private String color;
     private int kilometraje;
 
-    private static final String[] COLORES = new String[]{"blanco", "negro", "azul", "rojo", "gris", "verde", "amarillo"};
-    private static final String[] COMBUSTIBLES = new String[]{"diésel", "gasolina", "híbrido"};
-
     public Coche(String numBastidor, String marca, String modelo, String combustible, String color, int kilometraje) {
         setNumBastidor(numBastidor);
         this.marca = marca;
