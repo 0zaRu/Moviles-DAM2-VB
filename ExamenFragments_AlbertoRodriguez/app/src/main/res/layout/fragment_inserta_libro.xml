@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.InsertaLibroFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inserta_t_tulo"
+            android:id="@+id/fInsertTitle"
+            android:layout_margin="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inserta_el_autor"
+            android:id="@+id/fInsertAutor"
+            android:layout_margin="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inserta_n_de_p_ginas"
+            android:id="@+id/fInsertPags"
+            android:inputType="number"
+            android:layout_margin="15sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="@string/nsertar"
+            android:id="@+id/finsertButton"/>
+
+    </LinearLayout>
+
+</FrameLayout>
