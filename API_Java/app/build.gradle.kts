@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.proyectofinal_alberto_rodriguezperez"
+    namespace = "com.example.api_java"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.proyectofinal_alberto_rodriguezperez"
-        minSdk = 31
+        applicationId = "com.example.api_java"
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,7 +19,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
