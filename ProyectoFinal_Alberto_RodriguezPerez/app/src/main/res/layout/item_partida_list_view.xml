@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GrisHueso"
+    android:layout_margin="10sp">
+
+    <TextView
+        android:id="@+id/tvJugador1"
+        android:layout_width="140dp"
+        android:layout_height="30sp"
+        android:layout_marginStart="44dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tvJugador2"
+        android:layout_width="140sp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvJugador1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvJugador1"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvTorneo"
+        android:layout_width="140sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
+
+    <TextView
+        android:gravity="end|center"
+        android:id="@+id/tvVerJugadas"
+        android:layout_width="140sp"
+        android:layout_height="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTorneo"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

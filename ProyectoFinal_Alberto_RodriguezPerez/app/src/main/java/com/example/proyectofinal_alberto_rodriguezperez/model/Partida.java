@@ -2,9 +2,10 @@ package com.example.proyectofinal_alberto_rodriguezperez.model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Partida {
+public class Partida implements Serializable {
     private int id;
     private Date fecha;
     private String lugar;

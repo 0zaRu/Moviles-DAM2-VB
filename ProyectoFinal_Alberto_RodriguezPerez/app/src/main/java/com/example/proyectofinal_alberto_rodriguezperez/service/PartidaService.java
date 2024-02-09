@@ -1,14 +1,17 @@
 package com.example.proyectofinal_alberto_rodriguezperez.service;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.JugadorDAO;
+import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.PartidaDAO;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class JugadorService {
-
+public class PartidaService {
     private Retrofit getRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl("http://172.23.86.211/chess-app-proyectoARP/")
@@ -17,8 +20,7 @@ public class JugadorService {
                 .build();
     }
 
-    public Call<Jugador> getJugador(String nombre, String passwd) {
-        return getRetrofit().create(JugadorDAO.class).getJugador(nombre, passwd);
+    public Call<List<Partida>> getPartidasUser(int jugadorId) {
+        return getRetrofit().create(PartidaDAO.class).getPartidasUser(jugadorId);
     }
-
 }

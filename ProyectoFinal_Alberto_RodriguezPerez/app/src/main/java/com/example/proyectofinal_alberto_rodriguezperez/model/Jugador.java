@@ -2,9 +2,10 @@ package com.example.proyectofinal_alberto_rodriguezperez.model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Jugador {
+public class Jugador implements Serializable {
     private int id;
     private String nombre;
     private String pais;
@@ -12,12 +13,12 @@ public class Jugador {
     private Date fechaNacimiento;
     private String correoElectronico;
     private String passwd;
-    private boolean esAdmin;
+    private int esAdmin;
 
     public Jugador() {
     }
 
-    public Jugador(String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, boolean esAdmin) {
+    public Jugador(String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.nombre = nombre;
         this.pais = pais;
         this.elo = elo;
@@ -27,7 +28,7 @@ public class Jugador {
         this.esAdmin = esAdmin;
     }
 
-    public Jugador(int id, String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, boolean esAdmin) {
+    public Jugador(int id, String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
@@ -94,11 +95,11 @@ public class Jugador {
         this.passwd = passwd;
     }
 
-    public boolean isEsAdmin() {
+    public int getEsAdmin() {
         return esAdmin;
     }
 
-    public void setEsAdmin(boolean esAdmin) {
+    public void setEsAdmin(int esAdmin) {
         this.esAdmin = esAdmin;
     }
 

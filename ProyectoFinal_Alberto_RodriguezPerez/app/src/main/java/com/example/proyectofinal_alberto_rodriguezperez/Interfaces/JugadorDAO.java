@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.DAO;
+package com.example.proyectofinal_alberto_rodriguezperez.Interfaces;
 
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import retrofit2.Call;

@@ -4,32 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".view.MainActivity"
     android:background="@color/GrisHueso">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="70sp"
+        android:layout_marginHorizontal="40sp"
         android:layout_marginVertical="170sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#FFDAB2"
+        android:background="@color/carne"
         >
 
-        <EditText
-            android:layout_marginVertical="70sp"
-            android:layout_marginHorizontal="20sp"
-            android:id="@+id/tfNombreUser"
+        <TextView
+            android:id="@+id/txInfo"
+            android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nombre_de_usuario"
+            android:gravity="center"
+            android:text="@string/iniciar_sesi_n"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints=""
-            android:inputType="text" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+
+            android:id="@+id/tfNombreUser"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20sp"
+            android:layout_marginVertical="30sp"
+            android:autofillHints=""
+            android:hint="@string/nombre_de_usuario"
+            android:inputType="text"
+            android:text="Alberto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txInfo" />
+
+        <EditText
+
+            android:text="123456"
+
             android:layout_marginVertical="50sp"
             android:layout_marginHorizontal="20sp"
             android:id="@+id/tfpasswd"
@@ -42,12 +59,26 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:layout_marginHorizontal="20sp"
+            android:layout_marginTop="5sp"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_tienes_cuenta_reg_strate"
+            android:layout_marginStart="20sp"
+            android:text="@string/no_tienes_cuenta"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfpasswd" />
+
+        <TextView
+            android:layout_marginStart="3sp"
+            android:layout_marginTop="5sp"
+            android:id="@+id/tvRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/azulHiperText"
+            android:text="@string/reg_strate"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/tfpasswd" />
 
 
@@ -55,12 +86,13 @@
             android:id="@+id/btnLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/GrisHueso"
             android:text="@string/conectar"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent" />
 
 
