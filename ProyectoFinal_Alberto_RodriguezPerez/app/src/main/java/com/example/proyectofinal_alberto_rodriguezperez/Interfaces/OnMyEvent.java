@@ -1,7 +1,8 @@
 package com.example.proyectofinal_alberto_rodriguezperez.Interfaces;
 
-import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import android.view.View;
 
 public interface OnMyEvent {
-    void recogeJugador(Jugador jugador);
+    void botoneraInicio(View v);
+    void botoneraBuscar(View v, String txtBuscar);
 }

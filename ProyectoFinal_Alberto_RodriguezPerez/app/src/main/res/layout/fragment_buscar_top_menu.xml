@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.InicioTopMenuFragment">
+
+    <LinearLayout
+        android:id="@+id/optionBar"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@color/carne"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/BuscarButPerfil"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10sp"
+            android:text="yo" />
+
+        <EditText
+            android:id="@+id/BuscarEtBusqueda"
+            android:layout_marginStart="28sp"
+            android:gravity="end"
+            android:layout_gravity="center"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/BuscarButlupa"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10sp"
+            android:paddingHorizontal="-30sp"
+            android:textSize="30sp"
+            android:text="Q" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

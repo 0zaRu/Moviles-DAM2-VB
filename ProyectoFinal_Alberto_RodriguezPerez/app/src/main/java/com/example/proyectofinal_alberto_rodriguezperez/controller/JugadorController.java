@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.proyectofinal_alberto_rodriguezperez.view.DataActivity;
-import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.service.JugadorService;
 

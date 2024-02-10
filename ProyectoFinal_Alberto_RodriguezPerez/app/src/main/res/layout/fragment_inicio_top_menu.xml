@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.InicioTopMenuFragment">
+
+    <LinearLayout
+        android:id="@+id/optionBar"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@color/carne"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/InicioButPerfil"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10sp"
+            android:text="yo" />
+
+
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/InicioButTodo"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10sp"
+            android:paddingHorizontal="-30px"
+            android:text="Todo" />
+
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/InicioButPartidas"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10sp"
+            android:paddingHorizontal="-30px"
+            android:text="Partidas" />
+
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/InicioButTorneos"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10sp"
+            android:paddingHorizontal="-30px"
+            android:text="Torneos" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -7,39 +7,53 @@
     tools:context=".view.DataActivity">
 
     <FrameLayout
+        android:id="@+id/topFrame"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
         android:id="@+id/principalFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60sp"
-        android:background="@color/GrisHueso"/>
+        android:layout_marginVertical="60sp"
+        android:background="@color/GrisHueso"
+        app:layout_constraintBottom_toTopOf="@+id/topMenuBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
+
 
     <LinearLayout
-        android:background="@color/carne"
-        android:id="@+id/optionBar"
-        android:orientation="horizontal"
+        android:id="@+id/topMenuBar"
         android:layout_width="match_parent"
         android:layout_height="60sp"
+        android:background="@color/carne"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/principalFrame">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:text="Mi Info"
-            android:id="@+id/fragmentBut1"
-            android:layout_width="74dp"
+            android:id="@+id/menuButInicio"
+            android:layout_width="53dp"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10sp" />
+            android:layout_marginHorizontal="10sp"
+            android:paddingHorizontal="-30px"
+            android:text="Inicio" />
 
         <Button
-            android:text="yo"
-            android:id="@+id/fragmentBut2"
-            android:layout_marginHorizontal="10sp"
-            android:layout_width="74dp"
-            android:layout_height="match_parent"/>
+            android:id="@+id/menuButBuscar"
+            android:layout_width="53dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30sp"
+            android:paddingHorizontal="-30px"
+            android:text="Buscar" />
 
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

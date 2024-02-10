@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.view;
+package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

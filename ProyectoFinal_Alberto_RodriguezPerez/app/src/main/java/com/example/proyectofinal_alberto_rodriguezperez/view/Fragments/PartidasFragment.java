@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.view;
+package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.FragmentListPartidasAdapter;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.PartidaController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 
