@@ -10,7 +10,7 @@ public class Jugador implements Serializable {
     private String nombre;
     private String pais;
     private int elo;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String correoElectronico;
     private String passwd;
     private int esAdmin;
@@ -18,7 +18,7 @@ public class Jugador implements Serializable {
     public Jugador() {
     }
 
-    public Jugador(String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
+    public Jugador(String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.nombre = nombre;
         this.pais = pais;
         this.elo = elo;
@@ -28,7 +28,7 @@ public class Jugador implements Serializable {
         this.esAdmin = esAdmin;
     }
 
-    public Jugador(int id, String nombre, String pais, int elo, Date fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
+    public Jugador(int id, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
@@ -71,11 +71,11 @@ public class Jugador implements Serializable {
         this.elo = elo;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

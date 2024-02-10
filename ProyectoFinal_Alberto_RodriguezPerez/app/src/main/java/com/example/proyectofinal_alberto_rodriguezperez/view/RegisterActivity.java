@@ -38,39 +38,34 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         registrar = findViewById(R.id.btSignIn);
         registrar.setOnClickListener(this);
 
-
-
     }
 
     @Override
     public void onClick(View v) {
-        if(nombre.getText().toString().isEmpty() ||
-            pais.getText().toString().isEmpty() ||
-            fechaNaci.getText().toString().isEmpty() ||
-            correo.getText().toString().isEmpty() ||
-            pass.getText().toString().isEmpty() ||
-            passRepe.getText().toString().isEmpty())
-                Toast.makeText(this, "Valores no insertados", Toast.LENGTH_SHORT).show();
+        if (nombre.getText().toString().isEmpty() ||
+                pais.getText().toString().isEmpty() ||
+                fechaNaci.getText().toString().isEmpty() ||
+                correo.getText().toString().isEmpty() ||
+                pass.getText().toString().isEmpty() ||
+                passRepe.getText().toString().isEmpty())
+            Toast.makeText(this, "Valores no insertados", Toast.LENGTH_SHORT).show();
 
-        else if(!pass.getText().toString().equals(passRepe.getText().toString())) {
+        else if (!pass.getText().toString().equals(passRepe.getText().toString())) {
             Toast.makeText(this, "Error en la contraseña, no son iguales", Toast.LENGTH_SHORT).show();
             pass.setText("");
             passRepe.setText("");
 
-        }else{
-            //Debería comprobar que el nombre de usuario no existe
-
+        } else {
             Jugador add = new Jugador(nombre.getText().toString(),
                     pais.getText().toString(),
                     1000,
-                    Date.from(Instant.now()),
+                    "2003-04-01",
                     correo.getText().toString(),
                     pass.getText().toString(),
                     0);
 
-            jugadorCont.addJugador(this, add);
+            jugadorCont.introduceJugador(this, add);
+
         }
-
-
     }
 }

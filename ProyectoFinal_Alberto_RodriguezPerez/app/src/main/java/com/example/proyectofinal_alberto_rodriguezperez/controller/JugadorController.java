@@ -54,16 +54,42 @@ public class JugadorController {
         });
     }
 
-    public void addJugador(Context activityContext, Jugador nuevoUser){
-        //serviceJugador.addJugador()
+    public void introduceJugador(Context activityContext, Jugador nuevoJugador){
+        serviceJugador.existeJugador(nuevoJugador.getNombre()).enqueue(new Callback<Integer>() {
 
-                /*
-                * Mañana sigo.
-                * He pensado que antes de seguir, la unica forma de validar que el usuario se mete correctamnete
-                * es que donde lo inserte, también compruebe justo después que existe ese usuario, es decir, crear
-                * getUsuario(name), que podré utilizarlo tanto en el paso final de añadir (porque hay veces que el servidor
-                * devuelve 200 pero la insercción no se ha hecho), y ya que está hecho, usarla en el register para validar
-                * que el nombre de usuario no está en uso
-                * */
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+
+                if(response.isSuccessful()){
+                    assert response.body() != null;
+                    Log.d("TAG", response.body().toString());
+
+                    if(response.body() == 1){
+                        Toast.makeText(activityContext, "Nombre de usuario ya registrado", Toast.LENGTH_SHORT).show();
+
+                    }else{
+
+                        addJugador(activityContext, nuevoJugador);
+                    }
+
+                }
+                else{
+                    Log.d("TAG", "Error");
+                    Toast.makeText(activityContext, "Error externo", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.d("Error", Objects.requireNonNull(t.getMessage()));
+                Toast.makeText(activityContext, "No se pudo conectar con el servidor", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    public void addJugador(Context activityContext, Jugador nuevoUser){
+        serviceJugador.addJugador(activityContext, nuevoUser);
+
+    }
+
 }
