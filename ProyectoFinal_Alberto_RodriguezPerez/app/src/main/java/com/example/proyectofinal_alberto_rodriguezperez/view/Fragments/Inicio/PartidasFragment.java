@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments;
+package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -63,7 +63,7 @@ public class PartidasFragment extends Fragment {
 
         ListView listaPartidas = vista.findViewById(R.id.listaFragmentPartidas);
 
-        partidaControl.getPartidas(getContext(), listaPartidas, mParam1.getId());
+        partidaControl.getPartidas(getContext(), listaPartidas, mParam1.getId(), 0);
 
         return vista;
     }

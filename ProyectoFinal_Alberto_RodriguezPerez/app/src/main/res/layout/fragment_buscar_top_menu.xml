@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Fragments.InicioTopMenuFragment">
+    tools:context=".view.Fragments.Inicio.InicioTopMenuFragment">
 
     <LinearLayout
         android:id="@+id/optionBar"
@@ -17,7 +17,7 @@
             android:layout_width="57dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10sp"
-            android:text="yo" />
+            android:text="yo"/>
 
         <EditText
             android:id="@+id/BuscarEtBusqueda"
@@ -32,11 +32,9 @@
             android:layout_width="57dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30sp"
+            android:paddingHorizontal="-30dp"
             android:textSize="30sp"
             android:text="Q" />
 
-
     </LinearLayout>
-
 </FrameLayout>

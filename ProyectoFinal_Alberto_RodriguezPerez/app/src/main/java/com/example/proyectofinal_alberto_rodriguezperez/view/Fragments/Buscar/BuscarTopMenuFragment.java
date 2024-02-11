@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments;
+package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar;
 
 import android.content.Context;
 import android.os.Bundle;

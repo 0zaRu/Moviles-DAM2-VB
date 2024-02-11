@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="30sp"
+    >
+
+    <EditText
+        android:hint="Nombre*"
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fotoPerfil"
+
+        android:background="@drawable/foto_redondeada"
+        android:clipToOutline="true"
+        android:foreground="@drawable/foto_redondeada"
+        android:scaleType="centerCrop"
+        android:src="@drawable/perfil_default"
+
+        android:layout_marginTop="30dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+
+    <EditText
+        android:layout_marginStart="140dp"
+        android:id="@+id/etPais"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30sp"
+        android:hint="Pais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fotoPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+
+    <EditText
+        android:inputType="date"
+        android:layout_marginStart="140dp"
+        android:id="@+id/etFechaNaci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30sp"
+        android:hint="Fecha de Nacimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fotoPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/etPais" />
+
+    <EditText
+        android:id="@+id/etCorreo"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30sp"
+        android:hint="correo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotoPerfil" />
+
+    <EditText
+        android:layout_marginVertical="30sp"
+        android:inputType="textPassword"
+        android:id="@+id/etPasswd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
+
+    <EditText
+        android:layout_marginVertical="30sp"
+        android:inputType="textPassword"
+        android:id="@+id/etPasswd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswd1" />
+
+
+    <EditText
+        android:visibility="invisible"
+        android:id="@+id/etPasswd3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30sp"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswd2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

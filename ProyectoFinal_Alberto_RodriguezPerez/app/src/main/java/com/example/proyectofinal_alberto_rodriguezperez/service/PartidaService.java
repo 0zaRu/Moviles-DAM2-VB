@@ -20,7 +20,10 @@ public class PartidaService {
                 .build();
     }
 
-    public Call<List<Partida>> getPartidasUser(int jugadorId) {
-        return getRetrofit().create(PartidaDAO.class).getPartidasUser(jugadorId);
+    public Call<List<Partida>> getPartidasUser(int jugadorId, int filtroDiasAtras) {
+        if(filtroDiasAtras == 0)
+            return getRetrofit().create(PartidaDAO.class).getPartidasUser(jugadorId);
+        else
+            return getRetrofit().create(PartidaDAO.class).getPartidasUserFiltroDias(jugadorId, filtroDiasAtras);
     }
 }

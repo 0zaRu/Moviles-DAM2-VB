@@ -91,4 +91,7 @@ public class JugadorController {
 
     }
 
+    public void modificaPerfil(Context contexto, Jugador jugador){
+        serviceJugador.modificaJugador(contexto, jugador);
+    }
 }

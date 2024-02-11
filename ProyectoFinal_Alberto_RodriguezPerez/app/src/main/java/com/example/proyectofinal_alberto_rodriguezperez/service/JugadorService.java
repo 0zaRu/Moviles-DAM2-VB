@@ -40,7 +40,6 @@ public class JugadorService {
                     @Override
                     public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                         Log.d("TAG", "RESPONSE: " + response);
-                        Toast.makeText(activityContext, "En principio añadido", Toast.LENGTH_SHORT).show();
                         //1. Comprobamos que realmente se ha metido el usuario
                         //(muchas veces devuelve que tod.o okay pero no hace la insercción)
                         existeJugador(nuevoJugador.getNombre()).enqueue(new Callback<Integer>() {
@@ -71,6 +70,26 @@ public class JugadorService {
                 }
         );
 
+    }
+
+    public void modificaJugador(Context contexto, Jugador jugador){
+        getRetrofit().create(JugadorDAO.class).modificaJugador(jugador).enqueue(new Callback<Jugador>() {
+            @Override
+            public void onResponse(Call<Jugador> call, Response<Jugador> response) {
+                if(response.isSuccessful()){
+                    Intent intent = new Intent(contexto, MainActivity.class);
+                    contexto.startActivity(intent);
+                }
+                else {
+                    Toast.makeText(contexto, "Fallo al modificar", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Jugador> call, Throwable t) {
+                Toast.makeText(contexto, "Fallo de conexión con el server", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

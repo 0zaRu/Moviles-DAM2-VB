@@ -21,8 +21,12 @@ import retrofit2.Response;
 public class PartidaController {
     private final PartidaService servicePartida = new PartidaService();
 
-    public void getPartidas(Context contextParaLista, ListView lvEditando, int jugadorId) {
-        servicePartida.getPartidasUser(jugadorId).enqueue(
+    public void getPartidas(Context contextParaLista, ListView lvEditando, int jugadorId, int filtroDiasAtras) {
+        //Filtro días
+        //0 - Sin filtro
+        //otro - ese numero de días hacia atrás
+
+        servicePartida.getPartidasUser(jugadorId, filtroDiasAtras).enqueue(
                 new Callback<List<Partida>>() {
                     @Override
                     public void onResponse(@NonNull Call<List<Partida>> call, @NonNull Response<List<Partida>> response) {

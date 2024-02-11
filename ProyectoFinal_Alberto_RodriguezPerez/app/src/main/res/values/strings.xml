@@ -9,4 +9,5 @@
     <string name="no_tienes_cuenta">¿No tienes cuenta?,</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
     <string name="reg_strate"> regístrate</string>
+    <string name="editar_perfil">Editar Perfil</string>
 </resources>

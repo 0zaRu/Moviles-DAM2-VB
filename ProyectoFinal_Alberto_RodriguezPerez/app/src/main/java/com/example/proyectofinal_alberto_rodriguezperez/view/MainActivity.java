@@ -13,7 +13,11 @@ import android.widget.Toast;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.RegisterOrEditDialog;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tvRegistro = findViewById(R.id.tvRegistro);
         tvRegistro.setOnClickListener(this);
+
     }
 
     @Override
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Coger nombre y contraseña de usuario
             if (!nombre.getText().toString().isEmpty() && !passwd.getText().toString().isEmpty()) {
                 //Enviar hacia el php
-                jugadorCont.getJugador(this, nombre.getText().toString(), passwd.getText().toString());
+                jugadorCont.getJugador(this, nombre.getText().toString(), Security.getMD5(passwd.getText().toString()));
                 //Se recogerá mediante el método de la interfaz ComunicaciónPruebas
 
             } else {
@@ -56,9 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(v.getId() == R.id.tvRegistro)
         {
 
-            Intent intent = new Intent(this, RegisterActivity.class);
-            startActivity(intent);
-            onStop();
+            RegisterOrEditDialog dialog =new RegisterOrEditDialog(null);
+            dialog.show(getSupportFragmentManager(), "llamadaRegistrar");
             //Aquí puedo hacer que sea una clase de ida con vuelta de datos, para asignar directamente a los campos el usuario
             //que haya agregado al registrarse
         }

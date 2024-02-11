@@ -1,11 +1,19 @@
 package com.example.proyectofinal_alberto_rodriguezperez.view;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,12 +21,12 @@ import android.widget.Toast;
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.BuscarTopMenuFragment;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.InicioTopMenuFragment;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.PartidasFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarTopMenuFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.InicioTopMenuFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.PartidasFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.PerfilFragment;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.TodoFragment;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.TorneosFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.TodoFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.TorneosFragment;
 
 public class DataActivity extends AppCompatActivity implements View.OnClickListener, OnMyEvent {
 
@@ -127,16 +135,58 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void botoneraBuscar(View v, String txtBuscar) {
 
-        if(txtBuscar.isEmpty()){
-            Toast.makeText(this, "Texto a buscar no establecido", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragmentACalocar = null;
 
-        //Poner un fragment que tengo que hacer que tenga lista de partidas por un lado, de torneos por otro?
-        //Tal vez mejor un fragment con 4 opciones a filtrar
+        if(v.getId() == R.id.BuscarButPerfil)
+            fragmentACalocar = new PerfilFragment();
+
+        else if(txtBuscar.isEmpty())
+            Toast.makeText(this, "Texto a buscar no establecido", Toast.LENGTH_SHORT).show();
+
+
+
+        if(fragmentACalocar != null) {
+            Bundle args = new Bundle();
+            args.putSerializable("usuario", jugador);
+            fragmentACalocar.setArguments(args);
+
+            transaction.replace(R.id.topFrame, fragmentACalocar);
+        }
+
+        transaction.commit();
     }
+
+    /*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1234) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intentResult.launch(intent);
+
+            } else {
+                Toast.makeText(this, "No podrás cambiarte la imagen", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    ActivityResultLauncher<Intent> intentResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult o) {
+                    if(o.getResultCode() == 1234){
+                        if(o.getData() != null && o.getData().getExtras() != null){
+                            //Aquí va la imagen
+                        }
+                    }
+                }
+            }
+    );
+*/
 }

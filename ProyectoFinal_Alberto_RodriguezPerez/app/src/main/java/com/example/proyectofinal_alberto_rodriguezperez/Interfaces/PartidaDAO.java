@@ -13,4 +13,7 @@ public interface PartidaDAO {
     @GET("getPartidasByUser.php")
     public Call<List<Partida>> getPartidasUser(@Query("id_Jugador") int jugadorID);
 
+    @GET("getPartidasByUserFiltroTiempo.php")
+    public Call<List<Partida>> getPartidasUserFiltroDias(@Query("id_Jugador") int jugadorID, @Query("numero_dias") int diasAtras);
+
 }

@@ -18,4 +18,7 @@ public interface JugadorDAO {
     @POST("insertaJugador.php")
     public Call<Jugador> addJugador(@Body Jugador jugador);
 
+    @POST("modificaJugador.php")
+    public Call<Jugador> modificaJugador(@Body Jugador jugador);
+
 }
