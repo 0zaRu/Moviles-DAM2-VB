@@ -3,14 +3,18 @@ package com.example.proyectofinal_alberto_rodriguezperez.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectofinal_alberto_rodriguezperez.model.Torneo;
 import com.example.proyectofinal_alberto_rodriguezperez.view.DataActivity;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.service.JugadorService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -93,5 +97,33 @@ public class JugadorController {
 
     public void modificaPerfil(Context contexto, Jugador jugador){
         serviceJugador.modificaJugador(contexto, jugador);
+    }
+
+    public void getJugadoresFiltrados(Context contextParaLista, ListView listaJugadores, String textoBusqueda){
+        serviceJugador.getJugadoresFiltrados(textoBusqueda).enqueue(new Callback<List<Jugador>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Jugador>> call, @NonNull Response<List<Jugador>> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+
+                    ArrayList<Jugador> jugadores = new ArrayList<>();
+                    for (Jugador jugador : response.body()) {
+                        Log.d("TAG", jugador.toString());
+                        jugadores.add(jugador);
+                    }
+
+                    FragmentListJugadoresAdapter adapter = new FragmentListJugadoresAdapter(contextParaLista, jugadores);
+                    listaJugadores.setAdapter(adapter);
+
+                } else {
+                    Log.d("TAG", "Error");
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Jugador>> call, @NonNull Throwable t) {
+                Log.d("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
     }
 }

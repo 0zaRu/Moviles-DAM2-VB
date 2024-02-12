@@ -6,9 +6,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.JugadorDAO;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.view.MainActivity;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -91,6 +92,10 @@ public class JugadorService {
                 Toast.makeText(contexto, "Fallo de conexión con el server", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public Call<List<Jugador>> getJugadoresFiltrados(String txtFiltrar){
+        return getRetrofit().create(JugadorDAO.class).getJugadoresFiltrados(txtFiltrar);
     }
 
 }

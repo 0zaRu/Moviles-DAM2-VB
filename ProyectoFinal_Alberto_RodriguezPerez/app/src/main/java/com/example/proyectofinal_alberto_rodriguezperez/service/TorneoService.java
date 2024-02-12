@@ -38,4 +38,8 @@ public class TorneoService {
         else
             return getRetrofit().create(TorneoDAO.class).getTorneosByIdYFiltro(jugadorId, "Cerrado");
     }
+
+    public Call<List<Torneo>> getTorneosFiltrados(String txtFiltrar){
+        return getRetrofit().create(TorneoDAO.class).getTorneosFiltrados(txtFiltrar);
+    }
 }

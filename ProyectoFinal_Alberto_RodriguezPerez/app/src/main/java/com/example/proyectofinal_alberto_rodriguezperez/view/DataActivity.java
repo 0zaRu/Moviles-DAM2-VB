@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarFormatoFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarResultadoFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarTopMenuFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.InicioTopMenuFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.PartidasFragment;
@@ -33,6 +35,7 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
     Button btBuscar, btInicio;
     static String modoActual = "inicio";
     Jugador jugador;
+    String opcionBusqueda = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +60,13 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragmentACalocar = null;
+        View vistaFalsa = new View(this);
 
         if(modoActual.equals("inicio"))
         {
             fragmentACalocar = new InicioTopMenuFragment();
 
             //Ponemos fragment principial tod-o por defecto
-            View vistaFalsa = new View(this);
             vistaFalsa.setId(R.id.InicioButTodo);
             botoneraInicio(vistaFalsa);
 
@@ -71,7 +74,8 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
         else if(modoActual.equals("buscar"))
         {
             fragmentACalocar = new BuscarTopMenuFragment();
-            //Deberia poner fragment de selección de filtrado de partida/torneo/usuario/texto
+            vistaFalsa.setId(R.id.layoutEstablecebusqueda);
+            botoneraBuscar(vistaFalsa, "");
         }
 
 
@@ -135,28 +139,54 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void botoneraBuscar(View v, String txtBuscar) {
 
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragmentACalocar = null;
+        Bundle args = new Bundle();
 
-        if(v.getId() == R.id.BuscarButPerfil)
+        if(v.getId() == R.id.layoutEstablecebusqueda) {
+            opcionBusqueda = "";
+            fragmentACalocar = new BuscarFormatoFragment();
+        }
+
+        else if(v.getId() == R.id.BuscarButPerfil)
             fragmentACalocar = new PerfilFragment();
 
-        else if(txtBuscar.isEmpty())
+        else if(txtBuscar.isEmpty() && (opcionBusqueda.equals("Torneos") || opcionBusqueda.equals("Jugadores")))
             Toast.makeText(this, "Texto a buscar no establecido", Toast.LENGTH_SHORT).show();
+
+        else if(opcionBusqueda.isEmpty())
+            Toast.makeText(this, "Tipo de búsqueda no establecido", Toast.LENGTH_SHORT).show();
+
+        else
+        { //Es decir, hay formato de búsqueda y/o texto a buscar
+            if(!txtBuscar.isEmpty())
+            { //opción 1, es torneo o usuario, que se buscan por texto
+                args.putString("estiloBusqueda", opcionBusqueda);
+                args.putString("textoBusqueda", txtBuscar);
+
+                fragmentACalocar = new BuscarResultadoFragment();
+
+            }
+            else
+                Toast.makeText(this, "Huevo", Toast.LENGTH_SHORT).show();
+        }
 
 
 
         if(fragmentACalocar != null) {
-            Bundle args = new Bundle();
             args.putSerializable("usuario", jugador);
             fragmentACalocar.setArguments(args);
 
-            transaction.replace(R.id.topFrame, fragmentACalocar);
+            transaction.replace(R.id.principalFrame, fragmentACalocar);
         }
 
         transaction.commit();
+    }
+
+    @Override
+    public void tipoFiltradoBuscar(String tipo) {
+        opcionBusqueda = tipo;
     }
 
     /*

@@ -16,5 +16,6 @@ public interface TorneoDAO {
     public Call<List<Torneo>> getTorneosByIdSinUser(@Query("id") int jugadorID);
     @GET("getTorneosByUserFiltrado.php")
     public Call<List<Torneo>> getTorneosByIdYFiltro(@Query("id") int jugadorID, @Query("estado") String estado);
-
+    @GET("getTorneosFiltrados.php")
+    public Call<List<Torneo>> getTorneosFiltrados(@Query("filtro") String txtFiltro);
 }

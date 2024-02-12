@@ -51,4 +51,32 @@ public class TorneoController {
             }
         });
     }
+
+    public void getTorneosFiltrados(Context contextParaLista, ListView listaTorneos, String textoBusqueda){
+        serviceTorneo.getTorneosFiltrados(textoBusqueda).enqueue(new Callback<List<Torneo>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Torneo>> call, @NonNull Response<List<Torneo>> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+
+                    ArrayList<Torneo> torneos = new ArrayList<>();
+                    for (Torneo torneo : response.body()) {
+                        Log.d("TAG", torneo.toString());
+                        torneos.add(torneo);
+                    }
+
+                    FragmentListTorneosAdapter adapter = new FragmentListTorneosAdapter(contextParaLista, torneos);
+                    listaTorneos.setAdapter(adapter);
+
+                } else {
+                    Log.d("TAG", "Error");
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Torneo>> call, @NonNull Throwable t) {
+                Log.d("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
 }

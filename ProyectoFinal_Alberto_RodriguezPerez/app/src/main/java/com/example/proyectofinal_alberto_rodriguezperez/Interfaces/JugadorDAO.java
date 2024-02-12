@@ -1,6 +1,9 @@
 package com.example.proyectofinal_alberto_rodriguezperez.Interfaces;
 
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -20,5 +23,8 @@ public interface JugadorDAO {
 
     @POST("modificaJugador.php")
     public Call<Jugador> modificaJugador(@Body Jugador jugador);
+
+    @GET("getJugadoresFiltrados.php")
+    public Call<List<Jugador>> getJugadoresFiltrados(@Query("filtro") String txtFiltro);
 
 }
