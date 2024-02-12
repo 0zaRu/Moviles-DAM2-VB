@@ -3,11 +3,12 @@ package com.example.proyectofinal_alberto_rodriguezperez.model;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Jugador implements Serializable {
     private int id;
-    private byte[] imagen;
+    private String imagen;
     private String nombre;
     private String pais;
     private int elo;
@@ -19,8 +20,7 @@ public class Jugador implements Serializable {
     public Jugador() {
     }
 
-    public Jugador(byte[] imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
-        this.imagen = imagen;
+    public Jugador(String imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.nombre = nombre;
         this.pais = pais;
         this.elo = elo;
@@ -28,10 +28,10 @@ public class Jugador implements Serializable {
         this.correoElectronico = correoElectronico;
         this.passwd = passwd;
         this.esAdmin = esAdmin;
+        this.imagen = imagen;
     }
 
-    public Jugador(int id, byte[] imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
-        this.imagen = imagen;
+    public Jugador(int id, String imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
@@ -40,6 +40,7 @@ public class Jugador implements Serializable {
         this.correoElectronico = correoElectronico;
         this.passwd = passwd;
         this.esAdmin = esAdmin;
+        this.imagen = imagen;
     }
 
     public int getId() {
@@ -50,11 +51,11 @@ public class Jugador implements Serializable {
         this.id = id;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -122,10 +123,11 @@ public class Jugador implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", pais='" + pais + '\'' +
                 ", elo=" + elo +
-                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
                 ", correoElectronico='" + correoElectronico + '\'' +
                 ", passwd='" + passwd + '\'' +
                 ", esAdmin=" + esAdmin +
+                ", imagen=" + imagen +
                 '}';
     }
 }

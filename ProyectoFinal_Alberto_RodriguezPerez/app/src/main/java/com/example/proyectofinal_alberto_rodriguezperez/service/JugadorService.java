@@ -87,6 +87,7 @@ public class JugadorService {
 
             @Override
             public void onFailure(Call<Jugador> call, Throwable t) {
+                System.out.println(jugador);
                 Toast.makeText(contexto, "Fallo de conexión con el server", Toast.LENGTH_SHORT).show();
             }
         });

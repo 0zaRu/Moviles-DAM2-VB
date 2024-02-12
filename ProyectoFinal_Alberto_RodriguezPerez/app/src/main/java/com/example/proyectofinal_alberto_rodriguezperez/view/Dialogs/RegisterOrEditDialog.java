@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ImageController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
@@ -29,13 +30,15 @@ import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 public class RegisterOrEditDialog extends DialogFragment implements DialogInterface.OnClickListener, View.OnClickListener {
 
     private final JugadorController jugadorCont = new JugadorController();
-    Jugador recibido = null;
+    Jugador recibido = null, recibidoModificado = new Jugador();
+    String imagen = null;
     TextView nombre, pais, fechaNaci, correo, pass1, pass2, pass3;
     ImageView foto;
 
     public RegisterOrEditDialog(Jugador jugador){
         if(jugador != null){
             this.recibido = jugador;
+            this.imagen = recibido.getImagen();
         }
     }
 
@@ -95,7 +98,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
         switch (which){
             case DialogInterface.BUTTON_POSITIVE:
                 if(recibido != null){
-                    opcionMidificar();
+                    opcionModificar();
                 }else{
                     opcionRegistrar();
                 }
@@ -105,8 +108,9 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
         }
     }
 
-    private void opcionMidificar() {
-        Jugador recibidoModificado = recibido;
+    private void opcionModificar() {
+        recibidoModificado = recibido;
+        recibidoModificado.setImagen(imagen);
 
         if (nombre.getText().toString().isEmpty() ||
                 fechaNaci.getText().toString().isEmpty() ||
@@ -141,7 +145,6 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
     }
 
     private void opcionRegistrar(){
-
         if (nombre.getText().toString().isEmpty() ||
                 fechaNaci.getText().toString().isEmpty() ||
                 pass1.getText().toString().isEmpty() ||
@@ -154,7 +157,9 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
             pass2.setText("");
 
         } else {
-            Jugador add = new Jugador(nombre.getText().toString(),
+            Jugador add = new Jugador(
+                    imagen,
+                    nombre.getText().toString(),
                     pais.getText().toString(),
                     1000,
                     "2003-04-01",
@@ -181,8 +186,10 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
             public void onActivityResult(ActivityResult o) {
 
                 if(o.getData() != null && o.getData().getData() != null) {
-                    Uri imagenUri = o.getData().getData();
-                    foto.setImageURI(imagenUri);
+                    //Uri imagenUri = o.getData().getData();
+                    //foto.setImageURI(imagenUri);
+                    imagen = "huevo";
+                    //imagen = ImageController.byteArrayDelUri(requireContext(), imagenUri);
                 }
             }
         }
