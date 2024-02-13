@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.controller;
+package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,10 +6,10 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListPartidasAdapter;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import com.example.proyectofinal_alberto_rodriguezperez.service.PartidaService;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

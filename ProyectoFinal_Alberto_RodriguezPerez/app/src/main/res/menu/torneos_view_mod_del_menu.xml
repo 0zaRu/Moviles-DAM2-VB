@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/torneoVer" android:title="Ver torneo"/>
+    <item android:id="@+id/torneoMod" android:title="Modificar torneo"/>
+    <item android:id="@+id/torneoDel" android:title="Eliminar torneo"/>
+</menu>

@@ -16,11 +16,6 @@ import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BuscarFormatoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BuscarFormatoFragment extends Fragment {
     public BuscarFormatoFragment() {}
 
@@ -73,6 +68,8 @@ public class BuscarFormatoFragment extends Fragment {
             dataActivity.tipoFiltradoBuscar(textoSeleccionado);
         });
 
+
+        //Cuando trabaje con partidas debo asignar el contextMenu de solo visionado EN CASO de que vean un torneo y vean sus partidas asociadas
         return vista;
     }
 }

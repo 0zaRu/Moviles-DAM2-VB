@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -22,8 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.ImageController;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 

@@ -1,15 +1,24 @@
 package com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.PartidaController;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ContextMenuController;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.PartidaController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,7 @@ public class PartidasFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private Jugador mParam1;
+    ListView listaPartidas;
 
     /**
      * Use this factory method to create a new instance of
@@ -60,10 +70,28 @@ public class PartidasFragment extends Fragment {
         // Inflate the layout for this fragment
         View vista =  inflater.inflate(R.layout.fragment_partidas, container, false);
 
-        ListView listaPartidas = vista.findViewById(R.id.listaFragmentPartidas);
+        listaPartidas = vista.findViewById(R.id.listaFragmentPartidas);
+        registerForContextMenu(listaPartidas);
+        //Un admin debería poder ver el 100%
 
         partidaControl.getPartidas(getContext(), listaPartidas, mParam1.getId(), 0);
 
         return vista;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.partidas_view_mod_del_menu, menu);
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        ContextMenuController.partidasMenu((Partida) listaPartidas.getAdapter().getItem(info.position), item, getContext());
+
+        return super.onContextItemSelected(item);
     }
 }

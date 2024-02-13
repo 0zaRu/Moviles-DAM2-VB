@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.controller;
+package com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
-import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 
 import java.util.ArrayList;
 

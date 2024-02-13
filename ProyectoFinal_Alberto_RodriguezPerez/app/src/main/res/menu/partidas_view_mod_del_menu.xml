@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/partVer" android:title="Ver partida"/>
+    <item android:id="@+id/partMod" android:title="Modificar partida"/>
+    <item android:id="@+id/partDel" android:title="Eliminar partida"/>
+</menu>

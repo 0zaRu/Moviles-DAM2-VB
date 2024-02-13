@@ -2,7 +2,6 @@ package com.example.proyectofinal_alberto_rodriguezperez.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
-import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.RegisterOrEditDialog;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 

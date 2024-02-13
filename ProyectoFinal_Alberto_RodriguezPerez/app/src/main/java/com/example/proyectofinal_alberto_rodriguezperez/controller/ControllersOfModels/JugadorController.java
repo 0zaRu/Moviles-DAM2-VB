@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.controller;
+package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.proyectofinal_alberto_rodriguezperez.model.Torneo;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListJugadoresAdapter;
 import com.example.proyectofinal_alberto_rodriguezperez.view.DataActivity;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.service.JugadorService;

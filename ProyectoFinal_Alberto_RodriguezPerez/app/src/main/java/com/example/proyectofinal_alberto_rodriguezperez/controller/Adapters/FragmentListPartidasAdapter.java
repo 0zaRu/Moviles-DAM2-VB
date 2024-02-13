@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.controller;
+package com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -49,6 +49,17 @@ public class FragmentListPartidasAdapter extends ArrayAdapter {
             if (partida.getIdTorneo() != 0)
                 torneo.setText(partida.getRefTorneo());
         }
+
+        //Permisos de visualización, modificación y borrado
+        //Como esta clase la uso para listar ya sean partidas mias o no, sea admin o no, va a ser un if else que permita
+        //Hacer tod-o en función del caso
+
+        //NO ADMIN ================
+        //Mis partidas -ver -modificar -eliminar
+        //Otras partidas -ver
+
+        //ADMIN ==================
+        //Sea lo que sea -ver -modificar -eliminar
 
         return vista;
     }

@@ -9,31 +9,27 @@
     android:id="@+id/layoutEstablecebusqueda">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Filtrar texto introducido por:"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/grupoFiltradoBusqueda"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/grupoFiltradoBusqueda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filtrar texto introducido por:"
+                android:textSize="25sp" />
 
             <RadioButton
+                android:layout_marginTop="24dp"
                 android:id="@+id/BuscarRbTorneos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,27 +39,18 @@
                 android:id="@+id/BuscarRbPartidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Jugadores" />
-        </LinearLayout>
+                android:text="Jugadores"/>
 
-        <TextView
-            android:layout_marginTop="70dp"
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Filtrar por contexto: (falta)"
-            android:textSize="25sp"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="340dp" />
-
-        <LinearLayout
-            android:layout_marginTop="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Filtrar por contexto:"
+                android:textSize="25sp" />
 
             <RadioButton
+                android:layout_marginTop="20dp"
                 android:id="@+id/BuscarRbJuegoBlancas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,18 +60,11 @@
                 android:id="@+id/BuscarRbJuegoNegras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Juego Negras" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="Juego Negras"/>
 
             <RadioButton
                 android:id="@+id/BuscarRbGano"
+                android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gano" />
@@ -93,27 +73,24 @@
                 android:id="@+id/BuscarRbPierdo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Pierdo" />
+                android:text="Pierdo"/>
 
             <RadioButton
                 android:id="@+id/BuscarRbEmpato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Empato" />
-        </LinearLayout>
+                android:text="Empato"/>
 
-    </RadioGroup>
+        </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Molaría un desplegable con los usuarios registrados contra los que he jugado y que muestre las partidas que tengo con esa persona
-            \n\nTambién uno para filtrar partidas por hace cuantos días fue (que ya tengo el php)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grupoFiltradoBusqueda" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Molaría un desplegable con los usuarios registrados contra los que he jugado y que muestre las partidas que tengo con esa persona
+                \n\nTambién uno para filtrar partidas por hace cuantos días fue (que ya tengo el php)" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

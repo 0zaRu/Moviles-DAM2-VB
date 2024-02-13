@@ -1,4 +1,4 @@
-package com.example.proyectofinal_alberto_rodriguezperez.controller;
+package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListTorneosAdapter;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Torneo;
 import com.example.proyectofinal_alberto_rodriguezperez.service.TorneoService;
 

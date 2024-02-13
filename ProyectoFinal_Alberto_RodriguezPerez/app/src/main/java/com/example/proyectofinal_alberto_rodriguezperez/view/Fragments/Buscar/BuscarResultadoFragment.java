@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.proyectofinal_alberto_rodriguezperez.R;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.JugadorController;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.PartidaController;
-import com.example.proyectofinal_alberto_rodriguezperez.controller.TorneoController;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.JugadorController;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.TorneoController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 
 public class BuscarResultadoFragment extends Fragment {
