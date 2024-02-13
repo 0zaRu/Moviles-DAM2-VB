@@ -3,6 +3,7 @@ package com.example.proyectofinal_alberto_rodriguezperez.controller;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -76,6 +77,25 @@ public class TorneoController {
             @Override
             public void onFailure(@NonNull Call<List<Torneo>> call, @NonNull Throwable t) {
                 Log.d("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    public void getNombreTorneoById(TextView tvPonerNombre, int torneoId){
+        serviceTorneo.getNombreTorneoById(torneoId).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    tvPonerNombre.setText(response.body());
+
+                }else{
+                    System.out.println("Error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                System.out.println("Error conexión php");
             }
         });
     }

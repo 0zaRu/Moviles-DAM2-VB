@@ -21,26 +21,99 @@
 
     <RadioGroup
         android:id="@+id/grupoFiltradoBusqueda"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:orientation="horizontal"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <RadioButton
-            android:id="@+id/BuscarRbTorneos"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Torneos" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/BuscarRbPartidas"
+            <RadioButton
+                android:id="@+id/BuscarRbTorneos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Torneos" />
+
+            <RadioButton
+                android:id="@+id/BuscarRbPartidas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Jugadores" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="70dp"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="Jugadores" />
+            android:text="Filtrar por contexto: (falta)"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="340dp" />
+
+        <LinearLayout
+            android:layout_marginTop="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/BuscarRbJuegoBlancas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juego Blancas" />
+
+            <RadioButton
+                android:id="@+id/BuscarRbJuegoNegras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Juego Negras" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/BuscarRbGano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gano" />
+
+            <RadioButton
+                android:id="@+id/BuscarRbPierdo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Pierdo" />
+
+            <RadioButton
+                android:id="@+id/BuscarRbEmpato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Empato" />
+        </LinearLayout>
 
     </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Molaría un desplegable con los usuarios registrados contra los que he jugado y que muestre las partidas que tengo con esa persona
+            \n\nTambién uno para filtrar partidas por hace cuantos días fue (que ya tengo el php)"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grupoFiltradoBusqueda" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,8 +17,7 @@ import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import java.util.ArrayList;
 
 public class FragmentListPartidasAdapter extends ArrayAdapter {
-
-    ArrayList<Partida> partidas = new ArrayList<>();
+    ArrayList<Partida> partidas;
     Context context;
 
     public FragmentListPartidasAdapter(@NonNull Context context, ArrayList<Partida> partidas) {
@@ -43,10 +42,12 @@ public class FragmentListPartidasAdapter extends ArrayAdapter {
         //TextView verJugadas =
 
         if(partida.getId()!= 0) {
-            jugador1.setText(""+partida.getIdJugadorBlancas());
-            jugador2.setText(""+partida.getIdJugadorNegras());
-            resultado.setText(""+partida.getResultado());
-            if (partida.getIdTorneo() != 0) torneo.setText(""+partida.getIdTorneo());
+            jugador1.setText(partida.getRefJugadorBlancas());
+            jugador2.setText(partida.getRefJugadorNegras());
+            resultado.setText(partida.getResultado());
+
+            if (partida.getIdTorneo() != 0)
+                torneo.setText(partida.getRefTorneo());
         }
 
         return vista;

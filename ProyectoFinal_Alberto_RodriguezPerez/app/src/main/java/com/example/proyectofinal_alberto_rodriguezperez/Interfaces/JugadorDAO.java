@@ -27,4 +27,7 @@ public interface JugadorDAO {
     @GET("getJugadoresFiltrados.php")
     public Call<List<Jugador>> getJugadoresFiltrados(@Query("filtro") String txtFiltro);
 
+    @GET("getJugadorNameById.php")
+    public Call<String> getJugadorNameById(@Query("id") int jugadorId);
+
 }

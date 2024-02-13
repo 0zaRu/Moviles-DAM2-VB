@@ -98,4 +98,7 @@ public class JugadorService {
         return getRetrofit().create(JugadorDAO.class).getJugadoresFiltrados(txtFiltrar);
     }
 
+    public Call<String> getJugadorNameById(int jugadorId){
+        return getRetrofit().create(JugadorDAO.class).getJugadorNameById(jugadorId);
+    }
 }

@@ -42,4 +42,8 @@ public class TorneoService {
     public Call<List<Torneo>> getTorneosFiltrados(String txtFiltrar){
         return getRetrofit().create(TorneoDAO.class).getTorneosFiltrados(txtFiltrar);
     }
+
+    public Call<String> getNombreTorneoById(int torneoId){
+        return getRetrofit().create(TorneoDAO.class).getNombreTorneoById(torneoId);
+    }
 }

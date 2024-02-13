@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -123,6 +124,25 @@ public class JugadorController {
             @Override
             public void onFailure(@NonNull Call<List<Jugador>> call, @NonNull Throwable t) {
                 Log.d("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    public void getJugadorNameById(TextView tvPonerNombre, int jugadorId){
+        serviceJugador.getJugadorNameById(jugadorId).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    tvPonerNombre.setText(response.body());
+                }
+                else
+                    System.out.println("error jugador nombre");
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                System.out.println("fallo al conectar al php");
             }
         });
     }
