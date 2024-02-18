@@ -5,22 +5,25 @@ import androidx.annotation.NonNull;
 public class Movimiento {
     private int id;
     private int numeroMovimiento;
-    private String movimiento;
+    private String movimiento1;
+    private String movimiento2;
     private int idPartida;
 
     public Movimiento() {
     }
 
-    public Movimiento(int numeroMovimiento, String movimiento, int idPartida) {
+    public Movimiento(int numeroMovimiento, String movimiento1, String movimiento2, int idPartida) {
         this.numeroMovimiento = numeroMovimiento;
-        this.movimiento = movimiento;
+        this.movimiento1 = movimiento1;
+        this.movimiento2 = movimiento2;
         this.idPartida = idPartida;
     }
 
-    public Movimiento(int id, int numeroMovimiento, String movimiento, int idPartida) {
+    public Movimiento(int id, int numeroMovimiento, String movimiento1, String movimiento2, int idPartida) {
         this.id = id;
         this.numeroMovimiento = numeroMovimiento;
-        this.movimiento = movimiento;
+        this.movimiento1 = movimiento1;
+        this.movimiento2 = movimiento2;
         this.idPartida = idPartida;
     }
 
@@ -40,12 +43,20 @@ public class Movimiento {
         this.numeroMovimiento = numeroMovimiento;
     }
 
-    public String getMovimiento() {
-        return movimiento;
+    public String getMovimiento1() {
+        return movimiento1;
     }
 
-    public void setMovimiento(String movimiento) {
-        this.movimiento = movimiento;
+    public void setMovimiento1(String movimiento1) {
+        this.movimiento1 = movimiento1;
+    }
+
+    public String getMovimiento2() {
+        return movimiento2;
+    }
+
+    public void setMovimiento2(String movimiento2) {
+        this.movimiento2 = movimiento2;
     }
 
     public int getIdPartida() {
@@ -56,14 +67,8 @@ public class Movimiento {
         this.idPartida = idPartida;
     }
 
-    @NonNull
     @Override
     public String toString() {
-        return "Movimiento{" +
-                "id=" + id +
-                ", numeroMovimiento=" + numeroMovimiento +
-                ", movimiento='" + movimiento + '\'' +
-                ", idPartida=" + idPartida +
-                '}';
+        return  numeroMovimiento + " " + movimiento1 + " " + movimiento2;
     }
 }

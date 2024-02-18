@@ -2,20 +2,21 @@ package com.example.proyectofinal_alberto_rodriguezperez.model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Torneo {
+public class Torneo implements Serializable {
     private int id;
     private String nombre;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String fechaInicio;
+    private String fechaFin;
     private String lugar;
     private String tipo;
 
     public Torneo() {
     }
 
-    public Torneo(String nombre, Date fechaInicio, Date fechaFin, String lugar, String tipo) {
+    public Torneo(String nombre, String fechaInicio, String fechaFin, String lugar, String tipo) {
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -23,7 +24,7 @@ public class Torneo {
         this.tipo = tipo;
     }
 
-    public Torneo(int id, String nombre, Date fechaInicio, Date fechaFin, String lugar, String tipo) {
+    public Torneo(int id, String nombre, String fechaInicio, String fechaFin, String lugar, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
@@ -48,19 +49,19 @@ public class Torneo {
         this.nombre = nombre;
     }
 
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 

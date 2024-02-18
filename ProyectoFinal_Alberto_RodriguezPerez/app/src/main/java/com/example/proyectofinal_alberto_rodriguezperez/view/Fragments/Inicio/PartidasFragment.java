@@ -72,7 +72,10 @@ public class PartidasFragment extends Fragment {
 
         listaPartidas = vista.findViewById(R.id.listaFragmentPartidas);
         registerForContextMenu(listaPartidas);
-        //Un admin debería poder ver el 100%
+
+        vista.findViewById(R.id.floatPartidaAddButton).setOnClickListener(v -> {
+            ContextMenuController.partidasMenu(null, mParam1, null, getActivity());
+        });
 
         partidaControl.getPartidas(getContext(), listaPartidas, mParam1.getId(), 0);
 
@@ -90,7 +93,7 @@ public class PartidasFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        ContextMenuController.partidasMenu((Partida) listaPartidas.getAdapter().getItem(info.position), item, getContext());
+        ContextMenuController.partidasMenu((Partida) listaPartidas.getAdapter().getItem(info.position), mParam1, item, getActivity());
 
         return super.onContextItemSelected(item);
     }

@@ -3,11 +3,15 @@ package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersO
 import android.content.Context;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListPartidasAdapter;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
+import com.example.proyectofinal_alberto_rodriguezperez.service.MovimientoService;
 import com.example.proyectofinal_alberto_rodriguezperez.service.PartidaService;
 
 import java.util.ArrayList;
@@ -53,5 +57,93 @@ public class PartidaController {
                     }
                 }
         );
+    }
+
+    public void borrarPartida(Context context, int id) {
+        PartidaService ps = new PartidaService();
+        ps.borrarPartida(id).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()){
+                    if(response.body() == 1)
+                        Toast.makeText(context, "Se ha borrado correctamente", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context, "Fallo al hacer el borrado", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                    Toast.makeText(context, "Error de borrado", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(context, "Error a la hora de conectar", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void addOrModify(Context context, Partida partinaN) {
+        PartidaService ps = new PartidaService();
+
+        ps.addOrModify(partinaN).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful() && response.body() == 1){
+                    MovimientoService ms = new MovimientoService();
+
+                    ms.addOrModify(partinaN.getMovimientos()).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            if(response.isSuccessful() && response.body() == 1){
+                                Toast.makeText(context, "Resultado exitoso", Toast.LENGTH_SHORT).show();
+                                ((OnMyEvent)context).actualizaFragment();
+                            }
+                            else
+                                Toast.makeText(context, "Error al cambiar movimientos", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            Toast.makeText(context, "Error llegando al php", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else
+                    Toast.makeText(context, "Fallo al insertar la partida", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(context, "Fallo intentando acceder", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getPartidasByTorneo(Context context, ListView partidasAso, int id) {
+        PartidaService ps = new PartidaService();
+
+        ps.getPartidasByTorneo(id).enqueue(new Callback<List<Partida>>() {
+            @Override
+            public void onResponse(Call<List<Partida>> call, Response<List<Partida>> response) {
+                if(response.isSuccessful()){
+                    assert response.body() != null;
+                    ArrayList<Partida> partidas = new ArrayList<>();
+
+                    for(Partida partida: response.body()){
+                        partidas.add(partida);
+                    }
+
+                    FragmentListPartidasAdapter adapter = new FragmentListPartidasAdapter(context, partidas);
+                    partidasAso.setAdapter(adapter);
+                }
+                else
+                    Toast.makeText(context, "Fallo recibiendo partidas", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Partida>> call, Throwable t) {
+                Toast.makeText(context, "Error contactando", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

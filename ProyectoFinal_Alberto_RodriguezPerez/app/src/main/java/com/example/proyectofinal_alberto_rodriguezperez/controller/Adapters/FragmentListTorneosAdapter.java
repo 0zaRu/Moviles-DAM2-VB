@@ -43,12 +43,10 @@ public class FragmentListTorneosAdapter extends ArrayAdapter {
         TextView Pais = vista.findViewById(R.id.tvPais);
         TextView estado = vista.findViewById(R.id.tvEstado);
 
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
         if(torneo.getId()!= 0) {
             nombre.setText(torneo.getNombre());
-            fechaIni.setText("Inicio: "+formato.format(torneo.getFechaInicio()));
-            fechaFin.setText("Fin:    "+formato.format(torneo.getFechaFin()));
+            fechaIni.setText("Inicio: "+torneo.getFechaInicio());
+            fechaFin.setText("Fin:    "+torneo.getFechaFin());
             Pais.setText(torneo.getLugar());
             estado.setText(torneo.getTipo());
         }

@@ -3,11 +3,12 @@ package com.example.proyectofinal_alberto_rodriguezperez.model;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Partida implements Serializable {
     private int id;
-    private Date fecha;
+    private String fecha;
     private String lugar;
     private String resultado;
     private int idJugadorBlancas;
@@ -19,10 +20,20 @@ public class Partida implements Serializable {
     private String refJugadorNegras;
     private String refTorneo;
 
+    public ArrayList<Movimiento> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(ArrayList<Movimiento> movimientos) {
+        this.movimientos = movimientos;
+    }
+
+    private ArrayList<Movimiento> movimientos;
+
     public Partida() {
     }
 
-    public Partida(Date fecha, String lugar, String resultado, int idJugadorBlancas, int idJugadorNegras, int idTorneo) {
+    public Partida(String fecha, String lugar, String resultado, int idJugadorBlancas, int idJugadorNegras, int idTorneo) {
         this.fecha = fecha;
         this.lugar = lugar;
         this.resultado = resultado;
@@ -36,7 +47,7 @@ public class Partida implements Serializable {
         this.refTorneo = "ref" + idTorneo;
     }
 
-    public Partida(int id, Date fecha, String lugar, String resultado, int idJugadorBlancas, int idJugadorNegras, int idTorneo) {
+    public Partida(int id, String fecha, String lugar, String resultado, int idJugadorBlancas, int idJugadorNegras, int idTorneo) {
         this.id = id;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -59,11 +70,11 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

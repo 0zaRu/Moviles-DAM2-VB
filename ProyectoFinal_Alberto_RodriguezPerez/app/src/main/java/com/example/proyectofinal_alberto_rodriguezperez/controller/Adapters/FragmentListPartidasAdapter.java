@@ -39,7 +39,6 @@ public class FragmentListPartidasAdapter extends ArrayAdapter {
         TextView jugador2 = vista.findViewById(R.id.tvJugador2);
         TextView resultado = vista.findViewById(R.id.tvResultado);
         TextView torneo = vista.findViewById(R.id.tvTorneo);
-        //TextView verJugadas =
 
         if(partida.getId()!= 0) {
             jugador1.setText(partida.getRefJugadorBlancas());

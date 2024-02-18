@@ -90,9 +90,9 @@ public class TodoFragment extends Fragment {
         ListView lvReferencia = (ListView) info.targetView.getParent();
 
         if (lvReferencia == listaPartidas)
-            ContextMenuController.partidasMenu((Partida) listaPartidas.getAdapter().getItem(info.position), item, getContext());
+            ContextMenuController.partidasMenu((Partida) listaPartidas.getAdapter().getItem(info.position), mParam1, item, getActivity());
         else
-            ContextMenuController.torneosMenu((Torneo) listaTorneos.getAdapter().getItem(info.position), item, getContext());
+            ContextMenuController.torneosMenu((Torneo) listaTorneos.getAdapter().getItem(info.position), mParam1, item, getActivity());
 
         return super.onContextItemSelected(item);
     }

@@ -1,19 +1,11 @@
 package com.example.proyectofinal_alberto_rodriguezperez.view;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -187,6 +179,11 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void tipoFiltradoBuscar(String tipo) {
         opcionBusqueda = tipo;
+    }
+
+    @Override
+    public void actualizaFragment(){
+        ponerTopMenu();
     }
 
     /*

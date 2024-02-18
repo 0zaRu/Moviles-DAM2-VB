@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.Fragments.modelInfo.PartidaInfoFragment"
+    android:background="@color/GrisHueso">
+
+    <TextView
+        android:id="@+id/tvTorneoNombre"
+        android:layout_width="140sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Torneo XV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTorneoLugar"
+        android:layout_width="140dp"
+        android:layout_height="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Lugar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTorneoNombre" />
+
+    <TextView
+        android:id="@+id/tvTorneoFechaIni"
+        android:layout_width="140dp"
+        android:layout_height="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="Fecha 1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTorneoNombre" />
+
+    <TextView
+        android:id="@+id/tvTorneoEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="16dp"
+        android:text="Abierto"
+        app:layout_constraintStart_toEndOf="@+id/tvTorneoNombre"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTorneoFechaFin"
+        android:layout_width="140sp"
+        android:layout_height="30dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="124dp"
+        android:gravity="center"
+        android:text="Fecha 2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toEndOf="@+id/tvTorneoFechaIni"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_marginTop="50dp"
+        android:id="@+id/listViewPartidasAdociadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTorneoFechaIni" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatTorneoVerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/star_off"
+        android:contentDescription="@string/editar_perfil"
+        android:focusable="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

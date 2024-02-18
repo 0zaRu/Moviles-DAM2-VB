@@ -3,13 +3,16 @@ package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersO
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListJugadoresAdapter;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import com.example.proyectofinal_alberto_rodriguezperez.view.DataActivity;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.service.JugadorService;
@@ -143,6 +146,38 @@ public class JugadorController {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 System.out.println("fallo al conectar al php");
+            }
+        });
+    }
+
+    public void setUserSpinner(Context context, Spinner jugadorS, Partida partida, boolean esBlancas) {
+        JugadorService js = new JugadorService();
+
+        js.getJugadoresFiltrados("").enqueue(new Callback<List<Jugador>>() {
+            @Override
+            public void onResponse(Call<List<Jugador>> call, Response<List<Jugador>> response) {
+                if(response.isSuccessful()){
+                    ArrayList<String> nombres = new ArrayList<>();
+                    assert response.body() != null;
+
+                    for(Jugador jugador: response.body())
+                        nombres.add(jugador.getNombre());
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, nombres);
+                    jugadorS.setAdapter(adapter);
+
+                    if(partida != null){
+                        if(esBlancas)
+                            jugadorS.setSelection(nombres.indexOf(partida.getRefJugadorBlancas()));
+                        else
+                            jugadorS.setSelection(nombres.indexOf(partida.getRefJugadorNegras()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Jugador>> call, Throwable t) {
+
             }
         });
     }

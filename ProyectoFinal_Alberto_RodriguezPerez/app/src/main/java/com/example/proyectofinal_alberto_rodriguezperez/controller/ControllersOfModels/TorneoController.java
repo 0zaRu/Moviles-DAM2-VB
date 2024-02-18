@@ -2,12 +2,18 @@ package com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersO
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListTorneosAdapter;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Torneo;
 import com.example.proyectofinal_alberto_rodriguezperez.service.TorneoService;
 
@@ -97,6 +103,71 @@ public class TorneoController {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 System.out.println("Error conexión php");
+            }
+        });
+    }
+
+    public void setTorneoSpinner(Context context, Spinner torneo, Partida partida) {
+        TorneoService ts = new TorneoService();
+
+        ts.getTorneosFiltrados("").enqueue(new Callback<List<Torneo>>() {
+            @Override
+            public void onResponse(Call<List<Torneo>> call, Response<List<Torneo>> response) {
+                if(response.isSuccessful()){
+                    ArrayList<String> nombres = new ArrayList<>();
+                    assert response.body() != null;
+
+                    for(Torneo torneo: response.body())
+                        nombres.add(torneo.getNombre());
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, nombres);
+                    torneo.setAdapter(adapter);
+
+                    if(partida != null)
+                        torneo.setSelection(nombres.indexOf(partida.getRefTorneo()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Torneo>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void borrarTorneo(Context context, int id) {
+        TorneoService ts = new TorneoService();
+
+        ts.borrarTorneo(id).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful())
+                    ((OnMyEvent)context).actualizaFragment();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void addOrModify(Context context, Torneo torneoN) {
+        TorneoService ts = new TorneoService();
+
+        ts.addOrModify(torneoN).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful() && response.body() == 1){
+                    Toast.makeText(context, "Acción completada", Toast.LENGTH_SHORT).show();
+                    ((OnMyEvent)context).actualizaFragment();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
             }
         });
     }

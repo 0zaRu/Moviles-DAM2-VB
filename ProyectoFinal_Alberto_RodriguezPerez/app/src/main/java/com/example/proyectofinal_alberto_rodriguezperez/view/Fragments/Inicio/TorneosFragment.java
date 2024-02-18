@@ -64,6 +64,10 @@ public class TorneosFragment extends Fragment {
         registerForContextMenu(listaMisTorneos);
         registerForContextMenu(listaOtrosTorneos);
 
+        vista.findViewById(R.id.floatTorneoAddButton).setOnClickListener(v -> {
+            ContextMenuController.torneosMenu(null, mParam1, null, getActivity());
+        });
+
         return vista;
     }
 
@@ -85,9 +89,9 @@ public class TorneosFragment extends Fragment {
         ListView lvReferencia = (ListView) info.targetView.getParent();
 
         if (lvReferencia == listaMisTorneos) {
-            ContextMenuController.torneosMenu((Torneo) listaMisTorneos.getAdapter().getItem(info.position), item, getContext());
+            ContextMenuController.torneosMenu((Torneo) listaMisTorneos.getAdapter().getItem(info.position), mParam1, item, getActivity());
         } else if (lvReferencia == listaOtrosTorneos) {
-            ContextMenuController.torneosMenu((Torneo) listaOtrosTorneos.getAdapter().getItem(info.position), item, getContext());
+            ContextMenuController.torneosMenu((Torneo) listaOtrosTorneos.getAdapter().getItem(info.position), mParam1, item, getActivity());
         }
 
         return super.onContextItemSelected(item);

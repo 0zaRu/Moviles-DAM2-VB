@@ -6,4 +6,6 @@ public interface OnMyEvent {
     void botoneraInicio(View v);
     void botoneraBuscar(View v, String txtBuscar);
     void tipoFiltradoBuscar(String tipo);
+
+    void actualizaFragment();
 }

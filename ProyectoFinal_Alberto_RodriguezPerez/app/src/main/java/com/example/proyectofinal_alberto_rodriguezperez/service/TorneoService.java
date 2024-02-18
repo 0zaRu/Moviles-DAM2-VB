@@ -46,4 +46,12 @@ public class TorneoService {
     public Call<String> getNombreTorneoById(int torneoId){
         return getRetrofit().create(TorneoDAO.class).getNombreTorneoById(torneoId);
     }
+
+    public Call<Integer> borrarTorneo(int id) {
+        return getRetrofit().create(TorneoDAO.class).borrarTorneo(id);
+    }
+
+    public Call<Integer> addOrModify(Torneo torneo) {
+        return getRetrofit().create(TorneoDAO.class).addOrModify(torneo);
+    }
 }

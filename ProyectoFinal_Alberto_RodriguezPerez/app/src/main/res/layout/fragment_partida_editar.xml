@@ -25,22 +25,20 @@
         app:layout_constraintStart_toEndOf="@+id/enunciado1"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:text="Alberto"
+    <Spinner
         android:id="@+id/tvJugador1"
-        android:layout_width="140dp"
-        android:layout_height="30sp"
+        android:layout_width="137dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enunciado1" />
 
-    <TextView
-        android:text="Josefina"
+    <Spinner
         android:id="@+id/tvJugador2"
-        android:layout_width="140sp"
-        android:layout_height="30dp"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
@@ -49,25 +47,35 @@
         app:layout_constraintStart_toEndOf="@+id/tvJugador1"
         app:layout_constraintTop_toBottomOf="@+id/enunciado2" />
 
-    <TextView
-        android:text="1 - 0"
+    <Spinner
         android:id="@+id/tvResultado"
-        android:layout_width="match_parent"
-        android:layout_height="30sp"
+        android:layout_width="130dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="1 - 0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvJugador1"
-        android:gravity="center"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvJugador1" />
 
-    <TextView
-        android:id="@+id/tvFechaPartida"
+    <Button
+        android:id="@+id/buttonTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="asdasd"
+        android:layout_marginTop="4dp"
+        android:text="Seleccionar Fecha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.721"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/enunciado3"
         app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
+
+    <TextView
+        android:id="@+id/tvVerFechaSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTimePicker" />
 
     <TextView
         android:id="@+id/enunciado3"
@@ -78,32 +86,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
 
-    <TextView
-        android:text="Sin definir"
+    <Spinner
         android:id="@+id/tvTorneo"
-        android:layout_width="140sp"
-        android:layout_height="30sp"
+        android:layout_width="210dp"
+        android:layout_height="43dp"
         android:layout_marginTop="36dp"
+        android:text="Sin definir"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/enunciado3" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Lugar de la partida:"
+        android:layout_marginTop="32dp"
+        android:text="Lugar de juego:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneo" />
 
-    <TextView
-        android:id="@+id/tvLugarPartida"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etLugarPartida"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="España"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneo" />
 
     <TextView
@@ -116,16 +123,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneo" />
 
-    <ListView
-        android:layout_marginTop="20dp"
-        android:id="@+id/listViewMovimientos"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enunciado4" />
+        app:layout_constraintTop_toBottomOf="@+id/enunciado4"
+        app:layout_constraintVertical_bias="0.026">
+
+        <EditText
+            android:id="@+id/tvMovimientos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatPartidaVerButton"
+        android:id="@+id/floatPartidaModifyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -133,7 +148,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/star_off"
+        app:srcCompat="@android:drawable/ic_menu_edit"
         android:contentDescription="@string/editar_perfil"
         android:focusable="true" />
 

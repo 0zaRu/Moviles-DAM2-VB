@@ -26,4 +26,16 @@ public class PartidaService {
         else
             return getRetrofit().create(PartidaDAO.class).getPartidasUserFiltroDias(jugadorId, filtroDiasAtras);
     }
+
+    public Call<Integer> borrarPartida(int id) {
+        return getRetrofit().create(PartidaDAO.class).borrarPartidaById(id);
+    }
+
+    public Call<Integer> addOrModify(Partida partinaN) {
+        return getRetrofit().create(PartidaDAO.class).addOrModify(partinaN);
+    }
+
+    public Call<List<Partida>> getPartidasByTorneo(int id) {
+        return getRetrofit().create(PartidaDAO.class).getPartidasByTorneo(id);
+    }
 }
