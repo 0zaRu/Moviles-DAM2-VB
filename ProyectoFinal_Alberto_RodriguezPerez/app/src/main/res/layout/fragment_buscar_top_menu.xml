@@ -14,26 +14,33 @@
 
         <Button
             android:id="@+id/BuscarButPerfil"
-            android:layout_width="57dp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10sp"
+            android:backgroundTint="@color/GrisHueso"
+            android:textColor="@color/carne"
             android:text="yo"/>
 
         <EditText
             android:id="@+id/BuscarEtBusqueda"
-            android:layout_marginStart="28sp"
-            android:gravity="end"
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_width="200sp"
-            android:layout_height="wrap_content"/>
+            android:layout_marginStart="28sp"
+            android:backgroundTint="@color/GrisHueso"
+            android:gravity="end" />
 
         <Button
+            android:layout_gravity="end"
             android:id="@+id/BuscarButlupa"
-            android:layout_width="57dp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30dp"
-            android:textSize="30sp"
+            android:backgroundTint="@color/GrisHueso"
+            android:textColor="@color/carne"
+            android:layout_marginEnd="15dp"
             android:text="Q" />
 
     </LinearLayout>

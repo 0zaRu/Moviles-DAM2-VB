@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jugadores"/>
-
+<!--
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
@@ -80,16 +80,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Empato"/>
-
+-->
         </RadioGroup>
-
+<!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="Molaría un desplegable con los usuarios registrados contra los que he jugado y que muestre las partidas que tengo con esa persona
                 \n\nTambién uno para filtrar partidas por hace cuantos días fue (que ya tengo el php)" />
-
+-->
     </LinearLayout>
 
 

@@ -22,12 +22,20 @@ public interface JugadorDAO {
     public Call<Jugador> addJugador(@Body Jugador jugador);
 
     @POST("modificaJugador.php")
-    public Call<Jugador> modificaJugador(@Body Jugador jugador);
+    public Call<Integer> modificaJugador(@Body Jugador jugador);
 
     @GET("getJugadoresFiltrados.php")
     public Call<List<Jugador>> getJugadoresFiltrados(@Query("filtro") String txtFiltro);
 
+    @GET("getJugadoresFiltradosByAdmin.php")
+    public Call<List<Jugador>> getJugadoresFiltradosByAdmin();
+
     @GET("getJugadorNameById.php")
     public Call<String> getJugadorNameById(@Query("id") int jugadorId);
 
+    @POST("borrarJugadorById.php")
+    public Call<Integer> borrarJugador(@Query("jugadorId") int id);
+
+    @GET("getJugadoresAdmin.php")
+    public Call<Integer> getNumAdmin();
 }

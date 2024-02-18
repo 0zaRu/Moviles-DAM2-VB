@@ -1,11 +1,7 @@
 package com.example.proyectofinal_alberto_rodriguezperez.controller;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -17,9 +13,12 @@ import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Torneo;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.JugadorAdminDialog;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.JugadorDelDialog;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.PartidaDelDialog;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.RegisterOrEditDialog;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs.TorneoDelDialog;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.modelInfo.PerfilFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.modelInfo.PartidaInfoFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.modelInfo.TorneoInfoFragment;
 
@@ -99,6 +98,47 @@ public class ContextMenuController {
         if(fragmentACalocar != null) {
             args.putSerializable("jugador", jugador);
             args.putSerializable("torneo", torneoSelecet);
+            fragmentACalocar.setArguments(args);
+
+            transaction.add(R.id.principalFrame, fragmentACalocar);
+        }
+
+        transaction.commit();
+    }
+
+    public static void jugadoresMenu(Jugador jugadorSelect, Jugador jugador, MenuItem item, FragmentActivity actividad) {
+        FragmentManager fragmentManager = actividad.getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment fragmentACalocar = null;
+        Bundle args = new Bundle();
+
+        if(item != null && (item.getItemId() == R.id.jugVer))
+        {
+            fragmentACalocar = new PerfilFragment();
+            args.putString("modo", "ver");
+
+        }
+        else if (item != null && (item.getItemId() == R.id.jugMod))
+        {
+            RegisterOrEditDialog dialog = new RegisterOrEditDialog(jugadorSelect);
+            dialog.show(actividad.getSupportFragmentManager(), "llamadaCMC");
+        }
+        else if (item != null && (item.getItemId() == R.id.jugDel))
+        {
+            JugadorDelDialog dialog = new JugadorDelDialog(jugadorSelect);
+            dialog.show(actividad.getSupportFragmentManager(), "llamadaBorrar");
+        }
+        else if (item != null && (item.getItemId() == R.id.jugAdmin))
+        {
+            JugadorAdminDialog dialog = new JugadorAdminDialog(jugadorSelect);
+            dialog.show(actividad.getSupportFragmentManager(), "llamadaHacerAdmin");
+        }
+        else
+            Toast.makeText(actividad, "???????", Toast.LENGTH_SHORT).show();
+
+        if(fragmentACalocar != null) {
+            args.putSerializable("jugadorSer", jugador);
+            args.putSerializable("jugadorVer", jugadorSelect);
             fragmentACalocar.setArguments(args);
 
             transaction.add(R.id.principalFrame, fragmentACalocar);

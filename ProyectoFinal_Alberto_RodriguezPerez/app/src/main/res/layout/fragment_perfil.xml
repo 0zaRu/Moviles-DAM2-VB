@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Fragments.PerfilFragment"
-    android:padding="30dp">
+    tools:context=".view.Fragments.modelInfo.PerfilFragment"
+    android:padding="30dp"
+    android:background="@color/GrisHueso">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -64,36 +65,34 @@
             app:layout_constraintStart_toEndOf="@+id/tvPais"
             app:layout_constraintTop_toBottomOf="@+id/tvId" />
 
-        <!--
+
         <TextView
             android:id="@+id/tvFechaNaci"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-16dp"
-            tools:layout_editor_absoluteY="246dp" />
-
+            android:layout_marginTop="52dp"
+            android:text="2003-04-01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPais" />
 
         <TextView
             android:id="@+id/tvCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-16dp"
-            tools:layout_editor_absoluteY="292dp" />
+            android:layout_marginTop="16dp"
+            android:text="prueba@"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFechaNaci" />
 
-        <TextView
-            android:id="@+id/tvPasswd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-29dp"
-            tools:layout_editor_absoluteY="354dp" />
 
         <TextView
             android:id="@+id/tvAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-16dp"
-            tools:layout_editor_absoluteY="414dp" />
-        -->
+            android:layout_marginTop="28dp"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCorreo" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatEditButton"

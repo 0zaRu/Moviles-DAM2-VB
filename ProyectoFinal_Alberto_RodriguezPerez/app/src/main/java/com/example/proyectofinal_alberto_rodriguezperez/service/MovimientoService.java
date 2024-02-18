@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MovimientoService {
     private Retrofit getRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("http://172.23.86.211/chess-app-proyectoARP/")
+                .baseUrl("http://172.23.86.211/chess-app-proyectoARP/Movimiento/")
                 //.baseUrl("http://10.0.2.2/chess-app-proyectoARP/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

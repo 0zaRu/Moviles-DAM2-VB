@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.JugadorDAO;
+import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 import com.example.proyectofinal_alberto_rodriguezperez.view.MainActivity;
 
@@ -21,7 +22,7 @@ public class JugadorService {
 
     private Retrofit getRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("http://172.23.86.211/chess-app-proyectoARP/")
+                .baseUrl("http://172.23.86.211/chess-app-proyectoARP/Jugador/")
                 //.baseUrl("http://10.0.2.2/chess-app-proyectoARP/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -74,9 +75,9 @@ public class JugadorService {
     }
 
     public void modificaJugador(Context contexto, Jugador jugador){
-        getRetrofit().create(JugadorDAO.class).modificaJugador(jugador).enqueue(new Callback<Jugador>() {
+        getRetrofit().create(JugadorDAO.class).modificaJugador(jugador).enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Jugador> call, Response<Jugador> response) {
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if(response.isSuccessful()){
                     Intent intent = new Intent(contexto, MainActivity.class);
                     contexto.startActivity(intent);
@@ -87,7 +88,7 @@ public class JugadorService {
             }
 
             @Override
-            public void onFailure(Call<Jugador> call, Throwable t) {
+            public void onFailure(Call<Integer> call, Throwable t) {
                 System.out.println(jugador);
                 Toast.makeText(contexto, "Fallo de conexión con el server", Toast.LENGTH_SHORT).show();
             }
@@ -98,7 +99,40 @@ public class JugadorService {
         return getRetrofit().create(JugadorDAO.class).getJugadoresFiltrados(txtFiltrar);
     }
 
+    public Call<List<Jugador>> getJugadoresFiltradosByAdmin(){
+        return getRetrofit().create(JugadorDAO.class).getJugadoresFiltradosByAdmin();
+    }
+
     public Call<String> getJugadorNameById(int jugadorId){
         return getRetrofit().create(JugadorDAO.class).getJugadorNameById(jugadorId);
+    }
+
+    public Call<Integer> borrarJugador(int id) {
+        return getRetrofit().create(JugadorDAO.class).borrarJugador(id);
+    }
+
+    public Call<Integer> getNumAdmin() {
+        return getRetrofit().create(JugadorDAO.class).getNumAdmin();
+    }
+
+    public void setAdmin(Context context, Jugador jugadorSelect, int adminValor) {
+        jugadorSelect.setEsAdmin(adminValor);
+
+        getRetrofit().create(JugadorDAO.class).modificaJugador(jugadorSelect).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()) {
+                    Toast.makeText(context, "Actualizado", Toast.LENGTH_SHORT).show();
+                    ((OnMyEvent) context).actualizaFragment();
+                }
+                else
+                    Toast.makeText(context, "Problema modificando", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                ((OnMyEvent) context).actualizaFragment();
+            }
+        });
     }
 }

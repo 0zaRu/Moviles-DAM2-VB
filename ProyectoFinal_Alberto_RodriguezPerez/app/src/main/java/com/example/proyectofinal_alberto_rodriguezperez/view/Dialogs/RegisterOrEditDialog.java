@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -23,13 +24,14 @@ import androidx.fragment.app.DialogFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.ControllersOfModels.JugadorController;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
+import com.example.proyectofinal_alberto_rodriguezperez.controller.ImageController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 
 public class RegisterOrEditDialog extends DialogFragment implements DialogInterface.OnClickListener, View.OnClickListener {
 
     private final JugadorController jugadorCont = new JugadorController();
     Jugador recibido = null, recibidoModificado = new Jugador();
-    String imagen = null;
+    byte[] imagen = null;
     TextView nombre, pais, fechaNaci, correo, pass1, pass2, pass3;
     ImageView foto;
 
@@ -67,7 +69,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
             pais.setText(recibido.getPais());
             fechaNaci.setText(recibido.getFechaNacimiento());
             correo.setText(recibido.getCorreoElectronico());
-            pass1.setHint("Contraseña antigua");
+            pass1.setHint("Contraseña actual**");
             pass2.setHint("Contraseña nueva");
 
             pass3.setHint("Repite contraseña nueva");
@@ -108,6 +110,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
 
     private void opcionModificar() {
         recibidoModificado = recibido;
+        //recibidoModificado.setImagen(imagen);
         recibidoModificado.setImagen(imagen);
 
         if (nombre.getText().toString().isEmpty() ||
@@ -145,7 +148,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
     private void opcionRegistrar(){
         if (nombre.getText().toString().isEmpty() ||
                 fechaNaci.getText().toString().isEmpty() ||
-                pass1.getText().toString().isEmpty() ||
+                (pass1.getText().toString().isEmpty() && recibido.getEsAdmin() == 0) ||
                 pass2.getText().toString().isEmpty())
             Toast.makeText(getContext(), "Valores no insertados", Toast.LENGTH_SHORT).show();
 
@@ -156,7 +159,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
 
         } else {
             Jugador add = new Jugador(
-                    imagen,
+                    null,
                     nombre.getText().toString(),
                     pais.getText().toString(),
                     1000,
@@ -184,10 +187,10 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
             public void onActivityResult(ActivityResult o) {
 
                 if(o.getData() != null && o.getData().getData() != null) {
-                    //Uri imagenUri = o.getData().getData();
-                    //foto.setImageURI(imagenUri);
-                    imagen = "huevo";
-                    //imagen = ImageController.byteArrayDelUri(requireContext(), imagenUri);
+                    Uri imagenUri = o.getData().getData();
+                    foto.setImageURI(imagenUri);
+                    imagen = ImageController.byteArrayDelUri(requireContext(), imagenUri);
+
                 }
             }
         }

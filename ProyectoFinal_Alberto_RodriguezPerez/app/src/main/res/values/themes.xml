@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.ProyectoFinal_Alberto_RodriguezPerez" parent="Base.Theme.ProyectoFinal_Alberto_RodriguezPerez" />
+
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@drawable/layout_redondeado</item>
+        <item name="android:windowIsFloating">true</item> <!-- Indica si el diálogo es flotante -->
+        <!-- Añade más atributos si necesitas personalizar otros aspectos del diálogo -->
+    </style>
+
+
 </resources>

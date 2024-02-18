@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Jugador implements Serializable {
     private int id;
-    private String imagen;
+    private byte[] imagen;
     private String nombre;
     private String pais;
     private int elo;
@@ -20,7 +20,7 @@ public class Jugador implements Serializable {
     public Jugador() {
     }
 
-    public Jugador(String imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
+    public Jugador(byte[] imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.nombre = nombre;
         this.pais = pais;
         this.elo = elo;
@@ -31,7 +31,7 @@ public class Jugador implements Serializable {
         this.imagen = imagen;
     }
 
-    public Jugador(int id, String imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
+    public Jugador(int id, byte[] imagen, String nombre, String pais, int elo, String fechaNacimiento, String correoElectronico, String passwd, int esAdmin) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
@@ -51,11 +51,11 @@ public class Jugador implements Serializable {
         this.id = id;
     }
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 
@@ -127,7 +127,6 @@ public class Jugador implements Serializable {
                 ", correoElectronico='" + correoElectronico + '\'' +
                 ", passwd='" + passwd + '\'' +
                 ", esAdmin=" + esAdmin +
-                ", imagen=" + imagen +
                 '}';
     }
 }

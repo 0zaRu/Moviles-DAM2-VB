@@ -14,38 +14,47 @@
 
         <Button
             android:id="@+id/InicioButPerfil"
-            android:layout_width="57dp"
+            android:layout_width="59dp"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10sp"
-            android:text="yo" />
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/GrisHueso"
+            android:text="yo"
+            android:textColor="@color/carne"
+            android:textStyle="bold" />
 
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/InicioButTodo"
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30px"
-            android:text="Todo" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/GrisHueso"
+            android:text="Todo"
+            android:textColor="@color/carne"
+            android:textStyle="bold" />
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/InicioButPartidas"
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30px"
-            android:text="Partidas" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/GrisHueso"
+            android:text="Partidas"
+            android:textColor="@color/carne"
+            android:textStyle="bold" />
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/InicioButTorneos"
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30px"
-            android:text="Torneos" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/GrisHueso"
+            android:text="Torneos"
+            android:textColor="@color/carne"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

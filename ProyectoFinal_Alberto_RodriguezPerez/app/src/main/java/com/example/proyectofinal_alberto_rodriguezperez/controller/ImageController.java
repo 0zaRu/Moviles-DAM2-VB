@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 
 public class ImageController {
-    public static String byteArrayDelUri(Context context, Uri uri) {
+    public static byte[] byteArrayDelUri(Context context, Uri uri) {
         byte[] byteArray = null;
 
         try {
@@ -31,6 +31,7 @@ public class ImageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Base64.encodeToString(byteArray, Base64.CRLF);
+
+        return byteArray;
     }
 }

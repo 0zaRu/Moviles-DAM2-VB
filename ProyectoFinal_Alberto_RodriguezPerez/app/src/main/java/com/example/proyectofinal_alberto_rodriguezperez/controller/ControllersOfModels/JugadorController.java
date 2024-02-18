@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListJugadoresAdapter;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
@@ -103,8 +104,36 @@ public class JugadorController {
         serviceJugador.modificaJugador(contexto, jugador);
     }
 
-    public void getJugadoresFiltrados(Context contextParaLista, ListView listaJugadores, String textoBusqueda){
+    public void getJugadoresFiltrados(FragmentActivity contextParaLista, ListView listaJugadores, String textoBusqueda){
         serviceJugador.getJugadoresFiltrados(textoBusqueda).enqueue(new Callback<List<Jugador>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Jugador>> call, @NonNull Response<List<Jugador>> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+
+                    ArrayList<Jugador> jugadores = new ArrayList<>();
+                    for (Jugador jugador : response.body()) {
+                        Log.d("TAG", jugador.toString());
+                        jugadores.add(jugador);
+                    }
+
+                    FragmentListJugadoresAdapter adapter = new FragmentListJugadoresAdapter(contextParaLista, jugadores);
+                    listaJugadores.setAdapter(adapter);
+
+                } else {
+                    Log.d("TAG", "Error");
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Jugador>> call, @NonNull Throwable t) {
+                Log.d("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    public void getJugadoresFiltradosByAdmin(FragmentActivity contextParaLista, ListView listaJugadores){
+        serviceJugador.getJugadoresFiltradosByAdmin().enqueue(new Callback<List<Jugador>>() {
             @Override
             public void onResponse(@NonNull Call<List<Jugador>> call, @NonNull Response<List<Jugador>> response) {
                 if (response.isSuccessful()) {
@@ -177,6 +206,57 @@ public class JugadorController {
 
             @Override
             public void onFailure(Call<List<Jugador>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void borrarJugador(Context context, int id) {
+        JugadorService js = new JugadorService();
+
+        js.borrarJugador(id).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful() && response.body() == 1)
+                    Toast.makeText(context, "Borrado correctamente", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void gestionaAdmin(Context context, Jugador jugadorSelect) {
+        JugadorService js = new JugadorService();
+
+        js.getNumAdmin().enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()){
+
+                    if(response.body() == -1)
+                        Toast.makeText(context, "Error de información", Toast.LENGTH_SHORT).show();
+
+                    else if((response.body() == 0 || response.body() == 1) && jugadorSelect.getEsAdmin() == 0)
+                        js.setAdmin(context, jugadorSelect, 1);
+
+                    else if((response.body() == 0 || response.body() == 1) && jugadorSelect.getEsAdmin() == 1)
+                        Toast.makeText(context, "Debe haber siempre 1 admin", Toast.LENGTH_SHORT).show();
+
+                    else if(response.body() >= 2 && jugadorSelect.getEsAdmin() == 1)
+                        js.setAdmin(context, jugadorSelect, 0);
+
+                    else if(response.body() >= 2 && jugadorSelect.getEsAdmin() == 0)
+                        Toast.makeText(context, "Solo puede haber 2 admin a la vez", Toast.LENGTH_SHORT).show();
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
 
             }
         });

@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
 
             RegisterOrEditDialog dialog =new RegisterOrEditDialog(null);
+
             dialog.show(getSupportFragmentManager(), "llamadaRegistrar");
             //Aquí puedo hacer que sea una clase de ida con vuelta de datos, para asignar directamente a los campos el usuario
             //que haya agregado al registrarse

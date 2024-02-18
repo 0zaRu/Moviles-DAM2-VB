@@ -13,18 +13,19 @@ import android.widget.Toast;
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Admin.AdminUsersFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarFormatoFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarResultadoFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Buscar.BuscarTopMenuFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.InicioTopMenuFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.PartidasFragment;
-import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.PerfilFragment;
+import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.modelInfo.PerfilFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.TodoFragment;
 import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.TorneosFragment;
 
 public class DataActivity extends AppCompatActivity implements View.OnClickListener, OnMyEvent {
 
-    Button btBuscar, btInicio;
+    Button btBuscar, btInicio, btAdmin;
     static String modoActual = "inicio";
     Jugador jugador;
     String opcionBusqueda = "";
@@ -45,6 +46,9 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
 
         btInicio = findViewById(R.id.menuButInicio);
         btInicio.setOnClickListener(this);
+
+        btAdmin = findViewById(R.id.menuButAdmin);
+        btAdmin.setOnClickListener(this);
 
     }
 
@@ -69,6 +73,12 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
             vistaFalsa.setId(R.id.layoutEstablecebusqueda);
             botoneraBuscar(vistaFalsa, "");
         }
+        else if(modoActual.equals("admin"))
+        {
+            fragmentACalocar = new InicioTopMenuFragment();
+            vistaFalsa.setId(R.id.FragmentAdminUserLayout);
+            botoneraInicio(vistaFalsa);
+        }
 
 
         if(fragmentACalocar != null) {
@@ -92,6 +102,10 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
         else if(v.getId() == R.id.menuButBuscar)
             modoActual = "buscar";
 
+        //Botón Admin
+        else if(v.getId() == R.id.menuButAdmin)
+            modoActual = "admin";
+
         ponerTopMenu();
 
     }
@@ -102,6 +116,7 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragmentACalocar = null;
+        Bundle args = new Bundle();
 
         if(v.getId() == R.id.InicioButTodo)
             fragmentACalocar = new TodoFragment();
@@ -112,13 +127,19 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
         else if(v.getId() == R.id.InicioButTorneos)
             fragmentACalocar = new TorneosFragment();
 
-        else if(v.getId() == R.id.InicioButPerfil)
+        else if(v.getId() == R.id.InicioButPerfil) {
             fragmentACalocar = new PerfilFragment();
+            args.putString("modo", "ver");
+            args.putSerializable("jugadorSer", jugador);
+            args.putSerializable("jugadorVer", jugador);
+        }
+
+        else if(v.getId() == R.id.FragmentAdminUserLayout)
+            fragmentACalocar = new AdminUsersFragment();
 
 
 
         if(fragmentACalocar != null){
-            Bundle args = new Bundle();
             args.putSerializable("usuario", jugador);
             fragmentACalocar.setArguments(args);
 

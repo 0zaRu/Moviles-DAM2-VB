@@ -123,21 +123,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneo" />
 
-    <ScrollView
+    <EditText
+        android:id="@+id/tvMovimientos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enunciado4"
-        app:layout_constraintVertical_bias="0.026">
-
-        <EditText
-            android:id="@+id/tvMovimientos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
-    </ScrollView>
+        app:layout_constraintVertical_bias="0.026"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatPartidaModifyButton"

@@ -27,7 +27,7 @@
     </FrameLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/topMenuBar"
         android:layout_width="match_parent"
         android:layout_height="60sp"
@@ -40,20 +40,35 @@
 
         <Button
             android:id="@+id/menuButInicio"
-            android:layout_width="53dp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10sp"
-            android:paddingHorizontal="-30px"
+            android:backgroundTint="@color/GrisHueso"
+            android:textColor="@color/carne"
             android:text="Inicio" />
 
         <Button
+            android:textStyle="bold"
             android:id="@+id/menuButBuscar"
-            android:layout_width="53dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="30sp"
-            android:paddingHorizontal="-30px"
+            android:layout_gravity="center"
+            android:textColor="@color/carne"
+            android:backgroundTint="@color/GrisHueso"
             android:text="Buscar" />
 
-    </LinearLayout>
+        <Button
+            android:textStyle="bold"
+            android:id="@+id/menuButAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/carne"
+            android:backgroundTint="@color/GrisHueso"
+            android:text="Admin" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
