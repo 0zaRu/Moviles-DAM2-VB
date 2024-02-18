@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
@@ -25,7 +26,7 @@ import com.example.proyectofinal_alberto_rodriguezperez.view.Fragments.Inicio.To
 
 public class DataActivity extends AppCompatActivity implements View.OnClickListener, OnMyEvent {
 
-    Button btBuscar, btInicio, btAdmin;
+    ImageButton btBuscar, btInicio, btAdmin;
     static String modoActual = "inicio";
     Jugador jugador;
     String opcionBusqueda = "";
@@ -162,10 +163,13 @@ public class DataActivity extends AppCompatActivity implements View.OnClickListe
             fragmentACalocar = new BuscarFormatoFragment();
         }
 
-        else if(v.getId() == R.id.BuscarButPerfil)
+        else if(v.getId() == R.id.BuscarButPerfil) {
             fragmentACalocar = new PerfilFragment();
+            args.putString("modo", "ver");
+            args.putSerializable("jugadorSer", jugador);
+            args.putSerializable("jugadorVer", jugador);
 
-        else if(txtBuscar.isEmpty() && (opcionBusqueda.equals("Torneos") || opcionBusqueda.equals("Jugadores")))
+        }else if(txtBuscar.isEmpty() && (opcionBusqueda.equals("Torneos") || opcionBusqueda.equals("Jugadores")))
             Toast.makeText(this, "Texto a buscar no establecido", Toast.LENGTH_SHORT).show();
 
         else if(opcionBusqueda.isEmpty())

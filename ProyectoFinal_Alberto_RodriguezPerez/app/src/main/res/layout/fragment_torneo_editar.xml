@@ -5,19 +5,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.Fragments.modelInfo.PartidaInfoFragment"
-    android:background="@color/GrisHueso">
+    android:background="@color/GrisOscuro"
+    >
 
     <EditText
         android:id="@+id/etTorneoNombre"
-        android:layout_width="185dp"
-        android:layout_height="97dp"
+        android:layout_width="361dp"
+        android:layout_height="55dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/GrisBlanco"
         android:text="Torneo XV"
+        android:textColor="@color/GrisBlanco"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColor="@color/GrisBlanco"
+        android:textStyle="bold"
+        android:backgroundTint="@color/GrisBlanco"
         android:id="@+id/etTorneoLugar"
         android:layout_width="192dp"
         android:layout_height="40dp"
@@ -29,11 +36,13 @@
         app:layout_constraintTop_toBottomOf="@+id/etTorneoNombre" />
 
     <Button
+        android:backgroundTint="@color/GrisMedio"
+        android:textStyle="bold"
         android:id="@+id/etTorneoFechaIni"
         android:layout_width="163dp"
         android:layout_height="47dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="92dp"
         android:gravity="center"
         android:text="Fecha 1"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,27 +50,31 @@
 
     <Spinner
         android:id="@+id/spTorneoEstado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/etTorneoNombre"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="88dp"
+        android:background="@color/GrisBlanco"
+        app:layout_constraintStart_toEndOf="@+id/etTorneoLugar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:backgroundTint="@color/GrisMedio"
+        android:textStyle="bold"
         android:id="@+id/etTorneoFechaFin"
-        android:layout_width="162dp"
-        android:layout_height="50dp"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="164dp"
         android:gravity="center"
         android:text="Fecha 2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toEndOf="@+id/etTorneoFechaIni"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:layout_margin="10dp"
         android:layout_marginTop="50dp"
         android:id="@+id/listViewPartidasAdociadas"
         android:layout_width="match_parent"

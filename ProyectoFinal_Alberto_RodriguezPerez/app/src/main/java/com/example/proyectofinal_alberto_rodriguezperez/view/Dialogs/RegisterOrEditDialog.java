@@ -1,6 +1,7 @@
 package com.example.proyectofinal_alberto_rodriguezperez.view.Dialogs;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,13 +30,19 @@ import com.example.proyectofinal_alberto_rodriguezperez.controller.Security;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.ImageController;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Jugador;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class RegisterOrEditDialog extends DialogFragment implements DialogInterface.OnClickListener, View.OnClickListener {
 
     private final JugadorController jugadorCont = new JugadorController();
     Jugador recibido = null, recibidoModificado = new Jugador();
     byte[] imagen = null;
-    TextView nombre, pais, fechaNaci, correo, pass1, pass2, pass3;
+    TextView nombre, pais, correo, pass1, pass2, pass3;
+    Button fechaNaci;
     ImageView foto;
+    Calendar calendar;
 
     public RegisterOrEditDialog(Jugador jugador){
         if(jugador != null){
@@ -54,6 +63,32 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
         nombre = vista.findViewById(R.id.etNombre);
         pais = vista.findViewById(R.id.etPais);
         fechaNaci = vista.findViewById(R.id.etFechaNaci);
+
+        fechaNaci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar = Calendar.getInstance();
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                calendar.set(year, monthOfYear, dayOfMonth);
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                                String selectedDate = sdf.format(calendar.getTime());
+                                fechaNaci.setText(selectedDate);
+                            }
+                        },
+
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+
+                datePickerDialog.show();
+            }
+        });
+
         correo = vista.findViewById(R.id.etCorreo);
         pass1 = vista.findViewById(R.id.etPasswd1);
         pass2 = vista.findViewById(R.id.etPasswd2);
@@ -111,13 +146,14 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
     private void opcionModificar() {
         recibidoModificado = recibido;
         //recibidoModificado.setImagen(imagen);
-        recibidoModificado.setImagen(imagen);
+        recibidoModificado.setImagen(null);
 
         if (nombre.getText().toString().isEmpty() ||
-                fechaNaci.getText().toString().isEmpty() ||
-                pass1.getText().toString().isEmpty())
+                fechaNaci.getText().toString().equals("Fecha de Nacimiento") ||
+                pais.getText().toString().isEmpty() ||
+                (pass1.getText().toString().isEmpty()))
         {
-            Toast.makeText(getContext(), "Contraseña no insertada.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Contraseña o datos no insertada.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -147,8 +183,8 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
 
     private void opcionRegistrar(){
         if (nombre.getText().toString().isEmpty() ||
-                fechaNaci.getText().toString().isEmpty() ||
-                (pass1.getText().toString().isEmpty() && recibido.getEsAdmin() == 0) ||
+                fechaNaci.getText().toString().equals("Fecha de Nacimiento") ||
+                (pass1.getText().toString().isEmpty()) ||
                 pass2.getText().toString().isEmpty())
             Toast.makeText(getContext(), "Valores no insertados", Toast.LENGTH_SHORT).show();
 
@@ -163,7 +199,7 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
                     nombre.getText().toString(),
                     pais.getText().toString(),
                     1000,
-                    "2003-04-01",
+                    fechaNaci.getText().toString(),
                     correo.getText().toString(),
                     Security.getMD5(pass1.getText().toString()),
                     0);

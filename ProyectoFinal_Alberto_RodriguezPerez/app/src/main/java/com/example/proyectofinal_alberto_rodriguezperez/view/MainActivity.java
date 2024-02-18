@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(v.getId() == R.id.tvRegistro)
         {
 
-            RegisterOrEditDialog dialog =new RegisterOrEditDialog(null);
+            RegisterOrEditDialog dialog = new RegisterOrEditDialog(null);
 
             dialog.show(getSupportFragmentManager(), "llamadaRegistrar");
             //Aquí puedo hacer que sea una clase de ida con vuelta de datos, para asignar directamente a los campos el usuario

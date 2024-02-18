@@ -8,52 +8,51 @@
     <LinearLayout
         android:id="@+id/optionBar"
         android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:background="@color/carne"
+        android:layout_height="50sp"
+        android:background="@color/GrisOscuro"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/InicioButPerfil"
-            android:layout_width="59dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:backgroundTint="@color/GrisHueso"
-            android:text="yo"
-            android:textColor="@color/carne"
-            android:textStyle="bold" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/perfil_button"/>
 
 
         <Button
             android:id="@+id/InicioButTodo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="38dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:backgroundTint="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
             android:text="Todo"
-            android:textColor="@color/carne"
+
+            android:textColor="@color/GrisOscuro"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/InicioButPartidas"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="96dp"
+            android:layout_height="38dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:backgroundTint="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
             android:text="Partidas"
-            android:textColor="@color/carne"
+            android:textColor="@color/GrisOscuro"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/InicioButTorneos"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="94dp"
+            android:layout_height="38dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:backgroundTint="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
             android:text="Torneos"
-            android:textColor="@color/carne"
+            android:textColor="@color/GrisOscuro"
             android:textStyle="bold" />
 
     </LinearLayout>

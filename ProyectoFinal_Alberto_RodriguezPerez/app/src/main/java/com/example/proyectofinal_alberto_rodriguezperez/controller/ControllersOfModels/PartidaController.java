@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.controller.Adapters.FragmentListPartidasAdapter;
+import com.example.proyectofinal_alberto_rodriguezperez.model.Movimiento;
 import com.example.proyectofinal_alberto_rodriguezperez.model.Partida;
 import com.example.proyectofinal_alberto_rodriguezperez.service.MovimientoService;
 import com.example.proyectofinal_alberto_rodriguezperez.service.PartidaService;
@@ -88,10 +89,19 @@ public class PartidaController {
         ps.addOrModify(partinaN).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                if(response.isSuccessful() && response.body() == 1){
+                if(response.isSuccessful()){
                     MovimientoService ms = new MovimientoService();
 
-                    ms.addOrModify(partinaN.getMovimientos()).enqueue(new Callback<Integer>() {
+                    ArrayList<Movimiento> movimientos = new ArrayList<>();
+                    for(Movimiento movimiento: partinaN.getMovimientos())
+                        movimientos.add(new Movimiento(
+                                movimiento.getNumeroMovimiento(),
+                                movimiento.getMovimiento1(),
+                                movimiento.getMovimiento2(),
+                                response.body()
+                                ));
+
+                    ms.addOrModify(movimientos).enqueue(new Callback<Integer>() {
                         @Override
                         public void onResponse(Call<Integer> call, Response<Integer> response) {
                             if(response.isSuccessful() && response.body() == 1){

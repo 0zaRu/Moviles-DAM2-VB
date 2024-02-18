@@ -5,11 +5,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.Fragments.modelInfo.PartidaInfoFragment"
-    android:background="@color/GrisHueso">
+    android:background="@color/GrisOscuro"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/tvTorneoNombre"
-        android:layout_width="140sp"
+        android:textColor="@color/GrisBlanco"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
         android:layout_height="30sp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -19,17 +23,22 @@
 
     <TextView
         android:id="@+id/tvTorneoLugar"
-        android:layout_width="140dp"
+        android:textColor="@color/GrisBlanco"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
         android:layout_height="30sp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+
         android:text="Lugar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneoNombre" />
 
     <TextView
         android:id="@+id/tvTorneoFechaIni"
+        android:textColor="@color/GrisBlanco"
+        android:textSize="17sp"
         android:layout_width="140dp"
         android:layout_height="30sp"
         android:layout_marginStart="16dp"
@@ -43,14 +52,18 @@
         android:id="@+id/tvTorneoEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Abierto"
-        app:layout_constraintStart_toEndOf="@+id/tvTorneoNombre"
+        android:textColor="@color/GrisBlanco"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTorneoFechaFin"
+        android:textColor="@color/GrisBlanco"
+        android:textSize="17sp"
         android:layout_width="140sp"
         android:layout_height="30dp"
         android:layout_marginStart="76dp"
@@ -62,11 +75,23 @@
         app:layout_constraintStart_toEndOf="@+id/tvTorneoFechaIni"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:text="Partidas"
+        android:textColor="@color/GrisBlanco"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTorneoFechaIni" />
+
     <ListView
-        android:layout_marginTop="50dp"
         android:id="@+id/listViewPartidasAdociadas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTorneoFechaIni" />
 

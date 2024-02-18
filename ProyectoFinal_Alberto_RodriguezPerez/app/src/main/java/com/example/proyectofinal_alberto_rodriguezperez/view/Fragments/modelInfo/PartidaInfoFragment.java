@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -58,6 +59,7 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
     TextView verFecha;
     EditText verJugadas, lugar;
     Spinner jugadorB, jugadorN, resultado, torneo;
+    Button verFechaB;
 
     public PartidaInfoFragment() {}
 
@@ -139,9 +141,9 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
             jugadorN = vista.findViewById(R.id.tvJugador2);
             resultado = vista.findViewById(R.id.tvResultado);
             torneo = vista.findViewById(R.id.tvTorneo);
-            lugar = vista.findViewById(R.id.etLugarPartida);
-            verJugadas = vista.findViewById(R.id.tvMovimientos);
-            verFecha = vista.findViewById(R.id.tvVerFechaSelect);
+            lugar = vista.findViewById(R.id.tvLugarPartida);
+            verJugadas = vista.findViewById(R.id.listViewMovimientos);
+            verFechaB = vista.findViewById(R.id.tvFechaPartida);
 
             vista.findViewById(R.id.floatPartidaModifyButton).setOnClickListener(this);
 
@@ -152,7 +154,7 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
             ArrayAdapter<String> adapterR = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, resultadosV);
             resultado.setAdapter(adapterR);
 
-            vista.findViewById(R.id.buttonTimePicker).setOnClickListener(new View.OnClickListener() {
+            vista.findViewById(R.id.tvFechaPartida).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showDatePickerDialog();
@@ -161,7 +163,7 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
 
             if(modo.equals("editar"))
             {
-                verFecha.setText(partida.getFecha());
+                verFechaB.setText(partida.getFecha());
                 lugar.setText(partida.getLugar());
                 resultado.setSelection(resultadosV.indexOf(partida.getResultado()));
                 verJugadas.setText("");
@@ -185,12 +187,12 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
         else if(modo.equals("add"))
             partidaN.setId(-1);
 
-        if(verFecha.getText().toString().isEmpty() || lugar.getText().toString().isEmpty() || verJugadas.getText().toString().isEmpty()){
+        if(verFechaB.getText().toString().equals("Elegir Fecha") || lugar.getText().toString().isEmpty() || verJugadas.getText().toString().isEmpty()){
             Toast.makeText(getContext(), "Faltan campos por rellenar", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        partidaN.setFecha(verFecha.getText().toString());
+        partidaN.setFecha(verFechaB.getText().toString());
         partidaN.setLugar(lugar.getText().toString());
         partidaN.setResultado(resultado.getSelectedItem().toString());
         partidaN.setRefJugadorBlancas(jugadorB.getSelectedItem().toString());
@@ -206,7 +208,7 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
                     Integer.parseInt(valoresLinea[0]),
                     valoresLinea[1],
                     valoresLinea[2],
-                    partida.getId()
+                    partidaN.getId()
             ));
         }
         System.out.println(movimientos);
@@ -228,7 +230,7 @@ public class PartidaInfoFragment extends Fragment implements View.OnClickListene
                         calendar.set(year, monthOfYear, dayOfMonth);
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                         String selectedDate = sdf.format(calendar.getTime());
-                        verFecha.setText(selectedDate);
+                        verFechaB.setText(selectedDate);
                     }
                 },
 

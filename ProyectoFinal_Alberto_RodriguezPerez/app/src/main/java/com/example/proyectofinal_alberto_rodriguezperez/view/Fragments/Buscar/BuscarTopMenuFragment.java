@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -63,9 +64,8 @@ public class BuscarTopMenuFragment extends Fragment implements View.OnClickListe
 
         etBuscar = vista.findViewById(R.id.BuscarEtBusqueda);
 
-        Button busqueda = vista.findViewById(R.id.BuscarButlupa);
-        Button perfil = vista.findViewById(R.id.BuscarButPerfil);
-        perfil.setText(mParam1.getNombre());
+        ImageButton busqueda = vista.findViewById(R.id.BuscarButlupa);
+        ImageButton perfil = vista.findViewById(R.id.BuscarButPerfil);
 
         busqueda.setOnClickListener(this);
         perfil.setOnClickListener(this);

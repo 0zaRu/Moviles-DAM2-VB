@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity"
-    android:background="@color/GrisHueso">
+    android:background="@color/GrisBlanco">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/layout_redondeado"
@@ -18,7 +18,7 @@
         >
 
         <TextView
-            android:textColor="@color/GrisHueso"
+            android:textColor="@color/GrisBlanco"
             android:id="@+id/txInfo"
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
@@ -31,8 +31,8 @@
 
         <EditText
             android:id="@+id/tfNombreUser"
-            android:backgroundTint="@color/GrisHueso"
-            android:textColor="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
+            android:textColor="@color/GrisBlanco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20sp"
@@ -47,8 +47,8 @@
         <EditText
 
             android:text="123456"
-            android:backgroundTint="@color/GrisHueso"
-            android:textColor="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
+            android:textColor="@color/GrisBlanco"
             android:layout_marginVertical="50sp"
             android:layout_marginHorizontal="20sp"
             android:id="@+id/tfpasswd"
@@ -61,7 +61,7 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:textColor="@color/GrisHueso"
+            android:textColor="@color/GrisBlanco"
             android:layout_marginTop="5sp"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/GrisHueso"
+            android:backgroundTint="@color/GrisBlanco"
             android:text="@string/conectar"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"

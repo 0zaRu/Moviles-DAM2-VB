@@ -4,9 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Fragments.Inicio.PartidasFragment">
+    tools:context=".view.Fragments.Inicio.PartidasFragment"
+    android:padding="10dp"
+    android:background="@color/GrisOscuro">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Partidas"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/GrisBlanco"/>
 
     <ListView
+        android:layout_marginTop="50dp"
         android:id="@+id/listaFragmentPartidas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

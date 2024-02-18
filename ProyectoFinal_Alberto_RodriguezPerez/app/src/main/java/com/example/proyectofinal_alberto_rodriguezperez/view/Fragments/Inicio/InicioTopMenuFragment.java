@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.proyectofinal_alberto_rodriguezperez.Interfaces.OnMyEvent;
 import com.example.proyectofinal_alberto_rodriguezperez.R;
@@ -63,8 +64,7 @@ public class InicioTopMenuFragment extends Fragment implements View.OnClickListe
         Button todo = vista.findViewById(R.id.InicioButTodo);
         Button partidas = vista.findViewById(R.id.InicioButPartidas);
         Button torneos = vista.findViewById(R.id.InicioButTorneos);
-        Button perfil = vista.findViewById(R.id.InicioButPerfil);
-        perfil.setText(mParam1.getNombre());
+        ImageButton perfil = vista.findViewById(R.id.InicioButPerfil);
 
         todo.setOnClickListener(this);
         partidas.setOnClickListener(this);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoFinal_Alberto_RodriguezPerez</string>
+    <string name="app_name">AljedRez</string>
     <string name="no_tienes_cuenta_reg_strate">¿No tienes cuenta, regístrate?</string>
     <string name="contrase_a">Contraseña</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>

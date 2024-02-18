@@ -51,7 +51,7 @@ public class AdminUsersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View vista =  inflater.inflate(R.layout.fragment_buscar_resultado, container, false);
+        View vista =  inflater.inflate(R.layout.fragment_admin_users, container, false);
 
         lista = vista.findViewById(R.id.BusquedaResultLst);
         jc.getJugadoresFiltradosByAdmin(getActivity(), lista);

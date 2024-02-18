@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".view.Fragments.Inicio.PartidasFragment"
-    android:id="@+id/constP">
+    android:id="@+id/constP"
+    android:background="@color/GrisOscuro">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +16,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:layout_margin="10dp"
+            android:textColor="@color/GrisBlanco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
@@ -22,11 +25,14 @@
             android:textSize="30sp" />
 
         <ListView
+            android:layout_marginHorizontal="10dp"
             android:id="@+id/listaFragmentMisTorneos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_margin="10dp"
+            android:textColor="@color/GrisBlanco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20sp"
@@ -34,6 +40,7 @@
             android:textSize="30sp" />
 
         <ListView
+            android:layout_marginHorizontal="10dp"
             android:id="@+id/listaFragmentTorneos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
