@@ -166,10 +166,10 @@ public class RegisterOrEditDialog extends DialogFragment implements DialogInterf
             if(pass2.getText().toString().equals(pass3.getText().toString()) &&
                 !pass2.getText().toString().equals(pass1.getText().toString())){
 
-                Toast.makeText(getContext(), "Contraseñas no coincidentes o igual a la anterior", Toast.LENGTH_SHORT).show();
+                recibido.setPasswd(Security.getMD5(pass2.getText().toString()));
             }
             else{
-                recibido.setPasswd(Security.getMD5(pass2.getText().toString()));
+                Toast.makeText(getContext(), "Contraseñas no coincidentes o igual a la anterior", Toast.LENGTH_SHORT).show();
             }
         }
 
